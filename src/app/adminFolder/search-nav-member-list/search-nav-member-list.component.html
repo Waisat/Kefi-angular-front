@@ -1,0 +1,79 @@
+<form action="" class="search-bar">
+  <input type="search" name="search" pattern=".*\S.*" required>
+  <button class="search-btn" type="submit">
+    <span>Search</span>
+  </button>
+
+  <div id="filter_member_list">
+
+  <div id="main_selection_option">
+
+  <div class="wrapper">
+    <input type="radio" name="select" id="option-1" checked>
+    <input type="radio" name="select" id="option-2">
+    <label for="option-1" class="option option-1">
+      <div class="dot"></div>
+      <span>All</span>
+    </label>
+    <label for="option-2" class="option option-2">
+      <div class="dot"></div>
+      <span>specific</span>
+    </label>
+  </div>
+
+    <div class="wrapper">
+      <input type="radio" name="select" id="asc-option" checked>
+      <input type="radio" name="select" id="dsc-option">
+      <label for="asc-option" class="option option-1">
+        <div class="dot"></div>
+        <span>Ascendant</span>
+      </label>
+      <label for="dsc-option" class="option option-2">
+        <div class="dot"></div>
+        <span>Descendant</span>
+      </label>
+    </div>
+  </div>
+
+  <section class="light">
+
+    <h1>Options</h1>
+    <label>
+      <input type="radio" name="light" value="none" checked>
+      <span class="design"></span>
+      <span class="text">Aucun</span>
+    </label>
+
+    <label>
+      <input type="radio" name="light" value="emailVerifyTrue">
+      <span class="design"></span>
+      <span class="text">Vérifié</span>
+    </label>
+
+    <label>
+      <input type="radio" name="light" value="emailVerifyFalse">
+      <span class="design"></span>
+      <span class="text">à vérifié</span>
+    </label>
+
+    <label>
+      <input type="radio" name="light" value="newsLetter">
+      <span class="design"></span>
+      <span class="text">newsLetter</span>
+    </label>
+
+    <label>
+      <input type="radio" name="light" value="memberPayement">
+      <span class="design"></span>
+      <span class="text">Paiement</span>
+    </label>
+
+    <label>
+      <input type="radio" name="light" value="partner">
+      <span class="design"></span>
+      <span class="text">Partenaire</span>
+    </label>
+  </section>
+  </div>
+
+</form>

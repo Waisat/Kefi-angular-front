@@ -1,0 +1,35 @@
+
+
+
+<div class="table-wrapper">
+  <table class="fl-table"  >
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Prenom</th>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Job</th>
+      <th>Mobile</th>
+      <th>Fix</th>
+      <th>Ville</th>
+      <th>Pays</th>
+
+    </tr>
+    </thead>
+    <tbody *ngFor="let member of getMembers">
+    <tr>
+      <td>{{member.id}}</td>
+      <td>{{member.first_name}}</td>
+      <td>{{member.name}}</td>
+      <td>{{member.email}}</td>
+      <td>{{member.job}}</td>
+      <td>{{member.mobile}}</td>
+      <td>{{member.fix}}</td>
+      <td>{{member.city}}</td>
+      <td>{{member.country}}</td>
+    </tr>
+
+    <tbody>
+  </table>
+</div>

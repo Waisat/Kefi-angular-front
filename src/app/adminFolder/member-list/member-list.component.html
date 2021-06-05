@@ -1,0 +1,13 @@
+<div class="flex_member_container">
+  <div id="side-bar-nav">
+  <app-side-bar></app-side-bar>
+  </div>
+  <div>
+    <div id="member_page_list">
+  <app-search-nav-member-list></app-search-nav-member-list>
+    </div>
+  <app-table-member [getAllMembers]="dataMember"></app-table-member>
+    <app-pagination-member-list *ngIf="infosPage" [getInfoForPAgination]="infosPage" (newItemEvent)="checkUrlPosition($event)" ></app-pagination-member-list>
+  </div>
+
+</div>

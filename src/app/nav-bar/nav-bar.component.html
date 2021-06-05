@@ -1,0 +1,39 @@
+<div class="page">
+  <div class="nav_logo">
+    <a routerLink="accueil" class="logo_kefi" ><img  src="assets/logo_nav_kefii.png" alt="logo_kefi" title="logo_kefi"></a>
+  <nav class="page__menu page__custom-settings menu">
+    <ul class="menu__list r-list">
+      <!--<li class="menu__group"><a routerLink="accueil" class="menu__link r-link text-underlined">Accueil</a></li> !-->
+      <li class="menu__group"><a routerLink="fondateurs" class="menu__link r-link text-underlined">Fondateurs</a></li>
+      <li class="menu__group"><a routerLink="membres" class="menu__link r-link text-underlined">Membres</a></li>
+      <li class="menu__group"><a routerLink="evenements" class="menu__link r-link text-underlined">Evênements</a></li>
+      <li class="menu__group"><a routerLink="articles" class="menu__link r-link text-underlined">Articles</a></li>
+      <li class="menu__group"><a routerLink="contact" class="menu__link r-link text-underlined">Contact</a></li>
+      <div *ngIf="UserLogInfo.userLevel === 'membre'">
+        <li class="menu__group"><a routerLink="espace_membre" class="menu__link r-link text-underlined">Profil</a></li>
+      </div>
+
+      <div *ngIf="UserLogInfo.userLevel === 'admin'">
+        <li class="menu__group"><a routerLink="admin" class="menu__link r-link text-underlined">Admin</a></li>
+      </div>
+
+      <!--
+
+      <div *ngIf="UserLogInfo.connect">
+
+        <li class="menu__group menu__link r-link text-underlined"  id="firstNameUser" >{{UserLogInfo.username}}</li>
+
+      </div>
+    !-->
+      <div *ngIf="!UserLogInfo.connect;then block else elseBlock"> </div>
+        <ng-template  #block>
+      <li class="menu__group"><a routerLink="login" class="menu__link r-link text-underlined" [state]="{ data: {Info:transferInfoConnexion}}" >Connexion</a></li>
+        </ng-template>
+      <ng-template #elseBlock>
+      <li  class="menu__group " (click)="logOut()" ><a routerLink="#" class="menu__link r-link text-underlined">Deconnexion</a> </li>
+      </ng-template>
+      <!--<li *ngIf="verifyConnection" class="menu__group"><a routerLink="member" class="menu__link r-link text-underlined">Membre Area</a></li>!-->
+    </ul>
+  </nav>
+  </div>
+</div>

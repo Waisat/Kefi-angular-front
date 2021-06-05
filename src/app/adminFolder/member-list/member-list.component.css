@@ -1,0 +1,16 @@
+.flex_member_container{
+  display: flex;
+  flex-direction: row;
+
+  width: 100%;
+  margin: 0 auto;
+
+}
+
+.side-bar-nav{
+  width:30%
+}
+
+.member_page_list{
+  width: 60%;
+}

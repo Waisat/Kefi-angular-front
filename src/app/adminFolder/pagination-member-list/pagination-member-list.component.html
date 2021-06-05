@@ -1,0 +1,9 @@
+
+<nav data-pagination>
+  <a href=# disabled><i class=ion-chevron-left></i></a>
+  <ul *ngFor="let navPage of navPagination">
+    <li class=current><a routerLink="/admin/member_list/search_{{navPage.specific}}/order_{{navPage.order}}/option_{{navPage.option}}/page_{{navPage.page}}/offset_{{navPage.offset}}/limit_{{navPage.limit}}/way_{{navPage.way}}" (click)="changePage()">{{navPage.page}}</a>
+
+  </ul>
+  <a href=#2><i class=ion-chevron-right></i></a>
+</nav>

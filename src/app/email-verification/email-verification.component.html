@@ -1,0 +1,48 @@
+<div class='bold-line'></div>
+<div class='container'>
+  <div class='window'>
+    <div class='overlay'></div>
+    <div class='content'>
+      <div class='welcome'>Votre email vient dêtre confirmer!</div>
+      <div class='subtitle'>Veuillez saisir votre mot de passe</div>
+      <div class='input-fields'>
+        <form #passwordFormMember="ngForm" (ngSubmit)="passwordConfirmation()" novalidate>
+
+          <input name="password" placeholder='Password' class='input-line full-width' ngModel required #password="ngModel" type="password" [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="UserPassword.password">
+          <div *ngIf="password.errors && (password.invalid || password.touched)">
+            <small class="warning-text" *ngIf="password.touched && password.errors.required">Le mot de pass est requis</small>
+            <small class="warning-text" *ngIf="password.errors.pattern">L'Email doit etre valide</small>
+
+          </div>
+
+          <input name="confirm_password" placeholder='confirm password' class='input-line full-width' ngModel required #cPassword="ngModel" [pattern]="patternPassword" type="password" [class.is-invalid]="cPassword.invalid && cPassword.touched" [(ngModel)]="UserPassword.confirm_password">
+          <div *ngIf="cPassword.errors && (cPassword.invalid || cPassword.touched)">
+            <small class="warning-text" *ngIf="cPassword.touched && cPassword.errors.required">Vous devez confirmez votre password</small>
+            <small class="warning-text" *ngIf="cPassword.errors.pattern">Le password doit contenir oh moin 1 Majuscule, minuscule, chiffres, caractére spécial</small>
+
+          </div>
+
+
+          <div *ngIf="passwordFormMember.form.invalid && passwordFormMember.form.touched">
+            <p  class="warning-text">Tous les champs sont requis pour confirmer votre password</p>
+
+          </div>
+
+
+          <div *ngIf="passwordFormMember.form.valid">
+            <p class="succes-entry">Message envoyer</p>
+
+          </div>
+          <div class="form-group row">
+
+            <div><button [disabled]="passwordFormMember.form.invalid" type="submit" class='ghost-round full-width'>Confirmer password</button></div>
+
+
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

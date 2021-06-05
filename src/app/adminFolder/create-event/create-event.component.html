@@ -1,0 +1,111 @@
+<div id="main-create-event">
+<app-side-bar></app-side-bar>
+
+<div class="container">
+
+<div class="testbox">
+  <form #eventForm  (ngSubmit)="createEvent()" novalidate>
+    <div class="banner">
+      <h1>Création d'un évenement Kefi</h1>
+    </div>
+    <div class="item">
+      <label for="eventName">Nom de L'êvenement<span>*</span></label>
+      <input id="eventName" type="text" name="eventName" #eventName="ngModel"  [class.is-invalid]="eventName.invalid && eventName.touched" [(ngModel)]="ngModelEvent.title"/>
+    </div>
+    <div *ngIf="eventName.errors && (eventName.invalid || eventName.touched)">
+      <small class="warning-text" *ngIf="eventName.touched && eventName.errors.required">L'email est requis</small>
+
+    </div>
+    <div class="item">
+      <label for="email">Contact email<span>*</span></label>
+      <input id="email" type="email" name="email" #email="ngModel" [pattern]="emailPattern" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="ngModelEvent.mailContact"/>
+    </div>
+    <div *ngIf="email.errors && (email.invalid || email.touched)">
+      <small class="warning-text" *ngIf="email.touched && email.errors.required">L'email est requis</small>
+      <small class="warning-text" *ngIf="email.errors.pattern">L'Email doit etre valide</small>
+
+    </div>
+    <div class="item">
+      <label for="photo">Photo<span>*</span></label>
+      <input  id="photo" type="file" name="file" multiple (change)="onFileSelect($event)"/>
+    </div>
+
+    <div class="item">
+      <label for="attendess">Nombre de participants<span>*</span></label>
+      <input id="attendess" type="text" name="attendees" #attendees="ngModel"  [class.is-invalid]="attendees.invalid && attendees.touched" [(ngModel)]="ngModelEvent.people_attend"/>
+    </div>
+
+    <div *ngIf="attendees.errors && (attendees.invalid || attendees.touched)">
+
+
+    </div>
+    <div class="item">
+      <label for="position">Lieu de l'êvenements<span>*</span></label>
+      <input id="position" type="text" name="position" #position="ngModel"  [class.is-invalid]="position.invalid && position.touched" [(ngModel)]="ngModelEvent.address"/>
+    </div>
+    <div class="item">
+      <label for="department">Code postal<span>*</span></label>
+      <input id="department" type="text" name="department" required/>
+    </div>
+    <div class="item">
+      <label for="phone">Téléphone<span>*</span></label>
+      <input id="phone" type="number" placeholder="(XXX) XXX-XXXX"  name="phone" required/>
+    </div>
+    <div class="item">
+      <label for="bdate">Date<span>*</span></label>
+      <input id="bdate" type="date" name="bdate" required/>
+      <i class="fas fa-calendar-alt"></i>
+    </div>
+    <div class="flax">
+      <div class="item">
+        <p>Start Time</p>
+        <select>
+          <option selected value="" disabled selected></option>
+          <option value="8A" >8 AM</option>
+          <option value="9A">9 AM</option>
+          <option value="10A">10 AM</option>
+          <option value="11A">11 Am</option>
+          <option value="12P">12 Pm</option>
+          <option value="1P">1 Pm</option>
+          <option value="2P">2 Pm</option>
+          <option value="3P">3 Pm</option>
+          <option value="4P">4 Pm</option>
+          <option value="5P">5 Pm</option>
+          <option value="6P">6 Pm</option>
+          <option value="7P">7 Pm</option>
+          <option value="8P">8 Pm</option>
+        </select>
+      </div>
+      <div class="item">
+        <p>End Time</p>
+        <select>
+          <option selected value="" disabled selected></option>
+          <option value="8A" >8 AM</option>
+          <option value="9A">9 AM</option>
+          <option value="10A">10 AM</option>
+          <option value="11A">11 Am</option>
+          <option value="12P">12 Pm</option>
+          <option value="1P">1 Pm</option>
+          <option value="2P">2 Pm</option>
+          <option value="3P">3 Pm</option>
+          <option value="4P">4 Pm</option>
+          <option value="5P">5 Pm</option>
+          <option value="6P">6 Pm</option>
+          <option value="7P">7 Pm</option>
+          <option value="8P">8 Pm</option>
+        </select>
+      </div>
+    </div>
+    <div class="item">
+      <label for="instructions">Texte affiché sur le site</label>
+      <textarea id="instructions" rows="10"></textarea>
+    </div>
+    <p><small>0/300 characters</small></p>
+    <div class="btn-block">
+      <button   type="submit" >Submit</button>
+    </div>
+  </form>
+</div>
+</div>
+</div>
+"

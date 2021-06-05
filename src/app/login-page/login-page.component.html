@@ -1,0 +1,48 @@
+<div class='bold-line'></div>
+<div class='container'>
+  <div class='window'>
+    <div class='overlay'></div>
+    <div class='content'>
+      <div class='welcome'>Zone Membres</div>
+      <div class='subtitle'>Vous devez disposez d'un compte au préalable pour vous connecter. Si se n'est pas le cas contacté nous pour devenir membre</div>
+      <div class='input-fields'>
+        <form #loginForm="ngForm" (ngSubmit)="Login()" novalidate>
+          <input name="email" placeholder='Email' class='input-line full-width' ngModel required #email="ngModel" [pattern]="emailPattern" type="email" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="UserLoginModel.email">
+          <div *ngIf="email.errors && (email.invalid || email.touched)">
+            <small class="warning-text" *ngIf="email.touched && email.errors.required">L'email est requis</small>
+            <small class="warning-text" *ngIf="email.errors.pattern">L'Email doit etre valide</small>
+
+          </div>
+          <input name="password" placeholder='Password' class='input-line full-width' ngModel required #password="ngModel" type="password" [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="UserLoginModel.password">
+          <div *ngIf="password.errors && (password.invalid || password.touched)">
+            <small class="warning-text" *ngIf="password.touched && password.errors.required">L'email est requis</small>
+            <small class="warning-text" *ngIf="password.errors.pattern">L'Email doit etre valide</small>
+
+          </div>
+
+
+          <div *ngIf="loginForm.form.invalid && loginForm.form.touched">
+            <p  class="warning-text">Tous les champs sont requis pour envoyer votre message</p>
+
+          </div>
+          <mat-progress-spinner mode="indeterminate" *ngIf="IsWait">
+          </mat-progress-spinner>
+
+          <div *ngIf="loginForm.form.valid && verifForm===true">
+            <p class="succes-entry">Message envoyer</p>
+
+          </div>
+
+
+
+            <div id="button_form_login"><button [disabled]="loginForm.form.invalid" type="submit" class='ghost-round full-width'>Se connecter</button></div>
+
+
+
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

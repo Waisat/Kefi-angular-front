@@ -1,0 +1,46 @@
+<div class="container">
+  <form #addMemberForm="ngForm" (ngSubmit)="addMemberToDB()" novalidate>
+
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" placeholder="Email.." ngModel required #email="ngModel" [pattern]="emailPattern"  [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="UserAddModel.email">
+    <div *ngIf="email.errors && (email.invalid || email.touched)">
+      <small class="warning-text" *ngIf="email.touched && email.errors.required">L'email est requis</small>
+      <small class="warning-text" *ngIf="email.errors.pattern">L'Email doit etre valide</small>
+
+    </div>
+    <label for="fname">Prenom</label>
+    <input type="text" id="fname" name="firstname" placeholder=" Prenom.." ngModel required #firstName="ngModel"  [class.is-invalid]="firstName.invalid && firstName.touched" [(ngModel)]="UserAddModel.firstName">
+
+    <div *ngIf="firstName.errors && (firstName.invalid || firstName.touched)">
+      <small class="warning-text" *ngIf="firstName.touched && firstName.errors.required">Le prenom est requis</small>
+
+    </div>
+    <label for="lname">Nom</label>
+    <input type="text" id="lname" name="name" placeholder="Nom.." ngModel required #name="ngModel"  [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="UserAddModel.name">
+    <div *ngIf="name.errors && (name.invalid || name.touched)">
+      <small class="warning-text" *ngIf="name.touched && name.errors.required">Le nom est requis</small>
+
+    </div>
+    <label for="phone">Teléphone</label>
+    <input type="text" id="phone" name="phone" placeholder="Telephone.." ngModel required #phone="ngModel"  [class.is-invalid]="phone.invalid && phone.touched" [(ngModel)]="UserAddModel.phone">
+
+    <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+      <small class="warning-text" *ngIf="phone.touched && phone.errors.required">Le nom est requis</small>
+
+    </div>
+       <label for="payment">Cotisation</label>
+       <select id="payment" name="payment" ngModel required #payment="ngModel"  [class.is-invalid]="payment.invalid && payment.touched" [(ngModel)]="UserAddModel.payment">
+         <option value="payement">Paiement versé</option>
+         <option value="partner">Partenaire</option>
+         <option value="other">Autres</option>
+       </select>
+
+    <div *ngIf="payment.errors && (payment.invalid || payment.touched)">
+      <small class="warning-text" *ngIf="payment.touched && payment.errors.required">Le type de paiement est requis</small>
+
+    </div>
+
+    <input  [disabled]="addMemberForm.form.invalid" type="submit" value="Submit">
+
+  </form>
+</div>
