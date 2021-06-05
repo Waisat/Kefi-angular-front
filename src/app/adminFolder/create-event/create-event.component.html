@@ -13,9 +13,10 @@
       <input id="eventName" type="text" name="eventName" #eventName="ngModel"  [class.is-invalid]="eventName.invalid && eventName.touched" [(ngModel)]="ngModelEvent.title"/>
     </div>
     <div *ngIf="eventName.errors && (eventName.invalid || eventName.touched)">
-      <small class="warning-text" *ngIf="eventName.touched && eventName.errors.required">L'email est requis</small>
+      <small class="warning-text" *ngIf="eventName.touched && eventName.errors.required">Le nom est requis</small>
 
     </div>
+
     <div class="item">
       <label for="email">Contact email<span>*</span></label>
       <input id="email" type="email" name="email" #email="ngModel" [pattern]="emailPattern" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="ngModelEvent.mailContact"/>
@@ -36,73 +37,153 @@
     </div>
 
     <div *ngIf="attendees.errors && (attendees.invalid || attendees.touched)">
-
+      <small class="warning-text" *ngIf="attendees.touched && attendees.errors.required">Le nombres de personnes atendus est requis</small>
 
     </div>
     <div class="item">
-      <label for="position">Lieu de l'êvenements<span>*</span></label>
+      <label for="position">Lieu de l'êvenement<span>*</span></label>
       <input id="position" type="text" name="position" #position="ngModel"  [class.is-invalid]="position.invalid && position.touched" [(ngModel)]="ngModelEvent.address"/>
+    </div>
+    <div *ngIf="position.errors && (position.invalid || position.touched)">
+      <small class="warning-text" *ngIf="position.touched && position.errors.required">Le lieu de l'évenement est requis</small>
+
+    </div>
+
+    <div class="item">
+      <label for="city">Ville<span>*</span></label>
+      <input id="city" type="text" name="city" #city="ngModel"  [class.is-invalid]="city.invalid && city.touched" [(ngModel)]="ngModelEvent.city"/>
+    </div>
+    <div *ngIf="city.errors && (city.invalid || city.touched)">
+      <small class="warning-text" *ngIf="city.touched && city.errors.required">Le lieu de l'évenement est requis</small>
+
     </div>
     <div class="item">
       <label for="department">Code postal<span>*</span></label>
-      <input id="department" type="text" name="department" required/>
+      <input id="department" type="text" name="postal_code"  #postal_code="ngModel"  [class.is-invalid]="postal_code.invalid && postal_code.touched" [(ngModel)]="ngModelEvent.postal_code"/>
+    </div>
+
+    <div *ngIf="postal_code.errors && (postal_code.invalid || postal_code.touched)">
+      <small class="warning-text" *ngIf="postal_code.touched && postal_code.errors.required">Le code postal  de l'évenement est requis</small>
+
     </div>
     <div class="item">
-      <label for="phone">Téléphone<span>*</span></label>
-      <input id="phone" type="number" placeholder="(XXX) XXX-XXXX"  name="phone" required/>
+      <label for="phone">Contact Téléphonique</label>
+      <input id="phone" type="text" placeholder="(06) XX-XX-XX-XX"  name="phone" #phone="ngModel"  [class.is-invalid]="phone.invalid && phone.touched" [(ngModel)]="ngModelEvent.phone_contact"/>
     </div>
+
     <div class="item">
       <label for="bdate">Date<span>*</span></label>
-      <input id="bdate" type="date" name="bdate" required/>
+      <input id="bdate" type="date" name="bdate"  #bdate="ngModel"  [class.is-invalid]="bdate.invalid && bdate.touched" [(ngModel)]="ngModelEvent.event_date"/>
       <i class="fas fa-calendar-alt"></i>
     </div>
     <div class="flax">
       <div class="item">
-        <p>Start Time</p>
-        <select>
+        <p>Heure de début</p>
+        <select  name="startHour" id="startHour" #startHour="ngModel" [class.is-invalid]="startHour.invalid && startHour.touched" [(ngModel)]="ngModelEvent.start_hours">
           <option selected value="" disabled selected></option>
-          <option value="8A" >8 AM</option>
-          <option value="9A">9 AM</option>
-          <option value="10A">10 AM</option>
-          <option value="11A">11 Am</option>
-          <option value="12P">12 Pm</option>
-          <option value="1P">1 Pm</option>
-          <option value="2P">2 Pm</option>
-          <option value="3P">3 Pm</option>
-          <option value="4P">4 Pm</option>
-          <option value="5P">5 Pm</option>
-          <option value="6P">6 Pm</option>
-          <option value="7P">7 Pm</option>
-          <option value="8P">8 Pm</option>
+          <option value="8 H 00" >8:00</option>
+          <option value="8 H 30" >8:30</option>
+          <option value="9 H 00">9:00</option>
+          <option value="9 H 30">9:30</option>
+          <option value="10 H 00">10:00</option>
+          <option value="10 H 30">10:30</option>
+          <option value="11 H 00">11:00</option>
+          <option value="11 H 30">11:30</option>
+          <option value="12 H 00">12:00</option>
+          <option value="12 H 30">12:30</option>
+          <option value="13 H 00">13:00</option>
+          <option value="13 H 30">13:30</option>
+          <option value="14 H 00">14:00</option>
+          <option value="14 H 30">14:30</option>
+          <option value="15 H 00">15:00</option>
+          <option value="15 H 30">15:30</option>
+          <option value="16 H 00">16:00</option>
+          <option value="16 H 30">16:30</option>
+          <option value="17 H 00">17:00</option>
+          <option value="17 H 30">17:00</option>
+          <option value="18 H 00">18:00</option>
+          <option value="18 H 30">18:30</option>
+          <option value="19 H 00">19:00</option>
+          <option value="19 H 30">19:30</option>
+          <option value="20 H 00">20:00</option>
+          <option value="20 H 30">20:30</option>
+          <option value="21 H 00">21:00</option>
+          <option value="21 H 30">21:30</option>
+          <option value="22 H 00">22:00</option>
+          <option value="22 H 30">22:30</option>
+          <option value="23 H 00">23:00</option>
         </select>
       </div>
       <div class="item">
-        <p>End Time</p>
-        <select>
+        <p>Heure de Fin</p>
+        <select  name="endHour" id="endHour" #endHour="ngModel" [class.is-invalid]="endHour.invalid && endHour.touched" [(ngModel)]="ngModelEvent.end_hours">
           <option selected value="" disabled selected></option>
-          <option value="8A" >8 AM</option>
-          <option value="9A">9 AM</option>
-          <option value="10A">10 AM</option>
-          <option value="11A">11 Am</option>
-          <option value="12P">12 Pm</option>
-          <option value="1P">1 Pm</option>
-          <option value="2P">2 Pm</option>
-          <option value="3P">3 Pm</option>
-          <option value="4P">4 Pm</option>
-          <option value="5P">5 Pm</option>
-          <option value="6P">6 Pm</option>
-          <option value="7P">7 Pm</option>
-          <option value="8P">8 Pm</option>
+          <option value="8 H 00" >8:00</option>
+          <option value="8 H 30" >8:30</option>
+          <option value="9 H 00">9:00</option>
+          <option value="9 H 30">9:30</option>
+          <option value="10 H 00">10:00</option>
+          <option value="10 H 30">10:30</option>
+          <option value="11 H 00">11:00</option>
+          <option value="11 H 30">11:30</option>
+          <option value="12 H 00">12:00</option>
+          <option value="12 H 30">12:30</option>
+          <option value="13 H 00">13:00</option>
+          <option value="13 H 30">13:30</option>
+          <option value="14 H 00">14:00</option>
+          <option value="14 H 30">14:30</option>
+          <option value="15 H 00">15:00</option>
+          <option value="15 H 30">15:30</option>
+          <option value="16 H 00">16:00</option>
+          <option value="16 H 30">16:30</option>
+          <option value="17 H 00">17:00</option>
+          <option value="17 H 30">17:00</option>
+          <option value="18 H 00">18:00</option>
+          <option value="18 H 30">18:30</option>
+          <option value="19 H 00">19:00</option>
+          <option value="19 H 30">19:30</option>
+          <option value="20 H 00">20:00</option>
+          <option value="20 H 30">20:30</option>
+          <option value="21 H 00">21:00</option>
+          <option value="21 H 30">21:30</option>
+          <option value="22 H 00">22:00</option>
+          <option value="22 H 30">22:30</option>
+          <option value="23 H 00">23:00</option>
         </select>
       </div>
     </div>
+    <div *ngIf="startHour.errors && (startHour.invalid || startHour.touched)">
+      <small class="warning-text" *ngIf="startHour.touched && startHour.errors.required">L'heure du début de l'evenement est requis</small>
+    </div>
+    <div *ngIf="endHour.errors && (endHour.invalid || endHour.touched)">
+      <small class="warning-text" *ngIf="endHour.touched && endHour.errors.required">L'heure du fin de l'evenement est requis </small>
+    </div>
     <div class="item">
       <label for="instructions">Texte affiché sur le site</label>
-      <textarea id="instructions" rows="10"></textarea>
+      <textarea id="instructions" rows="10" name="text_event" #textEvent ="ngModel"  [class.is-invalid]="textEvent.invalid && textEvent.touched"   [(ngModel)]="ngModelEvent.resume" ></textarea>
+    </div>
+    <div *ngIf="textEvent.errors && (textEvent.invalid || textEvent.touched)">
+      <small class="warning-text" *ngIf="textEvent.touched && textEvent.errors.required">Le texte de description de l'évenement est requis </small>
     </div>
     <p><small>0/300 characters</small></p>
+    <mat-radio-group aria-label="Envoie de mail" name="send_MailTo" id="send_MailTo" #send_MailTo ="ngModel"  [class.is-invalid]="send_MailTo.invalid && send_MailTo.touched" [(ngModel)]="ngModelEvent.send_MailTo">
+      <mat-radio-button value="none">Aucun email</mat-radio-button>
+      <mat-radio-button value="verifyEmailUser">Email verifié</mat-radio-button>
+      <mat-radio-button value="newsLetterSubscriber">Membres inscrit à la NewsLetter</mat-radio-button>
+    </mat-radio-group>
+    <div *ngIf="send_MailTo.errors && (send_MailTo.invalid || send_MailTo.touched)">
+      <small class="warning-text" *ngIf="send_MailTo.touched && send_MailTo.errors.required">Vous devez stipulez si un email doit être envoyé</small>
+    </div>
+    <div class="item" *ngIf="ngModelEvent.send_MailTo === 'verifyEmailUser' || ngModelEvent.send_MailTo === 'newsLetterSubscriber'">
+      <label for="instructions">Message à envoyer aux {{ngModelEvent.send_MailTo}}</label>
+      <textarea id="message_toSend" rows="10" name="message_toSend" #message_toSend ="ngModel" [class.is-invalid]="message_toSend.invalid && message_toSend.touched"   [(ngModel)]="ngModelEvent.MessageToSend" ></textarea>
+      <div *ngIf="message_toSend.errors && (message_toSend.invalid || message_toSend.touched)">
+        <small class="warning-text" *ngIf="message_toSend.touched && message_toSend.errors.required">Corp du message à envoyer aux contact </small>
+      </div>
+
+    </div>
     <div class="btn-block">
-      <button   type="submit" >Submit</button>
+      <button   type="submit" >Envoyer</button>
     </div>
   </form>
 </div>

@@ -4,19 +4,19 @@
     <div class='overlay'></div>
     <div class='content'>
       <div class='welcome'>Zone Membres</div>
-      <div class='subtitle'>Vous devez disposez d'un compte au préalable pour vous connecter. Si se n'est pas le cas contacté nous pour devenir membre</div>
+      <div class='subtitle'>Vous devez disposer d'un compte pour vous connecter. Si se n'est pas le cas contacter nous pour devenir membre</div>
       <div class='input-fields'>
         <form #loginForm="ngForm" (ngSubmit)="Login()" novalidate>
           <input name="email" placeholder='Email' class='input-line full-width' ngModel required #email="ngModel" [pattern]="emailPattern" type="email" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="UserLoginModel.email">
           <div *ngIf="email.errors && (email.invalid || email.touched)">
             <small class="warning-text" *ngIf="email.touched && email.errors.required">L'email est requis</small>
-            <small class="warning-text" *ngIf="email.errors.pattern">L'Email doit etre valide</small>
+            <small class="warning-text" *ngIf="email.errors.pattern">L'email doit etre valide</small>
 
           </div>
           <input name="password" placeholder='Password' class='input-line full-width' ngModel required #password="ngModel" type="password" [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="UserLoginModel.password">
           <div *ngIf="password.errors && (password.invalid || password.touched)">
             <small class="warning-text" *ngIf="password.touched && password.errors.required">L'email est requis</small>
-            <small class="warning-text" *ngIf="password.errors.pattern">L'Email doit etre valide</small>
+            <small class="warning-text" *ngIf="password.errors.pattern">L'email doit etre valide</small>
 
           </div>
 

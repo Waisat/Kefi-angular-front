@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoginPageComponent } from './login-page/login-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatRadioModule} from '@angular/material/radio';
 import { SpinnerComponent } from './spinner/spinner.component';
 import {UserService} from "./_services/user.service";
 import {AuthGuard} from "./auth.guard";
@@ -85,7 +86,8 @@ import { SearchBarMemberAreaComponent } from './search-bar-member-area/search-ba
     CookieModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatRadioModule
 
   ],
   providers: [UserService, AuthGuard, LoginService,{
