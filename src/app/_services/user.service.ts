@@ -13,6 +13,8 @@ import {MemberToAdd} from "../class/member-to-add";
 import {PasswordUser} from "../class/password-user";
 import {VerifyEmailUrl} from "../class/verify-email-url";
 import {FilterData} from "../class/filter-data";
+import {EventKefi} from "../class/event-kefi";
+import {EmailEventToSend} from "../class/email-event-to-send";
 @Injectable({
   providedIn: 'root'
 })
@@ -129,4 +131,19 @@ export class UserService {
       );
   }
 
+  addEventDb(event: EventKefi): Observable<EventKefi> {
+
+    return this.http.post<EventKefi>(this.ConfigUrl+"/create_event", event,this.options)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  sendEmailToUsersForEvents(eventSendMail: EmailEventToSend): Observable<EmailEventToSend> {
+
+    return this.http.post<EmailEventToSend>(this.ConfigUrl+"/send_email_To_users_options", eventSendMail,this.options)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 }

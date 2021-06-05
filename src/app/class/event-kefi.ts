@@ -12,7 +12,7 @@ export class EventKefi {
     public phone_contact:string,
     public start_hours:string,
     public end_hours:string,
-    public resume:string,
+    public textResume:string,
     public send_MailTo:string,
     public MessageToSend:string
 

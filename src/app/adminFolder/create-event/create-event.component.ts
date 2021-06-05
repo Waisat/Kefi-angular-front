@@ -29,6 +29,7 @@ export class CreateEventComponent implements OnInit {
   createEvent(){
     const formData = new FormData()
     formData.append("file", this.image)
+    this.addNewEvent()
     if(this.ngModelEvent.send_MailTo === "verifyEmailUser" || this.ngModelEvent.send_MailTo ==="newsLetterSubscriber"){
       let ngSendMail = new EmailEventToSend("","","","","","","","","", "", "")
       ngSendMail.mailContact = this.ngModelEvent.mailContact
@@ -81,5 +82,26 @@ export class CreateEventComponent implements OnInit {
 
   sendEmailToUsers(modelMail:any){
     console.log("touch from floor", modelMail)
+    this.user.sendEmailToUsersForEvents(modelMail).pipe(
+      catchError(err => {
+        console.log('Handling error locally and rethrowing it...', err);
+        return throwError(err);
+      })
+    ).subscribe(result=>{
+      console.log(result)
+    })
   }
+
+  addNewEvent(){
+    this.user.addEventDb(this.ngModelEvent).pipe(
+      catchError(err => {
+        console.log('Handling error locally and rethrowing it...', err);
+        return throwError(err);
+      })
+    ).subscribe(result=>{
+      console.log(result)
+    })
+  }
+
+
 }

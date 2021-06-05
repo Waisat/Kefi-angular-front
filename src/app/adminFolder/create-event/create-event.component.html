@@ -160,7 +160,7 @@
     </div>
     <div class="item">
       <label for="instructions">Texte affiché sur le site</label>
-      <textarea id="instructions" rows="10" name="text_event" #textEvent ="ngModel"  [class.is-invalid]="textEvent.invalid && textEvent.touched"   [(ngModel)]="ngModelEvent.resume" ></textarea>
+      <textarea id="instructions" rows="10" name="text_event" #textEvent ="ngModel"  [class.is-invalid]="textEvent.invalid && textEvent.touched"   [(ngModel)]="ngModelEvent.textResume" ></textarea>
     </div>
     <div *ngIf="textEvent.errors && (textEvent.invalid || textEvent.touched)">
       <small class="warning-text" *ngIf="textEvent.touched && textEvent.errors.required">Le texte de description de l'évenement est requis </small>
