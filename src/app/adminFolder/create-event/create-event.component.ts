@@ -34,7 +34,7 @@ export class CreateEventComponent implements OnInit {
       let ngSendMail = new EmailEventToSend("","","","","","","","","","", "", "")
       ngSendMail.mailContact = this.ngModelEvent.mailContact
       ngSendMail.people_attend = this.ngModelEvent.people_attend
-      ngSendMail.people_attend = this.ngModelEvent.title
+      ngSendMail.title = this.ngModelEvent.title
       ngSendMail.imageEvent = this.ngModelEvent.imageEvent
       ngSendMail.address = this.ngModelEvent.address
       ngSendMail.city = this.ngModelEvent.city
