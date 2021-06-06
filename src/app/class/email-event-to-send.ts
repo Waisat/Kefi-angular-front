@@ -1,6 +1,7 @@
 export class EmailEventToSend {
   constructor(
     public mailContact: string,
+    public title: string,
     public people_attend:string,
     public imageEvent:string,
     public address:string,

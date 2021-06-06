@@ -31,9 +31,10 @@ export class CreateEventComponent implements OnInit {
     formData.append("file", this.image)
     this.addNewEvent()
     if(this.ngModelEvent.send_MailTo === "verifyEmailUser" || this.ngModelEvent.send_MailTo ==="newsLetterSubscriber"){
-      let ngSendMail = new EmailEventToSend("","","","","","","","","", "", "")
+      let ngSendMail = new EmailEventToSend("","","","","","","","","","", "", "")
       ngSendMail.mailContact = this.ngModelEvent.mailContact
       ngSendMail.people_attend = this.ngModelEvent.people_attend
+      ngSendMail.people_attend = this.ngModelEvent.title
       ngSendMail.imageEvent = this.ngModelEvent.imageEvent
       ngSendMail.address = this.ngModelEvent.address
       ngSendMail.city = this.ngModelEvent.city

@@ -169,7 +169,7 @@
     <mat-radio-group aria-label="Envoie de mail" name="send_MailTo" id="send_MailTo" #send_MailTo ="ngModel"  [class.is-invalid]="send_MailTo.invalid && send_MailTo.touched" [(ngModel)]="ngModelEvent.send_MailTo">
       <mat-radio-button value="none">Aucun email</mat-radio-button>
       <mat-radio-button value="verifyEmailUser">Email verifié</mat-radio-button>
-      <mat-radio-button value="newsLetterSubscriber">Membres inscrit à la NewsLetter</mat-radio-button>
+      <mat-radio-button value="newsLetterSubscriber">Membres inscrits à la NewsLetter</mat-radio-button>
     </mat-radio-group>
     <div *ngIf="send_MailTo.errors && (send_MailTo.invalid || send_MailTo.touched)">
       <small class="warning-text" *ngIf="send_MailTo.touched && send_MailTo.errors.required">Vous devez stipulez si un email doit être envoyé</small>
