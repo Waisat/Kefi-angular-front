@@ -45,6 +45,7 @@ export class UserService {
     return throwError(
       'Something bad happened; please try again later.');
   }
+  /*
 
   getPublicContent():Observable<HttpResponse<Config>>{
     return this.http.get<Config>(
@@ -53,7 +54,7 @@ export class UserService {
       catchError(this.handleError)
     );
   }
-
+*/
   /** POST: add a new hero to the database */
   LoginTo(user: User): Observable<User> {
     return this.http.post<User>(this.ConfigUrl+"/sign_in", user, this.options)
@@ -113,6 +114,7 @@ export class UserService {
       catchError(this.handleError)
     );
   }
+
 
   /*** Update password member***/
 

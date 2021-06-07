@@ -48,7 +48,7 @@ export class CreateEventComponent implements OnInit {
     }
 
     console.log("this forms contains", this.ngModelEvent)
-    //this.postImage(formData)
+    this.postImage(formData)
 
     console.log(formData)
   }

@@ -13,10 +13,10 @@ export class HomeComponent implements OnInit {
   constructor(private servicesUser:UserService) { }
 
   ngOnInit(): void {
-    this.showConfigResponse()
+    //this.showConfigResponse()
 
   }
-
+/*
   showConfigResponse() {
     this.servicesUser.getPublicContent()
       // resp is of type `HttpResponse<Config>`
@@ -31,4 +31,6 @@ export class HomeComponent implements OnInit {
         console.log(this.config.message)
       });
   }
+
+ */
 }

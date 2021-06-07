@@ -1,4 +1,29 @@
 
 <div class="container">
-<p>event works!</p>
+  <section id="event-sections"  *ngIf="eventsKefi">
+    <div *ngFor="let event of eventsKefi">
+
+    <div class="blog-card spring-fever" >
+      <img src="http://localhost:5000/kefi_{{event.main_photo}}" title="{{event.title}}" alt="{{event.title}}">
+      <div class="title-content" >
+        <h3><a href="#">{{event.title}}</a></h3>
+        <div class="intro"> <a href="#">Inspiration</a> </div>
+      </div>
+      <div class="card-info">
+        {{event.resume}}
+        <a href="evenements/{{event.event_matricule}}">Lire l'article<span class="licon icon-arr icon-black"></span></a>
+      </div>
+      <div class="utility-info">
+        <ul class="utility-list">
+          <li><span class="licon icon-like"></span><a href="#">2</a></li>
+          <li><span class="licon icon-com"></span><a href="#">12</a></li>
+          <li><span class="licon icon-dat"></span>{{event.event_date}}</li>
+          <li><span class="licon icon-tag"></span><a href="#">Photos</a>, <a href="#">{{event.city}}</a></li>
+        </ul>
+      </div>
+      <div class="gradient-overlay"></div>
+      <div class="color-overlay"></div>
+    </div><!-- /.blog-card -->
+    </div>
+  </section>
 </div>

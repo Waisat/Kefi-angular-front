@@ -15,6 +15,7 @@ import {ContactComponent} from "./contact/contact.component";
 import {ArticlesComponent} from "./articles/articles.component";
 import {EventComponent} from "./event/event.component";
 import {CreateEventComponent} from "./adminFolder/create-event/create-event.component";
+import {EventDetailsComponent} from "./event-details/event-details.component";
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'articles', component: ArticlesComponent},
   {path: 'evenements', component: EventComponent},
+  {path: 'evenements/:articleId', component: EventDetailsComponent},
   {path:'admin', component:AdminAreaComponent, canActivate:[AuthGuard]},
   {path:'admin/member_list/:specific/:order/:option/:page/:offset/:limit/:way', component:MemberListComponent, canActivate:[AuthGuard]},
   {path:'admin/ajout_membre', component:AddMemberComponent, canActivate:[AuthGuard]},

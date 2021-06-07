@@ -15,6 +15,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatRadioModule} from '@angular/material/radio';
 import { SpinnerComponent } from './spinner/spinner.component';
 import {UserService} from "./_services/user.service";
+import {EventsService} from "./_services/events.service";
 import {AuthGuard} from "./auth.guard";
 import { MemberAreaComponent } from './member-area/member-area.component';
 import {LoginService} from "./_services/login-info.service";
@@ -41,6 +42,7 @@ import { EventComponent } from './event/event.component';
 import { WelcomeModalComponent } from './welcome-modal/welcome-modal.component';
 import { CreateEventComponent } from './adminFolder/create-event/create-event.component';
 import { SearchBarMemberAreaComponent } from './search-bar-member-area/search-bar-member-area.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 
 @NgModule({
@@ -74,6 +76,7 @@ import { SearchBarMemberAreaComponent } from './search-bar-member-area/search-ba
     WelcomeModalComponent,
     CreateEventComponent,
     SearchBarMemberAreaComponent,
+    EventDetailsComponent,
 
   ],
 
@@ -90,7 +93,7 @@ import { SearchBarMemberAreaComponent } from './search-bar-member-area/search-ba
     MatRadioModule
 
   ],
-  providers: [UserService, AuthGuard, LoginService,{
+  providers: [UserService,EventsService, AuthGuard, LoginService,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
