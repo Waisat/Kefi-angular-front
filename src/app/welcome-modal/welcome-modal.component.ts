@@ -17,10 +17,11 @@ export class WelcomeModalComponent implements OnInit, AfterViewInit {
   JsonJobData: any
   jobControl = new FormControl();
   JsonJobInterface: JobFormControl[] = []
-  newFormModel = new FormdataUser("", "", "", "", "", "", "","", "","",true,true)
+  newFormModel = new FormdataUser("", "", "", "", "", "", {networkExpenssion:false, getSomeContract:false, findpartners:false, pitchProject:false, other:false},"", "","",1,1)
   form = new FormGroup({
     group: new FormControl(),
   });
+  regexLinkedin:RegExp = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)/
   ngOnInit(): void {
     //Initialisation de la data concernants les métiers pour le formulaire d'entrer
 
