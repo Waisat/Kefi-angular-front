@@ -13,6 +13,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { SpinnerComponent } from './spinner/spinner.component';
 import {UserService} from "./_services/user.service";
 import {EventsService} from "./_services/events.service";
@@ -43,7 +45,12 @@ import { WelcomeModalComponent } from './welcome-modal/welcome-modal.component';
 import { CreateEventComponent } from './adminFolder/create-event/create-event.component';
 import { SearchBarMemberAreaComponent } from './search-bar-member-area/search-bar-member-area.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
-
+import { KefiEventTableInfosComponent } from './kefi-event-table-infos/kefi-event-table-infos.component';
+import { ButtonsParticipationEventComponent } from './buttons-participation-event/buttons-participation-event.component';
+import { CommentsEventsSectionComponent } from './comments-events-section/comments-events-section.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatNativeDateModule} from "@angular/material/core";
+import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -77,6 +84,10 @@ import { EventDetailsComponent } from './event-details/event-details.component';
     CreateEventComponent,
     SearchBarMemberAreaComponent,
     EventDetailsComponent,
+    KefiEventTableInfosComponent,
+    ButtonsParticipationEventComponent,
+    CommentsEventsSectionComponent,
+
 
   ],
 
@@ -90,7 +101,12 @@ import { EventDetailsComponent } from './event-details/event-details.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatCheckboxModule
 
   ],
   providers: [UserService,EventsService, AuthGuard, LoginService,{

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ActivatedRoute, ActivatedRouteSnapshot, Router} from "@angular/router";
 import {EventsService} from "../_services/events.service";
 import {GetTokenArticleDetail} from "../class/get-token-article-detail";
@@ -13,10 +13,13 @@ import {throwError} from "rxjs";
 export class EventDetailsComponent implements OnInit {
 
   constructor(private event:EventsService , private _routerParameter:ActivatedRoute) { }
-
+  eventDetail: any;
   ngOnInit(): void {
     this.getDetailEvent()
+
   }
+
+
 
   getDetailEvent(){
 
@@ -29,6 +32,7 @@ export class EventDetailsComponent implements OnInit {
         console.log('Handling error locally and rethrowing it...', err);
         return throwError(err);
       })).subscribe((result=>{
+        this.eventDetail = result
         console.log(result)
       }))
 

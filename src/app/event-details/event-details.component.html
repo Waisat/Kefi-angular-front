@@ -1,1 +1,30 @@
-<p>event-details works!</p>
+<div id="about" class="section wb nopadtop" *ngIf="eventDetail">
+  <div class="container">
+    <div class="row">
+
+        <div class="message-box">
+          <h4>Evenement Kefi du {{eventDetail[0].event_date}}</h4>
+          <h2>{{eventDetail[0].title}}</h2>
+
+          <div class="img-text">
+            <p>{{eventDetail[0].resume}}</p>
+            <img src="http://localhost:5000/kefi_{{eventDetail[0].main_photo}}" title="{{eventDetail[0].main_photo}}" alt="{{eventDetail.main_photo}}">
+
+          </div>
+          <div id="table-detailEvent">
+          <app-kefi-event-table-infos [eventD]="eventDetail"></app-kefi-event-table-infos>
+          </div>
+
+          <app-buttons-participation-event></app-buttons-participation-event>
+
+          <app-comments-events-section></app-comments-events-section>
+
+        </div><!-- end messagebox -->
+
+
+
+    </div><!-- end row -->
+
+
+  </div><!-- end container -->
+</div><!-- end section -->

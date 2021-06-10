@@ -1,0 +1,17 @@
+.message-box{
+width: 100%;
+}
+.message-box img{
+  width: 50%;
+}
+.img-text{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+#table-detailEvent{
+  margin: 5% 0;
+}

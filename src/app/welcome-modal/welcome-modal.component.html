@@ -1,6 +1,111 @@
-<div class="card transition">
-  <h2 class="transition">Awesome Headline</h2>
-  <p>Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla.</p>
-  <div class="cta-container transition"><a href="#" class="cta">Call to action</a></div>
-  <div class="card_circle transition"></div>
+<div class="testbox">
+  <form #updateData (ngSubmit)="updateDataUser()">
+    <div class="banner">
+      <h1>Bienvenue sur le site internet de kefi association</h1>
+    </div>
+    <div class="item">
+      <p>Localisation<span class="required">*</span></p>
+      <div class="name-item">
+        <input type="text" name="city" placeholder="Ville" #city="ngModel"  [class.is-invalid]="city.invalid && city.touched" [(ngModel)]="newFormModel.city"/>
+        <input type="text" name="postal_code" placeholder="Code postal" #postal_code="ngModel"  [class.is-invalid]="postal_code.invalid && postal_code.touched" [(ngModel)]="newFormModel.city"/>
+        <input type="text" name="country" placeholder="Pays" #country="ngModel"  [class.is-invalid]="country.invalid && country.touched" [(ngModel)]="newFormModel.country"/>
+      </div>
+
+      <div *ngIf="city.errors && (city.invalid || city.touched) || postal_code.errors || postal_code.invalid || postal_code.touched || country.errors || country.invalid || country.touched">
+        <small class="warning-text" *ngIf="city.touched && city.errors">Vous devez nous renseignez sur votre ville</small>
+        <small class="warning-text" *ngIf="postal_code.touched && postal_code.errors">Vous devez renseigner votre code postal</small>
+        <small class="warning-text" *ngIf="country.touched && country.errors">Vous devez nous renseigner sur votre Pays</small>
+
+      </div>
+
+    </div>
+    <div class="contact-item">
+      <div class="item">
+        <p>Profession<span class="required">*</span></p>
+        <input type="text" name="titleJob" #titleJob="ngModel"  [class.is-invalid]="titleJob.invalid && titleJob.touched" [(ngModel)]="newFormModel.jobTitle"/>
+      </div>
+
+      <div *ngIf="titleJob.errors && (titleJob.invalid || titleJob.touched)">
+        <small class="warning-text" *ngIf="titleJob.touched && titleJob.errors">Vous profession est requise</small>
+
+
+      </div>
+      <div class="item">
+        <p>Telephone</p>
+        <input type="text" name="phone"/>
+      </div>
+    </div>
+
+
+    <div class="position-item" *ngIf="JsonJobData">
+
+      <div class="position-item"  >
+
+      <label for="job_domain">Choisisez votre domaine ou métier:</label>
+      <select id="job_domain" name="job_domain" #job_domain="ngModel" [class.is-invalid]="job_domain.invalid && job_domain.touched"   [(ngModel)]="newFormModel.lookingFor">
+
+        <optgroup *ngFor="let group of JsonJobData" label="{{group.text}}">
+          <option *ngFor="let child of group.children"   [value]="child.text" >{{child.text}}</option>
+
+        </optgroup>
+
+      </select>
+
+      </div>
+      <div *ngIf="job_domain.errors && (job_domain.invalid || job_domain.touched)">
+        <small class="warning-text" *ngIf="job_domain.touched && job_domain.errors">Vous domaine de profession est requis</small>
+
+
+      </div>
+
+
+      <div class="item">
+        <p>Date de naissance<span class="required">*</span></p>
+        <input type="date" name="bdate" #bdate="ngModel"  [class.is-invalid]="bdate.invalid && bdate.touched" [(ngModel)]="newFormModel.birthDate"/>
+        <i class="fas fa-calendar-alt"></i>
+      </div>
+    </div>
+    <p>Form value: {{ newFormModel | json }}</p>
+    <div class="question">
+      <p>Ce que vous rechercher lors des évenements de l'association Kefi<span class="required">*</span></p>
+      <div class="question-answer">
+        <mat-checkbox class="example-margin">élargir mon réseaux</mat-checkbox>
+        <mat-checkbox class="example-margin">Décrocher des contrats</mat-checkbox>
+        <mat-checkbox class="example-margin">Trouver des partenaires</mat-checkbox>
+        <mat-checkbox class="example-margin">Pitcher pour exposer mon projet</mat-checkbox>
+        <mat-checkbox class="example-margin">Autres</mat-checkbox>
+        <mat-checkbox class="example-margin" [disabled]="true">Disabled</mat-checkbox>
+
+      </div>
+
+      <textarea cols="30"></textarea>
+    </div>
+    <div class="item">
+      <p>Votre adresse Linkedin:</p>
+      <input type="text" name="providing"/>
+      <input type="file" name="file" accept="file/*">
+    </div>
+    <div class="question">
+      <p>Souhaitez vous que votre profil soit visible sur notre plateforme</p>
+      <div class="question-answer">
+        <div>
+          <input type="radio" value="1" id="radio_5" name="references" />
+          <label for="radio_5" class="radio"><span>Oui</span></label>
+        </div>
+        <div>
+          <input type="radio" value="0" id="radio_6" name="references" />
+          <label for="radio_6" class="radio"><span>Non</span></label>
+        </div>
+      </div>
+    </div>
+
+
+    <mat-radio-group aria-label="Envoie de mail" name="send_MailTo" id="send_MailTo" >
+      <mat-radio-button value="none">Je souhaite recevoir votre newsLetter</mat-radio-button>
+      <mat-radio-button value="verifyEmailUser">Je ne souhaite pas m'inscrire à votre newsLetter</mat-radio-button>
+    </mat-radio-group>
+    <div class="btn-block">
+      <button type="submit" href="/">Soumettres</button>
+    </div>
+  </form>
 </div>
