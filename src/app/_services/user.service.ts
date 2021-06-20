@@ -15,13 +15,16 @@ import {VerifyEmailUrl} from "../class/verify-email-url";
 import {FilterData} from "../class/filter-data";
 import {EventKefi} from "../class/event-kefi";
 import {EmailEventToSend} from "../class/email-event-to-send";
+import {FormdataUser} from "../class/formdata-user";
+import {GetAllPublicUsers} from "../class/get-all-public-users";
+import {DetailUserPublicArea} from "../class/detail-user-public-area";
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
 
-  ConfigUrl:string ="http://localhost:5000"
+  ConfigUrl:string ="https://mysterious-reaches-96425.herokuapp.com"
   constructor(private http: HttpClient, private cookieService:CookieService) { }
   options:object = {
     responseType: 'json',
@@ -125,6 +128,8 @@ export class UserService {
       );
   }
 
+  /*** Ajout d'evenement à partir du panel admin***/
+
   sendPhotoEvent(photo: FormData): Observable<FormData> {
 
     return this.http.post<FormData>(this.ConfigUrl+"/send_photo_server", photo,this.options)
@@ -148,4 +153,48 @@ export class UserService {
         catchError(this.handleError)
       );
   }
+
+  /*** Photo user ajouté au serveur et updates des informations First Connection ***/
+
+  sendPhotoUser(photoUser: FormData): Observable<FormData> {
+
+    return this.http.post<FormData>(this.ConfigUrl+"/send_user_photo", photoUser, this.options)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  /*** updateData utilisateurs ***/
+
+  updateDataToDb(updateInfosUser:FormdataUser):Observable<FormdataUser>{
+    return this.http.post<FormdataUser>(this.ConfigUrl+"/update_infos_user", updateInfosUser,this.options)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
+  /*** Obtenir tout les utilisateurs page visiteurs ***/
+
+  requestAllUsers(querySearch:GetAllPublicUsers):Observable<GetAllPublicUsers>{
+    return this.http.get<GetAllPublicUsers>(
+      this.ConfigUrl +`/all_member_public_profile/${querySearch.offset}/${querySearch.limit}/${querySearch.search_options}`).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  /*** Request detail user from public area***/
+  getUserPublicData(queryUrl: DetailUserPublicArea): Observable<DetailUserPublicArea>{
+    return this.http.get<DetailUserPublicArea>(
+      this.ConfigUrl + `/membre_access_public/${queryUrl}`
+    ).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
 }
+
+
+

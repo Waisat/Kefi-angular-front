@@ -3,9 +3,12 @@
     <a routerLink="accueil" class="logo_kefi" ><img  src="assets/logo_nav_kefii.png" alt="logo_kefi" title="logo_kefi"></a>
   <nav class="page__menu page__custom-settings menu">
     <ul class="menu__list r-list">
+    {{infosMemberPage.offset}}
+    {{infosMemberPage.limit}}
+    {{infosMemberPage.search_options}}
       <!--<li class="menu__group"><a routerLink="accueil" class="menu__link r-link text-underlined">Accueil</a></li> !-->
       <li class="menu__group"><a routerLink="fondateurs" class="menu__link r-link text-underlined">Fondateurs</a></li>
-      <li class="menu__group"><a routerLink="membres" class="menu__link r-link text-underlined">Membres</a></li>
+      <li class="menu__group" ><a  routerLink="membres/offset_0/limit_10/search_all" class="menu__link r-link text-underlined">Membres</a></li>
       <li class="menu__group"><a routerLink="evenements" class="menu__link r-link text-underlined">Evênements</a></li>
       <li class="menu__group"><a routerLink="articles" class="menu__link r-link text-underlined">Articles</a></li>
       <li class="menu__group"><a routerLink="contact" class="menu__link r-link text-underlined">Contact</a></li>

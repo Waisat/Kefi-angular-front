@@ -2,7 +2,7 @@
   <div *ngIf="tokenUser.first_connexion === 0;then block else elseBlock"> </div>
 
   <ng-template  #block>
-    <app-welcome-modal></app-welcome-modal>
+    <app-welcome-modal [userId]="userName"></app-welcome-modal>
   </ng-template>
 
   <ng-template #elseBlock>
@@ -16,8 +16,11 @@
         <div class="card">
           <div class="card-body">
             <div class="item-card">
-              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-              <div class="card-member">
+              <img *ngIf="!tokenUser.photo_url; else imgUser" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+              <ng-template #imgUser>
+                <img src="http://localhost:5000/{{tokenUser.photo_url}}" alt="{{tokenUser.photo_url}}" class="rounded-circle" width="150">
+              </ng-template>
+                <div class="card-member">
                 <h4>{{tokenUser.first_name}}</h4>
                 <p class="text-secondary mb-1" *ngIf="tokenUser.job">{{tokenUser.job}}</p>
                 <p class="text-muted font-size-sm" *ngIf="tokenUser.city "> {{tokenUser.city}}, {{tokenUser.postal_code}}, {{tokenUser.country}}</p>
@@ -31,7 +34,7 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
               <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
-              <span class="text-secondary">https://bootdey.com</span>
+              <span class="text-secondary">{{tokenUser.linkedin}}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
               <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github mr-2 icon-inline"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>Github</h6>
@@ -100,6 +103,57 @@
               </div>
             </div>
             <hr>
+
+            <div class="row" *ngIf="tokenUser.domain_job">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Job Domaine</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{tokenUser.domain_job}}
+              </div>
+            </div>
+            <hr>
+
+            <div class="row" *ngIf="tokenUser.job">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Job</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{tokenUser.job}}
+              </div>
+            </div>
+            <hr>
+
+
+            <div class="row" *ngIf="parseLookingForInfos">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Mes recherche en évenement</h6>
+              </div>
+
+              <ul>
+                <li *ngIf="parseLookingForInfos.networkExpenssion"> Je souhaite développer mon réseau</li>
+                <li *ngIf="parseLookingForInfos.findpartners"> Je souhaite trouver des invesitisseurs ou partenaire pour mon projet</li>
+                <li *ngIf="parseLookingForInfos.getSomeContract"> Je souhaite trouver des contrats</li>
+                <li *ngIf="parseLookingForInfos.pitchProject"> Je souhaite Pitcher mon projet</li>
+                <li *ngIf="parseLookingForInfos.other"> Autre raison</li>
+
+
+              </ul>
+
+
+
+            </div>
+            <hr>
+
+            <div class="row" *ngIf="tokenUser.description">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Description</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{tokenUser.description}}
+              </div>
+            </div>
+            <hr>
             <div class="row">
               <div class="col-sm-12">
                 <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
@@ -107,6 +161,8 @@
             </div>
           </div>
         </div>
+
+
 
         <div class="row gutters-sm">
           <div class="col-sm-6 mb-3">
@@ -173,3 +229,4 @@
   </div>
   </ng-template>
 </div>
+<app-footer></app-footer>

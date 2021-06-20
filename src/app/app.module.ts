@@ -51,6 +51,7 @@ import { CommentsEventsSectionComponent } from './comments-events-section/commen
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
+import { MembersAreaDetailComponent } from './members-area-detail/members-area-detail.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
     KefiEventTableInfosComponent,
     ButtonsParticipationEventComponent,
     CommentsEventsSectionComponent,
+    MembersAreaDetailComponent,
 
 
   ],
@@ -94,13 +96,13 @@ import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
 
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     MatProgressSpinnerModule,
     HttpClientModule,
     AppRoutingModule,
     CookieModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     MatRadioModule,
     MatSelectModule,
     MatDatepickerModule,

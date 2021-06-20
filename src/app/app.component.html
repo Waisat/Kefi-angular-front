@@ -1,6 +1,7 @@
 <app-nav-bar [loginCheck]="connect" [userInfo]="roleUserInfo"></app-nav-bar>
 
 <!-- The routed views render in the <router-outlet>-->
-<router-outlet ></router-outlet>
+<div [@routeAnimations]="prepareRoute(outlet)">
+<router-outlet #outlet="outlet" ></router-outlet>
+</div>
 
-<app-footer></app-footer>

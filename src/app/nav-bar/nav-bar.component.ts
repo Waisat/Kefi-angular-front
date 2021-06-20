@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {LoginService} from "../_services/login-info.service";
 import {LoginPageComponent} from "../login-page/login-page.component";
 import {CookieService} from "ngx-cookie";
+import {MemberAreaCommunicationService} from "../_services/member-area-communication.service";
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,10 +13,10 @@ import {CookieService} from "ngx-cookie";
 export class NavBarComponent implements OnInit {
   @Input('loginCheck') public Info:any
   @Input('userInfo') public UserLogInfo: any
-
+  infosMemberPage:any;
   public verifyConnexion:any
   public myData:any
-  constructor(private router: Router, private loginService: LoginService, private cookie: CookieService, private _route: Router) { }
+  constructor(private router: Router, private loginService: LoginService, private cookie: CookieService, private _route: Router, private MemberAreaList: MemberAreaCommunicationService) { }
   transferInfoConnexion:any
 
   ngOnInit(): void {
@@ -24,6 +25,7 @@ export class NavBarComponent implements OnInit {
     this.verifyConnexion = this.UserLogInfo
     let verificationOfRole = this.verifyAdmin(this.verifyConnexion)
     console.log('this verif', this.verifyConnexion)
+    this.MemberAreaList.currentMessage.subscribe(infosNav =>this.infosMemberPage = infosNav)
 
   }
 

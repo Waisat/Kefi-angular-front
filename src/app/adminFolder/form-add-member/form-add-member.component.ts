@@ -18,6 +18,7 @@ export class FormAddMemberComponent implements OnInit {
   constructor(private userHttp : UserService) { }
 
   ngOnInit(): void {
+
   }
   addMemberToDB(){
     console.log(this.UserAddModel.name)

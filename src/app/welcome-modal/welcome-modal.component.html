@@ -30,10 +30,8 @@
 
 
       </div>
-      <div class="item">
-        <p>Telephone</p>
-        <input type="text" name="phone"/>
-      </div>
+
+
     </div>
 
 
@@ -42,7 +40,7 @@
       <div class="position-item"  >
 
       <label for="job_domain">Choisisez votre domaine ou métier:</label>
-      <select id="job_domain" name="job_domain" #job_domain="ngModel" [class.is-invalid]="job_domain.invalid && job_domain.touched"   [(ngModel)]="newFormModel.lookingFor">
+      <select id="job_domain" name="job_domain" #job_domain="ngModel" [class.is-invalid]="job_domain.invalid && job_domain.touched"   [(ngModel)]="newFormModel.subjectJob">
 
         <optgroup *ngFor="let group of JsonJobData" label="{{group.text}}">
           <option *ngFor="let child of group.children"   [value]="child.text" >{{child.text}}</option>
@@ -53,8 +51,7 @@
 
       </div>
       <div *ngIf="job_domain.errors && (job_domain.invalid || job_domain.touched)">
-        <small class="warning-text" *ngIf="job_domain.touched && job_domain.errors">Vous domaine de profession est requis</small>
-
+        <small class="warning-text" *ngIf="job_domain.touched && job_domain.errors">Votre domaine de profession est requis</small>
 
       </div>
 
@@ -99,7 +96,7 @@
     <div class="item">
       <p>Votre adresse Linkedin:</p>
       <input type="text" name="linkedin"  #linkedin ="ngModel" [pattern]="regexLinkedin" [(ngModel)]="newFormModel.linkedinAddress"/>
-      <input type="file" name="file" accept="file/*">
+      <input type="file" name="file" (change)="onFileSelect($event)">
     </div>
 
     <div *ngIf="linkedin.errors">
@@ -124,15 +121,20 @@
       <p>Inscription à notre newsLetter</p>
       <div class="question-answer">
         <div>
-          <input type="radio" value="1" id="radio_newsLetter1" name="newsLetter" #newsLetter ="ngModel"  [(ngModel)]="newFormModel.consentNewsLetter"  checked/>
+          <input type="radio" value="1" id="radio_newsLetter1" name="newsLetter" #newsLetter ="ngModel" [class.is-invalid]="newsLetter.invalid && newsLetter.touched"  [(ngModel)]="newFormModel.consentNewsLetter"  checked/>
           <label for="radio_newsLetter1" class="radio"><span>Oui</span></label>
         </div>
         <div>
-          <input type="radio" value="0" id="radio_newsLetter2" name="newsLetter"  #newsLetter ="ngModel"  [(ngModel)]="newFormModel.consentNewsLetter"  />
+          <input type="radio" value="0" id="radio_newsLetter2" name="newsLetter"  #newsLetter ="ngModel" [class.is-invalid]="newsLetter.invalid && newsLetter.touched" [(ngModel)]="newFormModel.consentNewsLetter"  />
           <label for="radio_newsLetter2" class="radio"><span>Non</span></label>
         </div>
       </div>
+      <div *ngIf="newsLetter.errors && (newsLetter.invalid || newsLetter.untouched)">
+        <small class="warning-text" *ngIf="newsLetter.touched && newsLetter.errors">Votre domaine de profession est requis</small>
+
+      </div>
     </div>
+
 
 
     <div class="btn-block">
@@ -141,3 +143,4 @@
     </div>
   </form>
 </div>
+<app-footer></app-footer>

@@ -1,73 +1,23 @@
 <div class="container">
   <app-search-bar-member-area></app-search-bar-member-area>
+
   <div class="row">
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="our-team">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let users of dataUsers ">
+      <div class="our-team" >
         <div class="picture">
-          <img class="img-fluid" src="https://picsum.photos/130/130?image=1027">
+          <a routerLink="/membre/{{users.slug_url}}"><img class="img-fluid" src="http://localhost:5000/{{users.photo_url}}"></a>
         </div>
         <div class="team-content">
-          <h3 class="name">Michele Miller</h3>
-          <h4 class="title">Web Developer</h4>
+          <h3 class="name">{{users.first_name}} {{users.name}}</h3>
+          <h4 class="title">{{users.job}}</h4>
         </div>
         <ul class="social">
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter" aria-hidden="true"></a></li>
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
+          <li><a href="{{users.linkedin}}" class="fa fa-linkedin" aria-hidden="true"></a></li>
         </ul>
       </div>
     </div>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="our-team">
-        <div class="picture">
-          <img class="img-fluid" src="https://picsum.photos/130/130?image=839">
-        </div>
-        <div class="team-content">
-          <h3 class="name">Patricia Knott</h3>
-          <h4 class="title">Web Developer</h4>
-        </div>
-        <ul class="social">
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter" aria-hidden="true"></a></li>
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="our-team">
-        <div class="picture">
-          <img class="img-fluid" src="https://picsum.photos/130/130?image=856">
-        </div>
-        <div class="team-content">
-          <h3 class="name">Justin Ramos</h3>
-          <h4 class="title">Web Developer</h4>
-        </div>
-        <ul class="social">
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter" aria-hidden="true"></a></li>
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="our-team">
-        <div class="picture">
-          <img class="img-fluid" src="https://picsum.photos/130/130?image=836">
-        </div>
-        <div class="team-content">
-          <h3 class="name">Mary Huntley</h3>
-          <h4 class="title">Web Developer</h4>
-        </div>
-        <ul class="social">
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter" aria-hidden="true"></a></li>
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
-          <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
-        </ul>
-      </div>
-    </div>
+
+
   </div>
 </div>
+<app-footer></app-footer>

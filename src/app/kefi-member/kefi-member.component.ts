@@ -11,7 +11,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./kefi-member.component.css']
 })
 export class KefiMemberComponent implements OnInit {
+
   tokenUser:any;
+  userName:string = ""
+  parseLookingForInfos:any;
   constructor(private user: UserService, private cookieKefi: CookieService, private _router: Router) { }
 
   ngOnInit(): void {
@@ -30,6 +33,9 @@ export class KefiMemberComponent implements OnInit {
         this.tokenUser = res.body
         if(this.tokenUser.role === undefined){
           console.log("hi",this.tokenUser)
+          this.userName = this.tokenUser.user_name
+          this.parseLookingForInfos = JSON.parse(this.tokenUser.looking_for)
+          console.log("test_user_inghov", this.parseLookingForInfos)
         }else if(this.tokenUser.role === "admin"){
           this._router.navigate(['/admin'])
         }

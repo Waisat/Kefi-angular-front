@@ -2,13 +2,19 @@ import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {UserService} from "./_services/user.service";
 import {catchError} from "rxjs/operators";
 import {Observable, throwError} from "rxjs";
+import {RouterOutlet} from "@angular/router";
+import {slideInAnimation} from "./_utilities/animation";
 
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+    slideInAnimation
+    // animation triggers go here
+  ]
 })
 export class AppComponent implements OnInit{
   title = 'kefi-angular-front';
@@ -34,7 +40,9 @@ export class AppComponent implements OnInit{
     }
   }
 
-
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+  }
 
   /*** Verification si le token existe ***/
   verifyIfExistToken():boolean{
