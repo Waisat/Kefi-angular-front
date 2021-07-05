@@ -4,6 +4,7 @@ import {UserService} from "../_services/user.service";
 import {DetailUserPublicArea} from "../class/detail-user-public-area";
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
+import {CommunicationPublicMemberListService} from "../_services/communication-public-member-list.service";
 
 @Component({
   selector: 'app-members-area-detail',
@@ -15,8 +16,10 @@ export class MembersAreaDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private user: UserService ){ }
   public dataUser: any
   public parseLookingForInfos: any
+
   ngOnInit(): void {
     this.getDetailMemberPublic()
+
   }
 
   getDetailMemberPublic() {

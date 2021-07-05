@@ -1,4 +1,7 @@
 @import url(//fonts.googleapis.com/css?family=Abril+Fatface|Droid+Serif:400,700,400italic,700italic);
+.container{
+  margin-top: 5%;
+}
 #event-sections{
   width: 80%;
   margin:0 auto;

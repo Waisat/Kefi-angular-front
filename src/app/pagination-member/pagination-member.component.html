@@ -1,0 +1,10 @@
+
+<nav data-pagination *ngIf="navPagination">
+  <a href=# disabled><i class=ion-chevron-left></i></a>
+  <ul *ngFor="let navPage of navPagination">
+
+    <li class=current (click)="goPage(navPage.offset, navPage.limit, navPage.option, navPage.job, navPage.page)"> {{navPage.page}}</li>
+
+  </ul>
+  <a href=#2><i class=ion-chevron-right></i></a>
+</nav>

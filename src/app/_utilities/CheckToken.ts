@@ -2,8 +2,9 @@ import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
 import {UserService} from "../_services/user.service";
 import {Router} from "@angular/router";
+import {MemberAreaCommunicationService} from "../_services/member-area-communication.service";
 
-export function CheckToken(userService:UserService, isWait:boolean, userToken:any, _router:Router ){
+export function CheckToken(userService:UserService, isWait:boolean, userToken:any, _router:Router, memberAccess:MemberAreaCommunicationService ){
   userService.verifyCookieHeader().pipe(
       catchError(err => {
         isWait = false
@@ -15,12 +16,15 @@ export function CheckToken(userService:UserService, isWait:boolean, userToken:an
       userToken.push(data)
       if( userToken[0].userLevel === 'membre'){
         _router.navigate(['/espace_membre']).then(() => {
-          window.location.reload();
+          memberAccess.changeNavUrl("membre")
+          //window.location.reload();
+
         });
         return userToken
       }else if( userToken[0].userLevel === 'admin'){
         _router.navigate(['/admin']).then(() => {
-          window.location.reload();
+          memberAccess.changeNavUrl("admin")
+          //window.location.reload();
         });
         return userToken
       }else{

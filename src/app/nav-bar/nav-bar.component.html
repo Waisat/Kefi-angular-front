@@ -3,20 +3,18 @@
     <a routerLink="accueil" class="logo_kefi" ><img  src="assets/logo_nav_kefii.png" alt="logo_kefi" title="logo_kefi"></a>
   <nav class="page__menu page__custom-settings menu">
     <ul class="menu__list r-list">
-    {{infosMemberPage.offset}}
-    {{infosMemberPage.limit}}
-    {{infosMemberPage.search_options}}
+
       <!--<li class="menu__group"><a routerLink="accueil" class="menu__link r-link text-underlined">Accueil</a></li> !-->
       <li class="menu__group"><a routerLink="fondateurs" class="menu__link r-link text-underlined">Fondateurs</a></li>
-      <li class="menu__group" ><a  routerLink="membres/offset_0/limit_10/search_all" class="menu__link r-link text-underlined">Membres</a></li>
+      <li class="menu__group" ><a  routerLink="membres/offset_0/limit_8/search_all/job_all/page_1" class="menu__link r-link text-underlined">Membres</a></li>
       <li class="menu__group"><a routerLink="evenements" class="menu__link r-link text-underlined">Evênements</a></li>
       <li class="menu__group"><a routerLink="articles" class="menu__link r-link text-underlined">Articles</a></li>
       <li class="menu__group"><a routerLink="contact" class="menu__link r-link text-underlined">Contact</a></li>
-      <div *ngIf="UserLogInfo.userLevel === 'membre'">
+      <div *ngIf="infosMemberPage === 'membre' ">
         <li class="menu__group"><a routerLink="espace_membre" class="menu__link r-link text-underlined">Profil</a></li>
       </div>
 
-      <div *ngIf="UserLogInfo.userLevel === 'admin'">
+      <div *ngIf="infosMemberPage === 'admin'">
         <li class="menu__group"><a routerLink="admin" class="menu__link r-link text-underlined">Admin</a></li>
       </div>
 
@@ -28,7 +26,8 @@
 
       </div>
     !-->
-      <div *ngIf="!UserLogInfo.connect;then block else elseBlock"> </div>
+     <!-- <div *ngIf="!UserLogInfo.connect;then block else elseBlock"> </div>!-->
+      <div *ngIf="infosMemberPage === 'logout';then block else elseBlock"> </div>
         <ng-template  #block>
       <li class="menu__group"><a routerLink="login" class="menu__link r-link text-underlined" [state]="{ data: {Info:transferInfoConnexion}}" >Connexion</a></li>
         </ng-template>

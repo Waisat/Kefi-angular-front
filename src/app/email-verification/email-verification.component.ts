@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import {VerifyEmailUrl} from "../class/verify-email-url";
 import {CookieService} from "ngx-cookie";
 import {CheckToken} from "../_utilities/CheckToken";
+import {MemberAreaCommunicationService} from "../_services/member-area-communication.service";
 @Component({
   selector: 'app-email-verification',
   templateUrl: './email-verification.component.html',
@@ -16,7 +17,7 @@ import {CheckToken} from "../_utilities/CheckToken";
 export class EmailVerificationComponent implements OnInit {
   patternPassword: RegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
   private emailUserVerify: any
-  constructor(private user_http: UserService,  private route: ActivatedRoute, private router: Router, private cookieService:CookieService ) { }
+  constructor(private user_http: UserService,  private route: ActivatedRoute, private router: Router, private cookieService:CookieService, private MemberAreaList: MemberAreaCommunicationService ) { }
   UserPassword: PasswordUser = new PasswordUser("","", "")
   emailVerification: VerifyEmailUrl = new VerifyEmailUrl("","")
   tokenUser: any;
@@ -60,7 +61,7 @@ export class EmailVerificationComponent implements OnInit {
       const token = this.user_http.getCookieJwt("kefi_token")
       if(token){
         this.IsWait = false
-        CheckToken(this.user_http, this.IsWait, this.userTokenCheck, this.router)
+        CheckToken(this.user_http, this.IsWait, this.userTokenCheck, this.router, this.MemberAreaList)
       }
 
       console.log('resultat nondd' ,this.parseTokenUser)

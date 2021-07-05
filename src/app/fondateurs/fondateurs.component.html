@@ -1,19 +1,22 @@
 
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-4">
-
-      <div class="profile-card-2"><img src="/assets/jlmin.png" class="img img-responsive">
-        <div class="profile-name">Jean-Louis Gallouin</div>
-        <div class="profile-username">@jlg</div>
-        <div class="profile-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
+  <div id="founders-contains"  *ngFor="let founder of allFounders">
+<div class="flex-display-founders">
+  <figure class="snip1559">
+    <div class="profile-image"><a routerLink="/fondateur/{{founder.slug_id}}"><img src="http://localhost:5000/{{founder.img_founder}}" title="{{founder.img_founder}}" alt="profile-sample2" /></a></div>
+    <figcaption>
+      <h3>{{founder.first_name}} {{founder.last_name}}</h3>
+      <h5>{{founder.job}}</h5>
+      <p>{{founder.short_intro}}</p>
+      <div class="icons"><a href="{{founder.linkedinLink}}"><i class="ion-social-linkedin"></i></a>
       </div>
-    </div>
-
-
-
+    </figcaption>
+  </figure>
+</div>
   </div>
 </div>
+
+
 
 <app-footer></app-footer>

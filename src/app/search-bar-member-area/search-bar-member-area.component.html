@@ -1,7 +1,30 @@
-<div class="row justify-content-center padding">
+<div class="row justify-content-center padding filter-search-member">
+
   <div class="col-md-8 ftco-animate fadeInUp ftco-animated">
+{{optionSearch.searchName}}
     <form action="#" class="domain-form">
-      <div class="form-group d-md-flex"> <input type="text" class="form-control px-4" placeholder="Rechercher un membre Kefi..."> <input type="submit" class="search-domain btn btn-primary px-5" value="Recherche"> </div>
+      <div id="selectJobform">
+      <label for="job_domain">Choisisez votre domaine ou métier:</label>
+      <select id="job_domain" name="job_domain"  >
+
+        <optgroup *ngFor="let group of domainList" label="{{group.domain_name}}">
+          <option *ngFor="let child of group.job"   [value]="child" >{{child}}</option>
+
+        </optgroup>
+
+      </select>
+      </div>
+      <div class="searchBox">
+
+        <input id="searchByOption" class="searchInput" type="text" name="searchInput" placeholder="Search"  ngModel required #searchInput="ngModel"  [class.is-invalid]="searchInput.invalid && searchInput.touched" [(ngModel)]="optionSearch.searchName" (keydown)="keyDownSearch()">
+        <button class="searchButton" href="#">
+          <i class="material-icons">
+            search
+          </i>
+        </button>
+      </div>
+
     </form>
+
   </div>
 </div>

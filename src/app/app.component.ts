@@ -1,9 +1,12 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {AfterViewInit, Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {UserService} from "./_services/user.service";
 import {catchError} from "rxjs/operators";
 import {Observable, throwError} from "rxjs";
 import {RouterOutlet} from "@angular/router";
 import {slideInAnimation} from "./_utilities/animation";
+import {MemberAreaCommunicationService} from "./_services/member-area-communication.service";
+import {LoginService} from "./_services/login-info.service";
+import {CommunicationPublicMemberListService} from "./_services/communication-public-member-list.service";
 
 
 
@@ -16,15 +19,17 @@ import {slideInAnimation} from "./_utilities/animation";
     // animation triggers go here
   ]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit, AfterViewInit{
   title = 'kefi-angular-front';
   headersTokenResponse: any = [];
   public roleUserInfo: any = [];
 
   public connect:boolean=false
-  constructor(private userService: UserService) {
+  public messageDisplay:any
+  constructor(private userService: UserService, private MemberAreaList: MemberAreaCommunicationService, private displayMessaging: CommunicationPublicMemberListService) {
   }
   ngOnInit():void {
+
     let checkTokenExist = this.verifyIfExistToken()
     if(checkTokenExist){
       this.verifyIfValidToken()
@@ -32,12 +37,21 @@ export class AppComponent implements OnInit{
       if(this.roleUserInfo.length +1 === 1){
         this.connect = true
 
+
         console.log('obj',this.roleUserInfo)
       }
 
       //console.log('connect test', this.roleUserInfo)
 
+    }else{
+      this.MemberAreaList.changeNavUrl("logout")
     }
+
+  }
+
+  ngAfterViewInit() {
+    this.displayMessaging.messageToCheck.subscribe(infosNav =>this.messageDisplay = infosNav)
+    this.timeOutToken()
   }
 
   prepareRoute(outlet: RouterOutlet) {
@@ -54,10 +68,17 @@ export class AppComponent implements OnInit{
   verifyIfValidToken(): void{
   this.userService.verifyCookieHeader().pipe( catchError(err => {
       console.log('Handling error locally and rethrowing it...', err);
+    this.MemberAreaList.changeNavUrl("logout")
       return throwError(err);
     })).subscribe(res=>{
       this.roleUserInfo = res
     console.log('test', this.roleUserInfo)
+    if(this.roleUserInfo.userLevel === "membre"){
+      this.MemberAreaList.changeNavUrl("membre")
+    }else if(this.roleUserInfo.userLevel === "admin"){
+      this.MemberAreaList.changeNavUrl("admin")
+    }
+
 
   }
 
@@ -65,6 +86,31 @@ export class AppComponent implements OnInit{
     console.log(this.roleUserInfo)
   }
 
+  timeOutToken(){
+    console.log('tokkendnq')
+    setInterval(()=>this.callTheTokenInterval, 1000)
+  }
 
+  callTheTokenInterval(){
+    let TokenExist = this.verifyIfExistToken()
+    console.log('coenddk', TokenExist)
+    if(TokenExist){
+      this.verifyIfValidToken()
+
+      if(this.roleUserInfo.length +1 === 1){
+        this.connect = true
+
+
+        console.log('obj',this.roleUserInfo)
+      }
+
+      //console.log('connect test', this.roleUserInfo)
+
+    }else{
+      console.log('trz')
+      this.MemberAreaList.changeNavUrl("logout")
+    }
+
+  }
 
 }

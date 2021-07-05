@@ -52,6 +52,11 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
 import { MembersAreaDetailComponent } from './members-area-detail/members-area-detail.component';
+import { PaginationMemberComponent } from './pagination-member/pagination-member.component';
+import { SuccesComponent } from './displayMesage/succes/succes.component';
+import { ErrorComponent } from './displayMesage/error/error.component';
+import { FondateursDetailComponent } from './fondateurs-detail/fondateurs-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -89,6 +94,11 @@ import { MembersAreaDetailComponent } from './members-area-detail/members-area-d
     ButtonsParticipationEventComponent,
     CommentsEventsSectionComponent,
     MembersAreaDetailComponent,
+    PaginationMemberComponent,
+    SuccesComponent,
+    ErrorComponent,
+    FondateursDetailComponent,
+
 
 
   ],

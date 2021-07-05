@@ -18,18 +18,25 @@ import {EmailEventToSend} from "../class/email-event-to-send";
 import {FormdataUser} from "../class/formdata-user";
 import {GetAllPublicUsers} from "../class/get-all-public-users";
 import {DetailUserPublicArea} from "../class/detail-user-public-area";
+import {GetDomainNameClass} from "../class/get-domain-name-class";
+import {SearchByName} from "../class/search-by-name";
+import {FoundersPublicModel} from "../class/founders-public-model";
+import {FounderDetailPublic} from "../class/founder-detail-public";
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
 
-  ConfigUrl:string ="https://mysterious-reaches-96425.herokuapp.com"
-  constructor(private http: HttpClient, private cookieService:CookieService) { }
-  options:object = {
+  ConfigUrl: string = "http://localhost:5000"
+
+  constructor(private http: HttpClient, private cookieService: CookieService) {
+  }
+
+  options: object = {
     responseType: 'json',
   };
-  optionFile:object={
+  optionFile: object = {
     responseType: "multipart/form-data"
   }
 
@@ -48,6 +55,7 @@ export class UserService {
     return throwError(
       'Something bad happened; please try again later.');
   }
+
   /*
 
   getPublicContent():Observable<HttpResponse<Config>>{
@@ -60,32 +68,34 @@ export class UserService {
 */
   /** POST: add a new hero to the database */
   LoginTo(user: User): Observable<User> {
-    return this.http.post<User>(this.ConfigUrl+"/sign_in", user, this.options)
+    return this.http.post<User>(this.ConfigUrl + "/sign_in", user, this.options)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  getCookieJwt(key:string){
+  getCookieJwt(key: string) {
     return !!this.cookieService.get(key);
   }
-  getCookieValue(key:string){
+
+  getCookieValue(key: string) {
     return this.cookieService.get(key);
   }
 
 
-  verifyCookieHeader():Observable<UserTokenInterfaces[]>{
+  verifyCookieHeader(): Observable<UserTokenInterfaces[]> {
     return this.http.get<UserTokenInterfaces[]>(
-      this.ConfigUrl +"/cookie_validity").pipe(
+      this.ConfigUrl + "/cookie_validity").pipe(
       retry(3),
       catchError(this.handleError)
     );
   }
+
   /*** Get cookie User for verification ***/
 
-  getCookie():Observable<HttpResponse<Config>>{
+  getCookie(): Observable<HttpResponse<Config>> {
     return this.http.get<Config>(
-      this.ConfigUrl +"/admin_kefi",{ observe: 'response' }).pipe(
+      this.ConfigUrl + "/admin_kefi", {observe: 'response'}).pipe(
       retry(3),
       catchError(this.handleError)
     );
@@ -93,9 +103,9 @@ export class UserService {
 
   /*** Get all members kefi from admin panel***/
 
-  getAllMember(filterMember: FilterData):Observable<MemberKefiInterfaces[]>{
+  getAllMember(filterMember: FilterData): Observable<MemberKefiInterfaces[]> {
     return this.http.get<MemberKefiInterfaces[]>(
-      this.ConfigUrl +`/member_list_kefi/search_${filterMember.specific}/order_${filterMember.order}/option_${filterMember.option}/page_${filterMember.page}/offset_${filterMember.offset}/limit_${filterMember.limit}/way_${filterMember.way}`).pipe(
+      this.ConfigUrl + `/member_list_kefi/search_${filterMember.specific}/order_${filterMember.order}/option_${filterMember.option}/page_${filterMember.page}/offset_${filterMember.offset}/limit_${filterMember.limit}/way_${filterMember.way}`).pipe(
       retry(3),
       catchError(this.handleError)
     );
@@ -104,15 +114,15 @@ export class UserService {
   /*** Ajout nouveau membres Kefi ***/
 
   addNewMember(member: MemberToAdd): Observable<MemberToAdd> {
-    return this.http.post<MemberToAdd>(this.ConfigUrl+"/add_members", member, this.options)
+    return this.http.post<MemberToAdd>(this.ConfigUrl + "/add_members", member, this.options)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  verifyEmail(dataUser:VerifyEmailUrl):Observable<VerifyEmailUrl[]>{
+  verifyEmail(dataUser: VerifyEmailUrl): Observable<VerifyEmailUrl[]> {
     return this.http.get<VerifyEmailUrl[]>(
-      this.ConfigUrl +`/email_verification/${dataUser.user_name}/${dataUser.urlToken}`).pipe(
+      this.ConfigUrl + `/email_verification/${dataUser.user_name}/${dataUser.urlToken}`).pipe(
       retry(3),
       catchError(this.handleError)
     );
@@ -122,7 +132,7 @@ export class UserService {
   /*** Update password member***/
 
   updatePasswordMember(passwordModel: PasswordUser): Observable<PasswordUser> {
-    return this.http.post<PasswordUser>(this.ConfigUrl+"/update_password", passwordModel, this.options)
+    return this.http.post<PasswordUser>(this.ConfigUrl + "/update_password", passwordModel, this.options)
       .pipe(
         catchError(this.handleError)
       );
@@ -132,7 +142,7 @@ export class UserService {
 
   sendPhotoEvent(photo: FormData): Observable<FormData> {
 
-    return this.http.post<FormData>(this.ConfigUrl+"/send_photo_server", photo,this.options)
+    return this.http.post<FormData>(this.ConfigUrl + "/send_photo_server", photo, this.options)
       .pipe(
         catchError(this.handleError)
       );
@@ -140,7 +150,7 @@ export class UserService {
 
   addEventDb(event: EventKefi): Observable<EventKefi> {
 
-    return this.http.post<EventKefi>(this.ConfigUrl+"/create_event", event,this.options)
+    return this.http.post<EventKefi>(this.ConfigUrl + "/create_event", event, this.options)
       .pipe(
         catchError(this.handleError)
       );
@@ -148,7 +158,7 @@ export class UserService {
 
   sendEmailToUsersForEvents(eventSendMail: EmailEventToSend): Observable<EmailEventToSend> {
 
-    return this.http.post<EmailEventToSend>(this.ConfigUrl+"/send_email_To_users_options", eventSendMail,this.options)
+    return this.http.post<EmailEventToSend>(this.ConfigUrl + "/send_email_To_users_options", eventSendMail, this.options)
       .pipe(
         catchError(this.handleError)
       );
@@ -158,7 +168,7 @@ export class UserService {
 
   sendPhotoUser(photoUser: FormData): Observable<FormData> {
 
-    return this.http.post<FormData>(this.ConfigUrl+"/send_user_photo", photoUser, this.options)
+    return this.http.post<FormData>(this.ConfigUrl + "/send_user_photo", photoUser, this.options)
       .pipe(
         catchError(this.handleError)
       );
@@ -166,8 +176,8 @@ export class UserService {
 
   /*** updateData utilisateurs ***/
 
-  updateDataToDb(updateInfosUser:FormdataUser):Observable<FormdataUser>{
-    return this.http.post<FormdataUser>(this.ConfigUrl+"/update_infos_user", updateInfosUser,this.options)
+  updateDataToDb(updateInfosUser: FormdataUser): Observable<FormdataUser> {
+    return this.http.post<FormdataUser>(this.ConfigUrl + "/update_infos_user", updateInfosUser, this.options)
       .pipe(
         catchError(this.handleError)
       );
@@ -176,16 +186,16 @@ export class UserService {
 
   /*** Obtenir tout les utilisateurs page visiteurs ***/
 
-  requestAllUsers(querySearch:GetAllPublicUsers):Observable<GetAllPublicUsers>{
+  requestAllUsers(querySearch: GetAllPublicUsers): Observable<GetAllPublicUsers> {
     return this.http.get<GetAllPublicUsers>(
-      this.ConfigUrl +`/all_member_public_profile/${querySearch.offset}/${querySearch.limit}/${querySearch.search_options}`).pipe(
+      this.ConfigUrl + `/all_member_public_profile/${querySearch.offset}/${querySearch.limit}/${querySearch.search_options}/${querySearch.job}/${querySearch.page}`).pipe(
       retry(3),
       catchError(this.handleError)
     );
   }
 
   /*** Request detail user from public area***/
-  getUserPublicData(queryUrl: DetailUserPublicArea): Observable<DetailUserPublicArea>{
+  getUserPublicData(queryUrl: DetailUserPublicArea): Observable<DetailUserPublicArea> {
     return this.http.get<DetailUserPublicArea>(
       this.ConfigUrl + `/membre_access_public/${queryUrl}`
     ).pipe(
@@ -194,7 +204,51 @@ export class UserService {
     );
   }
 
+  getAllDomainPublic(): Observable<GetDomainNameClass> {
+    return this.http.get<GetDomainNameClass>(this.ConfigUrl + `/getDomainName/all`
+    ).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  /*** Specific search domain Job***/
+  getJobDomainNamePublic(queryUrl: GetDomainNameClass): Observable<GetDomainNameClass> {
+    return this.http.get<GetDomainNameClass>(this.ConfigUrl + `/getDomainName/${queryUrl.domain}`
+    ).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  /*** Search query by name public visit, first name **/
+  getUserBySearchName(searchName: SearchByName): Observable<SearchByName> {
+    return this.http.post<SearchByName>(this.ConfigUrl + "/get_specific_user_search_box", searchName, this.options)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  /*** obtenir tout les fondateurs public page ***/
+  getAllFoundersPublicPage(): Observable<FoundersPublicModel> {
+    return this.http.get<FoundersPublicModel>(this.ConfigUrl + `/fondateurs/all`
+    ).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+
+  /*** obtenir datail fondateur public page ***/
+  getFounderDetailPublic(name:string): Observable<FounderDetailPublic> {
+    return this.http.get<FounderDetailPublic>(this.ConfigUrl + `/fondateur/${name}`
+    ).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+
+
+
 }
-
-
-

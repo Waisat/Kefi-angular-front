@@ -1,8 +1,9 @@
-<div class="container">
-  <app-search-bar-member-area></app-search-bar-member-area>
+<div class="container" >
+
+  <app-search-bar-member-area [urlInfo]="transferUrl" (infoUrl)="getEmitter($event)" id="searchBarUsers"></app-search-bar-member-area>
 
   <div class="row">
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let users of dataUsers ">
+    <div class="cardUsers col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let users of dataUsers ">
       <div class="our-team" >
         <div class="picture">
           <a routerLink="/membre/{{users.slug_url}}"><img class="img-fluid" src="http://localhost:5000/{{users.photo_url}}"></a>
@@ -19,5 +20,8 @@
 
 
   </div>
+
+  <div id="memberAreaContainer"></div>
 </div>
+<app-pagination-member [navPagination]="getDataNavPage"></app-pagination-member>
 <app-footer></app-footer>
