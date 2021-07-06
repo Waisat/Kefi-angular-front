@@ -1,7 +1,7 @@
 <div class="testbox">
   <form #updateData="ngForm" (ngSubmit)="updateDataUser()" novalidate>
     <div class="banner">
-      <h1>Bienvenue sur le site internet de kefi association</h1>
+      <h1>Bienvenue {{userFirstName.first_name}}</h1>
     </div>
     <div class="item">
       <p>Localisation<span class="required">*</span></p>

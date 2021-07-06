@@ -10,7 +10,7 @@ import {Config} from "../interfaces/Config.interfaces";
   providedIn: 'root'
 })
 export class HttpJsonLocalService {
-  private localJobJson:string ="assets/data_json/job.json"
+  private localJobJson:string ="http://localhost:5000/job.json"
   constructor(private http: HttpClient) { }
 
   private handleError(error: HttpErrorResponse) {

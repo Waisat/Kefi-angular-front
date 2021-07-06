@@ -16,6 +16,7 @@ export class WelcomeModalComponent implements OnInit, AfterViewInit {
 
     constructor(private formBuilder: FormBuilder, private http: HttpJsonLocalService, private user: UserService) { }
   @Input('userId') public userId:any
+  @Input('userFirstName') public userFirstName:any
   JsonJobData: any
   jobControl = new FormControl();
   JsonJobInterface: JobFormControl[] = []
@@ -93,8 +94,13 @@ export class WelcomeModalComponent implements OnInit, AfterViewInit {
 
   updateDataUser(){
     const formData = new FormData()
-    formData.append("file", this.photoProfile, this.newFormModel.photoUrl)
-    this.sendPhotoUser(formData)
+    if(this.photoProfile && this.newFormModel.photoUrl){
+      formData.append("file", this.photoProfile, this.newFormModel.photoUrl)
+    }
+
+    if(formData){
+      this.sendPhotoUser(formData)
+    }
     this.user.updateDataToDb(this.newFormModel).pipe(
       catchError(err => {
         console.log('Handling error locally and rethrowing it...', err);

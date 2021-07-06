@@ -28,7 +28,7 @@ import {FounderDetailPublic} from "../class/founder-detail-public";
 
 export class UserService {
 
-  ConfigUrl: string = "http://localhost:5000"
+  ConfigUrl: string = "https://mysterious-reaches-96425.herokuapp.com"
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
   }

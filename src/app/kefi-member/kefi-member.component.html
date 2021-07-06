@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container" *ngIf="tokenUser">
   <div *ngIf="tokenUser.first_connexion === 0;then block else elseBlock"> </div>
 
   <ng-template  #block>
-    <app-welcome-modal [userId]="userName"></app-welcome-modal>
+    <app-welcome-modal [userId]="userName" [userFirstName]="tokenUser"></app-welcome-modal>
   </ng-template>
 
   <ng-template #elseBlock>
@@ -18,7 +18,7 @@
             <div class="item-card">
               <img *ngIf="!tokenUser.photo_url; else imgUser" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
               <ng-template #imgUser>
-                <img src="http://localhost:5000/{{tokenUser.photo_url}}" alt="{{tokenUser.photo_url}}" class="rounded-circle" width="150">
+                <img src="https://mysterious-reaches-96425.herokuapp.com/{{tokenUser.photo_url}}" alt="{{tokenUser.photo_url}}" class="rounded-circle" width="150">
               </ng-template>
                 <div class="card-member">
                 <h4>{{tokenUser.first_name}}</h4>

@@ -3,13 +3,13 @@
 
 <div *ngIf="messageDisplay === 'receiveMessage' then successMessage" ></div>
 <ng-template #successMessage>
-<app-succes></app-succes>
+<app-succes class="display-meesage"></app-succes>
 </ng-template>
 
 
 <div *ngIf="messageDisplay === 'error' then errorMessage" ></div>
 <ng-template #errorMessage>
-  <app-error></app-error>
+  <app-error class="display-meesage"></app-error>
 </ng-template>
 <!-- The routed views render in the <router-outlet>-->
 <div [@routeAnimations]="prepareRoute(outlet)">
