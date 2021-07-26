@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500);
-@media (max-width: 769px) {
+@media (min-width: 769px) {
   .container {
 
     margin: 8% auto 3% auto;
