@@ -1,3 +1,229 @@
-.container{
+@media (min-width: 769px) {
+.kefi-loadingTime{
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100vh;
+  margin: 10% auto;
+  text-align: center;
+}
+.spinner-load{
+  margin: 0 auto;
+}
+.kefi-loadingTime p{
   margin-top: 5%;
+  padding: 2%;
+  width: 100%;
+  font-size: 1.5rem;
+
+}
+.main-body {
+  padding: 15px;
+}
+.card {
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.container{
+  width: 80%;
+  margin:9% auto 5% auto;
+}
+.top-part{
+
+
+}
+
+.item-card{
+  text-align: center;
+}
+
+.profil-position{
+
+  display: flex;
+  flex-direction: row;
+
+}
+.mb-0{
+  margin: 0 auto;
+
+}
+.fa-linkedin{
+  font-size: 50px;
+}
+.data_user_infos{
+  width: 70%;
+}
+.avatar-preview {
+  width: 192px;
+  height: 192px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid #F8F8F8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.card-member{
+  margin-top: 3px;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1rem;
+}
+
+.gutters-sm {
+  margin-right: -8px;
+  margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+.mb-3, .my-3 {
+  margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+  background-color: #e2e8f0;
+}
+.h-100 {
+  height: 100%!important;
+}
+.shadow-none {
+  box-shadow: none!important;
+}
+
+}
+
+
+
+@media (max-width: 769px) {
+  .kefi-loadingTime{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 100vh;
+    margin: 30% auto;
+    text-align: center;
+  }
+  .spinner-load{
+    margin: 0 auto;
+  }
+  .kefi-loadingTime p{
+    margin-top: 5%;
+    padding: 2%;
+    width: 100%;
+    font-size: 1.5rem;
+
+  }
+  .main-body {
+    padding: 15px;
+  }
+  .card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+  }
+
+  .container{
+    width: 80%;
+    margin:20% auto 5% auto;
+  }
+  .top-part{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+
+  }
+  .col-sm-3{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .rounded-circle{
+    width: 80%;
+  }
+
+  .item-card{
+    text-align: center;
+  }
+
+  .profil-position{
+
+    display: flex;
+    flex-direction: row;
+
+  }
+  .mb-0{
+    margin: 0 auto;
+
+  }
+  .fa-linkedin{
+    font-size: 50px;
+  }
+  .data_user_infos{
+    width: 70%;
+  }
+  .avatar-preview {
+    width: 192px;
+    height: 192px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  .card-member{
+    margin-top: 3px;
+  }
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+  }
+
+  .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+  }
+
+  .gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+
+  .gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+  .mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+  }
+
+  .bg-gray-300 {
+    background-color: #e2e8f0;
+  }
+  .h-100 {
+    height: 100%!important;
+  }
+  .shadow-none {
+    box-shadow: none!important;
+  }
+
 }

@@ -1,26 +1,52 @@
-<div class="container" *ngFor="let detailFounder of founderDetail_response">
 
-<h1>{{detailFounder.job}}</h1>
-<img class="profile" src="https://mysterious-reaches-96425.herokuapp.com/{{detailFounder.img_founder}}">
+<div class="scrollHalf" *ngIf="founderDetail_response; else founderDetailLoading ">
+
+  <div class="scrollHalf__grupo" data-scroll  *ngFor="let detailFounder of founderDetail_response" >
+    <div class="scrollHalf__grupo__imagen">
+      <img class="profile" src="https://mysterious-reaches-96425.herokuapp.com/{{detailFounder.img_founder}}" title="{{detailFounder.firstName}} {{detailFounder.name}}" alt="{{detailFounder.firstName}} {{detailFounder.name}}"/>
+    </div>
+    <div class="scrollHalf__grupo__contenido">
+      <h1>{{detailFounder.job}}</h1>
+      <h4>{{detailFounder.firstName}} {{detailFounder.name}}</h4>
+      <p>{{detailFounder.description}}</p>
+
+      <!-- <app-buttons-participation-event></app-buttons-participation-event> !-->
+
+      <!--
+      <h2> MEET THE CREW</h2>
+      <div class="member">
+        <p>Ricky Bobby</p>
+        <img class="thumb" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/bat-mag-layout.JPG">
+        <p class="crew-text">This is Ricky Bobby. He is awesome. Don't put a curse on him.</p>
+        <p class="crew-text">
+          @rickybobby
+        </p>
+      </div>
+      !-->
+    </div>
 
 
+  </div>
 
-  <p>{{detailFounder.description}}</p>
-<hr>
 
-  <h2> MEET THE CREW</h2>
-<div class="member">
-  <p>Ricky Bobby</p>
-<img class="thumb" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/bat-mag-layout.JPG">
-  <p class="crew-text">This is Ricky Bobby. He is awesome. Don't put a curse on him.</p>
-<p class="crew-text">
-@rickybobby
-</p>
 </div>
 
 
 
+<ng-template #founderDetailLoading>
+  <div class="kefi-loadingTime">
+    <div class="spinner-load">
+      <mat-spinner></mat-spinner>
+    </div>
 
-</div>
+
+    <p>Chargement de la page</p>
+
+  </div>
+</ng-template>
+
+
+
+
 
 <app-footer></app-footer>

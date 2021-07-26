@@ -1,5 +1,8 @@
 #error_connexion_message{
-
+  width: 20%;
+  z-index: 3;
+  position: absolute;
+  margin:0.5% 0 0 80%;
 }
 .alert>.start-icon {
   margin-right: 0;

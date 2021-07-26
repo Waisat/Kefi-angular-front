@@ -14,12 +14,14 @@ export class NavBarComponent implements OnInit {
   @Input('loginCheck') public Info:any
   @Input('userInfo') public UserLogInfo: any
   infosMemberPage:any;
+
   public verifyConnexion:any
   public myData:any
   constructor(private router: Router, private loginService: LoginService, private cookie: CookieService, private _route: Router, private MemberAreaList: MemberAreaCommunicationService) { }
   transferInfoConnexion:any
 
   ngOnInit(): void {
+
   this.transferInfoConnexion = this.Info
     this.getDataLoginService()
     this.verifyConnexion = this.UserLogInfo

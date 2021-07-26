@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxStripeModule } from 'ngx-stripe';
 import { AppRoutingModule } from './app-routing.module';
 import { CookieModule } from 'ngx-cookie';
 import { AppComponent } from './app.component';
@@ -56,8 +57,11 @@ import { PaginationMemberComponent } from './pagination-member/pagination-member
 import { SuccesComponent } from './displayMesage/succes/succes.component';
 import { ErrorComponent } from './displayMesage/error/error.component';
 import { FondateursDetailComponent } from './fondateurs-detail/fondateurs-detail.component';
-
-
+import { PayementSubcriptionComponent } from './payement-subcription/payement-subcription.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
+import { AsideKefiUserComponent } from './aside-kefi-user/aside-kefi-user.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,6 +102,8 @@ import { FondateursDetailComponent } from './fondateurs-detail/fondateurs-detail
     SuccesComponent,
     ErrorComponent,
     FondateursDetailComponent,
+    PayementSubcriptionComponent,
+    AsideKefiUserComponent,
 
 
 
@@ -111,6 +117,7 @@ import { FondateursDetailComponent } from './fondateurs-detail/fondateurs-detail
     HttpClientModule,
     AppRoutingModule,
     CookieModule.forRoot(),
+    NgxStripeModule.forRoot('pk_test_ABjBagJXX4p90kE1tnjXy7Aj00WAojb0VO'),
     FormsModule,
     ReactiveFormsModule,
     MatRadioModule,
@@ -118,7 +125,10 @@ import { FondateursDetailComponent } from './fondateurs-detail/fondateurs-detail
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatIconModule,
+    MatCheckboxModule,
+    MatInputModule,
+    IvyCarouselModule
 
   ],
   providers: [UserService,EventsService, AuthGuard, LoginService,{

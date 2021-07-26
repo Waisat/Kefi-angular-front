@@ -6,9 +6,9 @@
     <div class="item">
       <p>Localisation<span class="required">*</span></p>
       <div class="name-item">
-        <input type="text" name="city" placeholder="Ville" #city="ngModel"  [class.is-invalid]="city.invalid && city.touched" [(ngModel)]="newFormModel.city"/>
-        <input type="text" name="postal_code" placeholder="Code postal" #postal_code="ngModel"  [class.is-invalid]="postal_code.invalid && postal_code.touched" [(ngModel)]="newFormModel.postal_code"/>
-        <input type="text" name="country" placeholder="Pays" #country="ngModel"  [class.is-invalid]="country.invalid && country.touched" [(ngModel)]="newFormModel.country"/>
+        <input type="text" name="city" placeholder="Ville" ngModel required #city="ngModel"  [class.is-invalid]="city.invalid && city.touched" [(ngModel)]="newFormModel.city"/>
+        <input type="text" name="postal_code" placeholder="Code postal" ngModel required #postal_code="ngModel"  [class.is-invalid]="postal_code.invalid && postal_code.touched" [(ngModel)]="newFormModel.postal_code"/>
+        <input type="text" name="country" placeholder="Pays" ngModel required #country="ngModel"  [class.is-invalid]="country.invalid && country.touched" [(ngModel)]="newFormModel.country"/>
       </div>
 
 
@@ -22,7 +22,7 @@
     <div class="contact-item">
       <div class="item">
         <p>Profession<span class="required">*</span></p>
-        <input type="text" name="titleJob" #titleJob="ngModel"  [class.is-invalid]="titleJob.invalid && titleJob.touched" [(ngModel)]="newFormModel.jobTitle"/>
+        <input type="text" name="titleJob" ngModel required #titleJob="ngModel"  [class.is-invalid]="titleJob.invalid && titleJob.touched" [(ngModel)]="newFormModel.jobTitle"/>
       </div>
 
       <div *ngIf="titleJob.errors && (titleJob.invalid || titleJob.touched)">
@@ -40,7 +40,7 @@
       <div class="position-item"  >
 
       <label for="job_domain">Choisisez votre domaine ou métier:</label>
-      <select id="job_domain" name="job_domain" #job_domain="ngModel" [class.is-invalid]="job_domain.invalid && job_domain.touched"   [(ngModel)]="newFormModel.subjectJob">
+      <select id="job_domain" name="job_domain" ngModel required #job_domain="ngModel" [class.is-invalid]="job_domain.invalid && job_domain.touched"   [(ngModel)]="newFormModel.subjectJob">
 
         <optgroup *ngFor="let group of JsonJobData" label="{{group.text}}">
           <option *ngFor="let child of group.children"   [value]="child.text" >{{child.text}}</option>
@@ -55,11 +55,30 @@
 
       </div>
 
+      <div class="company-item">
+        <div class="item">
+          <p>Société<span class="required">*</span></p>
+          <input type="text" name="titleJob"  #company="ngModel"  [class.is-invalid]="titleJob.invalid && titleJob.touched" [(ngModel)]="newFormModel.company"/>
+        </div>
+
+
+
+      </div>
+
 
       <div class="item">
         <p>Date de naissance<span class="required">*</span></p>
-        <input type="date" name="bdate" #bdate="ngModel"  [class.is-invalid]="bdate.invalid && bdate.touched" [(ngModel)]="newFormModel.birthDate"/>
-        <i class="fas fa-calendar-alt"></i>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input name="bdate"  matInput [matDatepicker]="picker" #bdate="ngModel"  [class.is-invalid]="bdate.invalid && bdate.touched" [(ngModel)]="newFormModel.birthDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+      <div *ngIf="bdate.errors && (bdate.invalid || bdate.touched)">
+        <small class="warning-text" *ngIf="bdate.touched && bdate.errors">Votre Date de naissance est requise</small>
+
       </div>
     </div>
     <p>Form value: {{ newFormModel | json }}</p>
@@ -91,7 +110,7 @@
         <label for="other">Autres</label>
       </div>
 
-      <textarea cols="30" name="description" #description ="ngModel" [(ngModel)]="newFormModel.description"></textarea>
+      <textarea cols="30" name="description" #description ="ngModel"  [(ngModel)]="newFormModel.description"></textarea>
     </div>
     <div class="item">
       <p>Votre adresse Linkedin:</p>
@@ -107,7 +126,7 @@
       <p>Souhaitez vous que votre profil soit visible sur notre plateforme</p>
       <div class="question-answer">
         <div>
-          <input type="radio" value="1" id="radio_5" name="references" #references ="ngModel"  [(ngModel)]="newFormModel.profileVisibility"  checked/>
+          <input type="radio"  id="radio_5" name="references" #references ="ngModel"  [(ngModel)]="newFormModel.profileVisibility"/>
           <label for="radio_5" class="radio"><span>Oui</span></label>
         </div>
         <div>
@@ -121,11 +140,11 @@
       <p>Inscription à notre newsLetter</p>
       <div class="question-answer">
         <div>
-          <input type="radio" value="1" id="radio_newsLetter1" name="newsLetter" #newsLetter ="ngModel" [class.is-invalid]="newsLetter.invalid && newsLetter.touched"  [(ngModel)]="newFormModel.consentNewsLetter"  checked/>
+          <input type="radio" value="1" id="radio_newsLetter1" name="newsLetter" [value]="newFormModel.consentNewsLetter" ngModel required #newsLetter ="ngModel" [class.is-invalid]="newsLetter.invalid && newsLetter.touched"  [(ngModel)]="newFormModel.consentNewsLetter"  />
           <label for="radio_newsLetter1" class="radio"><span>Oui</span></label>
         </div>
         <div>
-          <input type="radio" value="0" id="radio_newsLetter2" name="newsLetter"  #newsLetter ="ngModel" [class.is-invalid]="newsLetter.invalid && newsLetter.touched" [(ngModel)]="newFormModel.consentNewsLetter"  />
+          <input type="radio" value="0" id="radio_newsLetter2" name="newsLetter" ngModel required  #newsLetter ="ngModel" [class.is-invalid]="newsLetter.invalid && newsLetter.touched" [(ngModel)]="newFormModel.consentNewsLetter"  />
           <label for="radio_newsLetter2" class="radio"><span>Non</span></label>
         </div>
       </div>
@@ -135,11 +154,16 @@
       </div>
     </div>
 
+    <div *ngIf="updateData.form.invalid && updateData.form.touched">
+      <p  class="warning-text">Verifier les champs munis *</p>
 
+    </div>
 
     <div class="btn-block">
       <div id="button_form_login"><button [disabled]="updateData.form.invalid" type="submit" class='ghost-round full-width'>Soumettre</button></div>
 
     </div>
+
+
   </form>
 </div>

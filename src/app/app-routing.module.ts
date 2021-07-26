@@ -18,6 +18,7 @@ import {CreateEventComponent} from "./adminFolder/create-event/create-event.comp
 import {EventDetailsComponent} from "./event-details/event-details.component";
 import {MembersAreaDetailComponent} from "./members-area-detail/members-area-detail.component";
 import {FondateursDetailComponent} from "./fondateurs-detail/fondateurs-detail.component";
+import {PayementSubcriptionComponent} from "./payement-subcription/payement-subcription.component";
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path:'membre/:slugUrl', component:MembersAreaDetailComponent, data: {animation: 'MemberAreaDetail'}},
   {path:'espace_membre', component:KefiMemberComponent, canActivate:[AuthGuard]},
   {path:'email_verification/:username/:token', component:EmailVerificationComponent},
+  {path:'inscription', component:PayementSubcriptionComponent},
   { path: '**', component: PageNotFoundComponent },
 
 

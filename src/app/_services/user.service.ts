@@ -22,13 +22,15 @@ import {GetDomainNameClass} from "../class/get-domain-name-class";
 import {SearchByName} from "../class/search-by-name";
 import {FoundersPublicModel} from "../class/founders-public-model";
 import {FounderDetailPublic} from "../class/founder-detail-public";
+import {FormDataKefiUpdate} from "../class/form-data-kefi-update";
+import {FormUpdateProfileUser} from "../class/form-update-profile-user";
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
 
-  ConfigUrl: string = "https://mysterious-reaches-96425.herokuapp.com"
+  ConfigUrl: string = "https://mysterious-reaches-96425.herokuapp.com/"
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
   }
@@ -248,7 +250,23 @@ export class UserService {
     );
   }
 
+  /*** Destroy previous photo profil from kefi user panel***/
 
 
+  destroyPrevious(FormPhotoUser: FormDataKefiUpdate): Observable<FormDataKefiUpdate> {
 
+    return this.http.post<FormDataKefiUpdate>(this.ConfigUrl + "/update_photo_profil_kefi_member", FormPhotoUser, this.options)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  /*** Update DB user kefi from panel kefi member***/
+  updateDataMemberKefi(FormDataUser: FormUpdateProfileUser): Observable<FormUpdateProfileUser> {
+
+    return this.http.post<FormUpdateProfileUser>(this.ConfigUrl + "/update_kefi_data", FormDataUser, this.options)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 }

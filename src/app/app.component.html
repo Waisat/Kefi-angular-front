@@ -1,13 +1,13 @@
 <app-nav-bar [loginCheck]="connect" [userInfo]="roleUserInfo"></app-nav-bar>
 <!-- Displaying  succes or error message !-->
 
-<div *ngIf="messageDisplay === 'receiveMessage' then successMessage" ></div>
+<div class="display-message-class" *ngIf="messageDisplay === 'receiveMessage' then successMessage" ></div>
 <ng-template #successMessage>
 <app-succes class="display-meesage"></app-succes>
 </ng-template>
 
 
-<div *ngIf="messageDisplay === 'error' then errorMessage" ></div>
+<div class="display-message-class" *ngIf="messageDisplay === 'error' then errorMessage" ></div>
 <ng-template #errorMessage>
   <app-error class="display-meesage"></app-error>
 </ng-template>

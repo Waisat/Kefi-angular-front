@@ -1,8 +1,41 @@
-@import url(https://fonts.googleapis.com/css?family=Old+Standard+TT);
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@media (max-width: 769px) {
+  .scrollHalf__grupo__imagen{
+    width: 100%;
+  }
+.profile{
+  margin: 20% 10% 0 10%;
+  width: 80%;
+}
+}
 .container{
   margin-top: 5%;
+
 }
+
+
+.scrollHalf { position: relative}
+/*.scrollHalf__grupo { opacity: calc(1/(1+(var(--visible-y)*var(--visible-y)*var(--visible-y)*var(--visible-y)))); transition: all 200ms ease-in-out;}*/
+
+
+.scrollHalf__grupo {  transition: all 200ms ease-in-out; }
+.scrollHalf__grupo__imagen { overflow: hidden; }
+.scrollHalf__grupo__contenido { padding: 3rem;     }
+
+
+.scrollHalf__grupo[data-scroll="out"] { opacity: 0;}
+.scrollHalf__grupo[data-scroll="in"] { opacity: calc(var(--visible-y)*1.9);  }
+
+
+@media screen and (min-width:900px) {
+  .scrollHalf__grupo { min-height: 100vh;}
+  .scrollHalf__grupo__imagen { position: fixed; top: 0; left: 0; width: 50vw;}
+  .scrollHalf__grupo__imagen img {  min-height: 100vh;  min-width: 50vw; }
+  .scrollHalf__grupo__contenido { margin: 0 3vw 0 52vw;}
+}
+
+
 h1, h2, h4, .meta-data {
   text-align: center;
 }
@@ -20,8 +53,8 @@ h1:first-of-type {
 }
 
 h1:last-of-type {
-  margin-top: 4em;
-  font-size: 0.7em;
+  margin-top: 2em;
+  font-size: 2.2rem;
   text-align: right;
   color: black;
 }
@@ -39,11 +72,17 @@ hr {
 }
 
 p {
+
   -webkit-column-count: 2;
   -moz-column-count: 2;
   column-count: 2;
+  font-family: 'Lato', sans-serif;
+  text-align: justify;
 }
-
+.scrollHalf__grupo__contenido{
+  margin-top: 3%;
+  padding: 5%;
+}
 i {
   margin-right: 5px;
   color: rgba(0, 0, 0, 0.8);
@@ -56,13 +95,7 @@ i {
   padding: 2px 4px;
 }
 
-.profile {
-  display: block;
-  width: 250px;
-  height: 250px;
-  margin: 0 auto;
-  border-radius: 50% 50% 50% 0;
-}
+
 
 .crew-members {
   display: flex;
@@ -95,6 +128,11 @@ i {
     font-size: 1.4em;
   }
 
+  .scrollHalf__grupo__imagen{
+    margin-top: 20%;
+  }
+
+
   p {
     -webkit-column-count: 1;
     -moz-column-count: 1;
@@ -103,6 +141,10 @@ i {
 
   .crew-members {
     flex-flow: row wrap;
+  }
+  .profile{
+    margin: 50% 10% 0 10%;
+    width: 80%;
   }
 
   .member {

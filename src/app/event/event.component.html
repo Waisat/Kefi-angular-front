@@ -1,18 +1,18 @@
 
 <div class="container">
-  <section id="event-sections"  *ngIf="eventsKefi">
+  <section id="event-sections"  *ngIf="eventsKefi; else spinnerLoading">
     <div *ngFor="let event of eventsKefi">
 
     <div class="blog-card spring-fever" >
-      <img src="http://localhost:5000/kefi_{{event.main_photo}}" title="{{event.title}}" alt="{{event.title}}">
+      <img id="event_kefi_id" src="https://mysterious-reaches-96425.herokuapp.com/{{event.main_photo}}" title="{{event.title}}" alt="{{event.title}}">
       <div class="title-content" >
         <h3><a href="#">{{event.title}}</a></h3>
-        <div class="intro"> <a href="#">Inspiration</a> </div>
       </div>
       <div class="card-info">
-        {{event.resume}}
-        <a href="evenements/{{event.event_matricule}}">Lire l'article<span class="licon icon-arr icon-black"></span></a>
+
+        <a href="evenements/{{event.event_matricule}}">Détails<span class="licon icon-arr icon-black"></span></a>
       </div>
+      <!---
       <div class="utility-info">
         <ul class="utility-list">
           <li><span class="licon icon-like"></span><a href="#">2</a></li>
@@ -21,10 +21,26 @@
           <li><span class="licon icon-tag"></span><a href="#">Photos</a>, <a href="#">{{event.city}}</a></li>
         </ul>
       </div>
+      !-->
       <div class="gradient-overlay"></div>
       <div class="color-overlay"></div>
     </div><!-- /.blog-card -->
     </div>
+
   </section>
+
+
 </div>
+<ng-template #spinnerLoading >
+  <div class="kefi-loadingTime">
+    <div class="spinner-load">
+      <mat-spinner></mat-spinner>
+    </div>
+
+
+    <p>Chargement de la page</p>
+
+  </div>
+</ng-template>
+
 <app-footer></app-footer>

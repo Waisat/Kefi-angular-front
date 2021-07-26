@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
 import {UserService} from "../_services/user.service";
@@ -16,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
   templateUrl: './member-area.component.html',
   styleUrls: ['./member-area.component.css']
 })
-export class MemberAreaComponent implements OnInit, OnChanges {
+export class MemberAreaComponent implements OnInit, OnChanges, AfterViewInit {
 
   constructor(private users: UserService, private MemberAreaList: MemberAreaCommunicationService, private route: ActivatedRoute, private communicationPage: CommunicationPublicMemberListService) { }
   infosMemberPage:any;
@@ -26,6 +26,7 @@ export class MemberAreaComponent implements OnInit, OnChanges {
   public getDataNavPage:any = []
   public infoNavList:any
   public keepDataInfo:any;
+
   ngOnInit(): void {
     this.transferUrl = this.allUsers
     console.log("bent to it",this.allUsers)
@@ -53,6 +54,11 @@ export class MemberAreaComponent implements OnInit, OnChanges {
   }
 
 
+  ngAfterViewInit() {
+
+
+  }
+
   getEmitter(newItem:string){
     this.getDataNavPage = newItem
     console.log('test data page', this.getDataNavPage)
@@ -62,7 +68,7 @@ export class MemberAreaComponent implements OnInit, OnChanges {
   getAllUsers(infoNav: any ){
     console.log('value infoNav', infoNav)
 
-    if(infoNav !== undefined || ""){
+    if(infoNav !== undefined){
 
       console.log("resposs",infoNav.page)
       this.allUsers.offset = infoNav.offsetUrl
@@ -71,25 +77,29 @@ export class MemberAreaComponent implements OnInit, OnChanges {
       this.allUsers.job = "all"
       this.allUsers.page = infoNav.page
       console.log("respnseo",this.allUsers)
-      this.users.requestAllUsers(this.allUsers).pipe(
-        catchError(err => {
-          console.log('Handling error locally and rethrowing it...', err);
-          return throwError(err);
+
+
+        this.users.requestAllUsers(this.allUsers).pipe(
+          catchError(err => {
+            console.log('Handling error locally and rethrowing it...', err);
+            return throwError(err);
+          })
+        ).subscribe(result =>{
+          console.log('elevated 55665',this.allUsers.offset)
+          console.log("result data all member page 55",result)
+          this.dataUsers = result
+          window.scroll(0, 0)
+
         })
-      ).subscribe(result =>{
-        console.log('elevated 55665',this.allUsers.offset)
-        console.log("result data all member page 55",result)
-        this.dataUsers = result
 
-
-      })
     }else{
+
       let getOffset = this.route.snapshot.params.offset
       let getLimit = this.route.snapshot.params.limit
       let getSearch = this.route.snapshot.params.search
       let getJob = this.route.snapshot.params.job
       let getPage = this.route.snapshot.params.page
-
+      console.log(getOffset, getLimit,getSearch, getJob, getPage )
       let removeSlashOffset = getOffset.replace("_", " ")
       let removeSlashLimit = getLimit.replace("_", " ")
       let removeSlashSearch = getSearch.replace("_", " ")

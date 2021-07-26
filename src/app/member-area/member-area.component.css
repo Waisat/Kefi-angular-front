@@ -1,8 +1,28 @@
 
 .container{
+  margin: 3% auto;
   padding: 2% 0;
 }
 
+
+.kefi-loadingTime{
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  height: 100vh;
+  margin: auto auto;
+  text-align: center;
+}
+.spinner-load{
+  margin: 0 auto;
+}
+.kefi-loadingTime p{
+  margin-top: 5%;
+  padding: 2%;
+  width: 100%;
+  font-size: 1.5rem;
+
+}
 .our-team {
   padding: 30px 0 40px;
   margin-bottom: 30px;

@@ -10,7 +10,7 @@ import {GetTokenArticleDetail} from "../class/get-token-article-detail";
   providedIn: 'root'
 })
 export class EventsService {
-  ConfigUrl:string ="https://mysterious-reaches-96425.herokuapp.com"
+  ConfigUrl:string ="https://mysterious-reaches-96425.herokuapp.com/"
   options:object = {
     responseType: 'json',
   };

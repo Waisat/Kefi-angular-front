@@ -1,3 +1,8 @@
 .display-meesage{
   margin: 10% auto 3% 0;
 }
+.display-message-class{
+  z-index: 5;
+  position: absolute;
+  top:20%
+}

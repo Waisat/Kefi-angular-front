@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
+.fa-envelope-open-text{
+  font-size: 450%;
+
+}
 
 button {
   overflow: visible;
@@ -26,7 +30,7 @@ textarea {
 #container {
   border: solid 3px #474544;
   max-width: 768px;
-  margin: 5% auto 3% auto;
+  margin: 8% auto 3% auto;
   position: relative;
 }
 
@@ -51,8 +55,9 @@ h1 {
 }
 
 .icon_wrapper {
-  margin: 50px auto 0;
-  width: 100%;
+
+  margin: 50px auto;
+  width: 10%;
 }
 
 .icon {
@@ -176,8 +181,8 @@ textarea {
 
 @media screen and (max-width: 768px) {
   #container {
-    margin: 20px auto;
-    width: 95%;
+    margin: 30% auto 10% auto;
+    width: 80%;
   }
 }
 
@@ -185,7 +190,10 @@ textarea {
   h1 {
     font-size: 26px;
   }
-
+  #container {
+    margin: 70% auto 10% auto;
+    width: 80%;
+  }
   .underline {
     width: 68px;
   }

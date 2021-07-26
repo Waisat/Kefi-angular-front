@@ -1,4 +1,6 @@
-
+.warning-text{
+  color: red;
+}
 h1 {
   position: absolute;
   margin: 0;

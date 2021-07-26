@@ -1,42 +1,43 @@
 
 
-<div id="about" class="section wb nopadtop" *ngIf="eventDetail">
-  <div class="container">
-    <h4>Evenement Kefi du {{eventDetail[0].event_date}}</h4>
-    <h1>{{eventDetail[0].title}}</h1>
-    <img class="profile" src="https://mysterious-reaches-96425.herokuapp.com/kefi_{{eventDetail[0].main_photo}}">
 
+<div class="scrollHalf" *ngIf="eventDetail; else eventDetailLoading ">
 
+  <div class="scrollHalf__grupo" data-scroll >
+    <div class="scrollHalf__grupo__imagen">
+      <carousel [images]="imagesEventCarousel" [arrowsTheme]="'dark'" [height]="1000" [autoplay]="true" [autoplayInterval]="5000" [pauseOnHover]="true" [dots]="true" [transitionTimingFunction]="'ease-in-out'" [width]="800" [cellsToScroll]="1" [cellWidth]="500" [loop]="true" [cellsToShow]="1" >
 
-    <p>{{eventDetail[0].resume}}</p>
-    <hr>
+      </carousel>
+     <!-- <img class="profile" src="http://localhost:5000/kefi_{{eventDetail[0].main_photo}}" title="{{eventDetail[0].title}}" alt="{{eventDetail[0].title}}"/> !-->
+    </div>
+    <div class="scrollHalf__grupo__contenido">
+      <h1>{{eventDetail[0].title}}</h1>
 
-    <div class="row">
+     <p class="resume_p">{{eventDetail[0].resume}}</p>
+      <app-kefi-event-table-infos [eventD]="eventDetail"></app-kefi-event-table-infos>
+     <!-- <app-buttons-participation-event></app-buttons-participation-event> !-->
 
-
-          <div id="table-detailEvent">
-          <app-kefi-event-table-infos [eventD]="eventDetail"></app-kefi-event-table-infos>
-          </div>
-
-          <app-buttons-participation-event></app-buttons-participation-event>
-  <!--
-          <app-comments-events-section></app-comments-events-section>
- !-->
-        </div><!-- end messagebox -->
-
-    <h2> MEET THE CREW</h2>
-    <div class="member">
-      <p>Ricky Bobby</p>
-      <img class="thumb" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/bat-mag-layout.JPG">
-      <p class="crew-text">This is Ricky Bobby. He is awesome. Don't put a curse on him.</p>
-      <p class="crew-text">
-        @rickybobby
-      </p>
     </div>
 
-    </div><!-- end row -->
 
 
-  </div><!-- end container -->
+  </div>
+
+
+</div>
+
+
+
+  <ng-template #eventDetailLoading>
+    <div class="kefi-loadingTime">
+      <div class="spinner-load">
+        <mat-spinner></mat-spinner>
+      </div>
+
+
+      <p>Chargement de la page</p>
+
+    </div>
+  </ng-template>
 <!-- end section -->
 <app-footer></app-footer>

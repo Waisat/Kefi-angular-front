@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SpinnerComponent implements OnInit {
 
   @Input() message = '';
-
+  @Input('getInfoLoading') public loadingMessage: any
   constructor() { }
 
   ngOnInit() {

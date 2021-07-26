@@ -18,6 +18,7 @@ export class MembersAreaDetailComponent implements OnInit {
   public parseLookingForInfos: any
 
   ngOnInit(): void {
+    window.scroll(0, 0)
     this.getDetailMemberPublic()
 
   }

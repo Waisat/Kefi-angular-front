@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HttpJsonLocalService} from "../_services/http-json-local.service";
 import {FormBuilder, FormControl,  FormGroup} from '@angular/forms';
 import {catchError} from "rxjs/operators";
@@ -6,6 +6,7 @@ import {throwError} from "rxjs";
 import {JobFormControl} from "../interfaces/job-form-control";
 import {FormdataUser} from "../class/formdata-user";
 import {UserService} from "../_services/user.service";
+import {CheckForFirstConnexionService} from "../_services/check-for-first-connexion.service";
 
 @Component({
   selector: 'app-welcome-modal',
@@ -14,13 +15,14 @@ import {UserService} from "../_services/user.service";
 })
 export class WelcomeModalComponent implements OnInit, AfterViewInit {
 
-    constructor(private formBuilder: FormBuilder, private http: HttpJsonLocalService, private user: UserService) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpJsonLocalService, private user: UserService,  private firstConnexionServices: CheckForFirstConnexionService) { }
   @Input('userId') public userId:any
   @Input('userFirstName') public userFirstName:any
+  @Output() public outPutRefresh = new EventEmitter<boolean>()
   JsonJobData: any
   jobControl = new FormControl();
   JsonJobInterface: JobFormControl[] = []
-  newFormModel = new FormdataUser("", "", "", "", "", "", {networkExpenssion:false, getSomeContract:false, findpartners:false, pitchProject:false, other:false},"", "","",1,1)
+  newFormModel = new FormdataUser("", "", "", "", "", "", "", {networkExpenssion:false, getSomeContract:false, findpartners:false, pitchProject:false, other:false},"", "","",1,1)
   form = new FormGroup({
     group: new FormControl(),
   });
@@ -30,17 +32,22 @@ export class WelcomeModalComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     //Initialisation de la data concernants les métiers pour le formulaire d'entrer
-
+    let getRadioProfilPublic = document.getElementById('radio_5')
 
   }
 
   ngAfterViewInit() {
     this.getDataJson()
-
+    this.addSubscriptionToTrue()
   }
 
   changeDomaine(){
     alert("hello")
+  }
+
+  addSubscriptionToTrue(){
+    let getNewsLetter = document.getElementById("radio_newsLetter1")
+
   }
 
   getDataJson(){
@@ -93,6 +100,7 @@ export class WelcomeModalComponent implements OnInit, AfterViewInit {
   }
 
   updateDataUser(){
+
     const formData = new FormData()
     if(this.photoProfile && this.newFormModel.photoUrl){
       formData.append("file", this.photoProfile, this.newFormModel.photoUrl)
@@ -101,16 +109,25 @@ export class WelcomeModalComponent implements OnInit, AfterViewInit {
     if(formData){
       this.sendPhotoUser(formData)
     }
+
     this.user.updateDataToDb(this.newFormModel).pipe(
       catchError(err => {
         console.log('Handling error locally and rethrowing it...', err);
         return throwError(err);
       })
     ).subscribe(result=>{
-      console.log(result)
+
+        this.outPutRefresh.emit(true)
+
+
+      console.log("result update ",result)
     })
 
+    this.firstConnexionServices.checkForValidationForms("success_send")
+
   }
+
+
 
 
 

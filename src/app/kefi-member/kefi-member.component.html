@@ -1,8 +1,9 @@
-<div class="container" *ngIf="tokenUser">
-  <div *ngIf="tokenUser.first_connexion === 0;then block else elseBlock"> </div>
+
+<div class="container" *ngIf="tokenUser; else waitForToken">
+  <div *ngIf="tokenUser.first_connexion === 0 && checkingStatsConnexionFirst !== 'success_send';then block else elseBlock"> </div>
 
   <ng-template  #block>
-    <app-welcome-modal [userId]="userName" [userFirstName]="tokenUser"></app-welcome-modal>
+    <app-welcome-modal (outPutRefresh)="checkIfUpdateProfile($event)"  [userId]="userName" [userFirstName]="tokenUser"></app-welcome-modal>
   </ng-template>
 
   <ng-template #elseBlock>
@@ -15,14 +16,33 @@
       <div class="top-part">
         <div class="card">
           <div class="card-body">
+
             <div class="item-card">
-              <img *ngIf="!tokenUser.photo_url; else imgUser" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-              <ng-template #imgUser>
-                <img src="https://mysterious-reaches-96425.herokuapp.com/{{tokenUser.photo_url}}" alt="{{tokenUser.photo_url}}" class="rounded-circle" width="150">
-              </ng-template>
+
+                <div class="avatar-upload">
+                  <div class="avatar-edit">
+                    <label for="imageUpload" id="imgUpload">  <i class="fas fa-camera-retro">
+                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" (change)="onFileSelect($event)" />
+                   </i> </label>
+                  </div>
+                  <div class="avatar-preview" >
+                    <div  id="imagePreview" *ngIf="tokenUser.photo_url; else defaultMen"  style="background-image: url(https://mysterious-reaches-96425.herokuapp.com/{{photoChange}})">
+
+                    </div>
+                    <ng-template #defaultMen>
+                      <div  id="imagePreviewDefault"   style="background-image: url(https://bootdey.com/img/Content/avatar/avatar7.png)">
+
+                      </div>
+                    </ng-template>
+                  </div>
+                </div>
+
                 <div class="card-member">
                 <h4>{{tokenUser.first_name}}</h4>
+                  <div >
                 <p class="text-secondary mb-1" *ngIf="tokenUser.job">{{tokenUser.job}}</p>
+                  </div>
+
                 <p class="text-muted font-size-sm" *ngIf="tokenUser.city "> {{tokenUser.city}}, {{tokenUser.postal_code}}, {{tokenUser.country}}</p>
               </div>
             </div>
@@ -30,26 +50,15 @@
         </div>
         <div class="card card-member">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
-              <span class="text-secondary">{{tokenUser.linkedin}}</span>
+            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap" >
+              <h6 class="mb-0"><a href="{{tokenUser.linkedin}}" target="_blank"><i class="fab fa-linkedin"></i></a> </h6>
+              <span class="text-secondary" *ngIf="editToValid === false; else linkedinToEdit"></span>
+              <ng-template #linkedinToEdit>
+                <input type="text" id="linkedinToEdit" ngModel required #titleLinkedin="ngModel"  value="{{tokenUser.linkedin}}" [(ngModel)]="newFormModel.linkedinAddress">
+
+              </ng-template>
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github mr-2 icon-inline"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>Github</h6>
-              <span class="text-secondary">bootdey</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter mr-2 icon-inline text-info"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>Twitter</h6>
-              <span class="text-secondary">@bootdey</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>
-              <span class="text-secondary">bootdey</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
-              <span class="text-secondary">bootdey</span>
-            </li>
+
           </ul>
         </div>
       </div>
@@ -58,11 +67,12 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">Nom complet</h6>
+                <h6 class="mb-0">Nom</h6>
               </div>
-              <div class="col-sm-9 text-secondary">
+              <div class="col-sm-9 text-secondary" >
                 {{tokenUser.first_name}} {{tokenUser.name}}
               </div>
+
             </div>
             <hr>
             <div class="row">
@@ -74,22 +84,103 @@
               </div>
             </div>
             <hr>
+
+            <div class="row" *ngIf="tokenUser.news_letter">
+
+              <div class="col-sm-3">
+                <h6 class="mb-0">Inscription <span class="required">*</span></h6>
+              </div>
+              <div class="newsLetterClass" *ngIf="editToValid === false; else newsLetterToEdit">
+                <div class="col-sm-9 text-secondary" *ngIf="tokenUser.news_letter === 1; else newLetterTrue">
+                  <p>Oui</p>
+                </div>
+                <ng-template #newLetterTrue>
+                  <div class="col-sm-9 text-secondary" >
+                    <p>Non</p>
+                  </div>
+                </ng-template>
+              </div>
+              <ng-template #newsLetterToEdit>
+                <div class="question-answer">
+                  <div>
+                    <input type="radio" value="1" id="radio_newsLetter1" name="newsLetter" [value]="tokenUser.news_letter" ngModel required #newsLetter ="ngModel" [class.is-invalid]="newsLetter.invalid && newsLetter.touched"   [(ngModel)]="newFormModel.consentNewsLetter"  />
+                    <label for="radio_newsLetter1" class="radio"><span>Oui</span></label>
+                  </div>
+                  <div>
+                    <input type="radio" value="0" id="radio_newsLetter2" name="newsLetter" ngModel required  #newsLetter ="ngModel" [class.is-invalid]="newsLetter.invalid && newsLetter.touched" [(ngModel)]="newFormModel.consentNewsLetter"  />
+                    <label for="radio_newsLetter2" class="radio"><span>Non</span></label>
+                  </div>
+                </div>
+              </ng-template>
+
+            </div>
+            <hr>
+
+            <div class="row" *ngIf="tokenUser.public_profil">
+
+              <div class="col-sm-3">
+                <h6 class="mb-0">Profil Public<span class="required">*</span></h6>
+              </div>
+              <div class="newsLetterClass" *ngIf="editToValid === false; else publicProfileToEdit">
+                <div class="col-sm-9 text-secondary" *ngIf="tokenUser.public_profil === 1; else publicProfileTrue">
+                  <p>Oui</p>
+                </div>
+                <ng-template #publicProfileTrue>
+                  <div class="col-sm-9 text-secondary" >
+                    <p>Non</p>
+                  </div>
+                </ng-template>
+              </div>
+              <ng-template #publicProfileToEdit>
+                <div class="question-answer">
+                  <div>
+                    <input type="radio" value="1" id="radio_publicProfile1" name="radio_publicProfile1" [value]="tokenUser.public_profil"  ngModel required #publicProfile ="ngModel" [class.is-invalid]="publicProfile.invalid && publicProfile.touched" [checked]="true"  [(ngModel)]="newFormModel.profileVisibility"  />
+                    <label for="radio_publicProfile1" class="radio"><span>Oui</span></label>
+                  </div>
+                  <div>
+                    <input type="radio" value="0" id="radio_publicProfile2" name="radio_publicProfile1" ngModel required  #publicProfile ="ngModel" [class.is-invalid]="publicProfile.invalid && publicProfile.touched" [(ngModel)]="newFormModel.profileVisibility"  />
+                    <label for="radio_publicProfile2" class="radio"><span>Non</span></label>
+                  </div>
+                </div>
+              </ng-template>
+
+            </div>
+            <hr>
+
+            <div class="row" *ngIf="tokenUser.company || editToValid === true">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Entreprise</h6>
+              </div>
+              <div class="col-sm-9 text-secondary" *ngIf="editToValid === false ; else companyEdit">
+                {{tokenUser.company}}
+              </div>
+              <ng-template #companyEdit>
+                <input type="text" name="companyToEdit" id="companyToEdit" value="{{tokenUser.company}}" [(ngModel)]="newFormModel.company"/>
+              </ng-template>
+            </div>
+            <hr>
             <div class="row" *ngIf="tokenUser.fix !== null">
               <div class="col-sm-3" >
                 <h6 class="mb-0">Téléphone fix</h6>
               </div>
-              <div class="col-sm-9 text-secondary">
+              <div class="col-sm-9 text-secondary" *ngIf="editToValid === false; else fixPhoneEdit">
                 {{tokenUser.fix}}
               </div>
+              <ng-template #fixPhoneEdit>
+                <input type="text" name="PhoneToEdit" id="PhoneToEdit" value="{{tokenUser.fix}}"/>
+              </ng-template>
             </div>
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">Mobile</h6>
+                <h6 class="mb-0">Mobile<span class="required">*</span></h6>
               </div>
-              <div class="col-sm-9 text-secondary">
+              <div class="col-sm-9 text-secondary" *ngIf="editToValid === false; else mobilePhoneEdit">
                 {{tokenUser.mobile}}
               </div>
+              <ng-template #mobilePhoneEdit>
+                <input type="text" name="mobileToEdit" id="mobileToEdit" value="{{tokenUser.mobile}}" [(ngModel)]="newFormModel.mobile"/>
+              </ng-template>
             </div>
             <hr>
             <div class="row" *ngIf="tokenUser.address">
@@ -97,38 +188,44 @@
                 <h6 class="mb-0">Address</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                Bay Area, San Francisco, CA
+                {{tokenUser.adress}}
               </div>
             </div>
             <hr>
 
             <div class="row" *ngIf="tokenUser.domain_job">
               <div class="col-sm-3">
-                <h6 class="mb-0">Job Domaine</h6>
+                <h6 class="mb-0">Domaine<span class="required">*</span></h6>
               </div>
-              <div class="col-sm-9 text-secondary">
+              <div class="col-sm-9 text-secondary" *ngIf="editToValid === false; else domainToEdit">
                 {{tokenUser.domain_job}}
               </div>
+              <ng-template #domainToEdit>
+                <input type="text" name="JobDomainToEdit" id="JobDomainToEdit" value="{{tokenUser.domain_job}}" ngModel required #JobDomainToEdit="ngModel"  [class.is-invalid]="JobDomainToEdit.invalid && JobDomainToEdit.touched" [(ngModel)]="newFormModel.subjectJob"/>
+              </ng-template>
             </div>
             <hr>
 
             <div class="row" *ngIf="tokenUser.job">
               <div class="col-sm-3">
-                <h6 class="mb-0">Job</h6>
+                <h6 class="mb-0">Emploi<span class="required">*</span></h6>
               </div>
-              <div class="col-sm-9 text-secondary">
+              <div class="col-sm-9 text-secondary" *ngIf="editToValid === false; else jobToEdit">
                 {{tokenUser.job}}
               </div>
+              <ng-template #jobToEdit>
+                <input type="text" name="JobToEdit" id="JobToEdit"  value="{{tokenUser.job}}"  ngModel required #JobToEdit="ngModel"  [class.is-invalid]="JobToEdit.invalid && JobToEdit.touched" [(ngModel)]="newFormModel.jobTitle"/>
+              </ng-template>
             </div>
             <hr>
 
 
             <div class="row" *ngIf="parseLookingForInfos">
               <div class="col-sm-3">
-                <h6 class="mb-0">Mes recherche en évenement</h6>
+                <h6 class="mb-0">Mes recherches</h6>
               </div>
 
-              <ul>
+              <ul *ngIf="editToValid === false; else lookingForEdit">
                 <li *ngIf="parseLookingForInfos.networkExpenssion"> Je souhaite développer mon réseau</li>
                 <li *ngIf="parseLookingForInfos.findpartners"> Je souhaite trouver des invesitisseurs ou partenaire pour mon projet</li>
                 <li *ngIf="parseLookingForInfos.getSomeContract"> Je souhaite trouver des contrats</li>
@@ -138,24 +235,71 @@
 
               </ul>
 
+            <ng-template #lookingForEdit>
+              <div class="question">
+                <p>Ce que vous rechercher lors des évenements de l'association Kefi<span class="required">*</span></p>
+                <div>
+                  <input type="checkbox" id="expendNetwork" name="expendNetwork" #expendNetwork [(ngModel)]="newFormModel.lookingFor.networkExpenssion">
+                  <label for="expendNetwork">Développer mon réseau</label>
+                </div>
 
+                <div>
+                  <input type="checkbox" id="getSomeContract" name="getSomeContract" value="getContracts" #getContracts [(ngModel)]="newFormModel.lookingFor.getSomeContract">
+                  <label for="getSomeContract">Obtenir des contrats</label>
+                </div>
 
+                <div>
+                  <input type="checkbox" id="findPartners" name="findPartners" value="findPartners"  #findPartners [(ngModel)]="newFormModel.lookingFor.findpartners" >
+                  <label for="findPartners">Trouvers des partenaires</label>
+                </div>
+
+                <div>
+                  <input type="checkbox" id="pitchProject" name="pitchProject" value="pitchProject" #pitchProject [(ngModel)]="newFormModel.lookingFor.pitchProject">
+                  <label for="pitchProject">Je souhaite pitcher</label>
+                </div>
+
+                <div>
+                  <input type="checkbox" id="other" name="other" value="other" #other [(ngModel)]="newFormModel.lookingFor.other">
+                  <label for="other">Autres</label>
+                </div>
+              </div>
+            </ng-template>
             </div>
+
             <hr>
 
-            <div class="row" *ngIf="tokenUser.description">
-              <div class="col-sm-3">
+            <div class="row" *ngIf="tokenUser.description || tokenUser.description === ''">
+              <div class="col-sm-3" *ngIf="tokenUser.description !== '' || editToValid === true">
                 <h6 class="mb-0">Description</h6>
               </div>
-              <div class="col-sm-9 text-secondary">
+              <div class="col-sm-9 text-secondary" *ngIf="editToValid === false; else descriptionEdit">
                 {{tokenUser.description}}
               </div>
+              <ng-template #descriptionEdit>
+                <textarea cols="30" *ngIf="tokenUser.description !== ''; else textArea" [(ngModel)]="newFormModel.description">
+                  {{tokenUser.description}}
+                </textarea>
+                <ng-template #textArea>
+                  <textarea cols="30" >
+
+                </textarea>
+                </ng-template>
+
+              </ng-template>
             </div>
             <hr>
+
+
             <div class="row">
-              <div class="col-sm-12">
-                <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+              <div class="col-sm-12" *ngIf="editToValid === false; else otherButtons"  >
+                <a  class="btn btn-info " id="edit" (click)="editFromPanel()">Edit</a>
+
               </div>
+              <ng-template #otherButtons>
+                <a  class="btn btn-info" id="cancel" (click)="cancelFromPanel()">Annuler</a>
+
+                <a  class="btn validation-btn " id="valid" (click)="validFromPanel()">Enregistrer</a>
+              </ng-template>
             </div>
           </div>
         </div>
@@ -171,4 +315,16 @@
   </div>
   </ng-template>
 </div>
+
+<ng-template #waitForToken>
+  <div class="kefi-loadingTime">
+    <div class="spinner-load">
+      <mat-spinner></mat-spinner>
+    </div>
+
+
+    <p>Chargement de la page</p>
+
+  </div>
+</ng-template>
 <app-footer></app-footer>

@@ -1,37 +1,24 @@
 
 
   <div class="row" *ngIf="eventData">
-    <div class="col-xs-12">
-      <div class="table-responsive" data-pattern="priority-columns">
-        <table summary="This table shows how to create responsive tables using RWD-Table-Patterns' functionality" class="table table-bordered table-hover">
-          <thead>
-          <tr>
 
-            <th data-priority="1">Date de L'êvenement</th>
-            <th data-priority="2">Heure de debut</th>
-            <th data-priority="3">Heure de fin</th>
-            <th data-priority="4">Adresse</th>
-            <th data-priority="5">Code Postal</th>
-            <th data-priority="6">Ville</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>{{eventData[0].event_date}}</td>
-            <td>{{eventData[0].start_hour}}</td>
-            <td>{{eventData[0].end_hour}}</td>
-            <td>{{eventData[0].adress}}</td>
-            <td>{{eventData[0].postal_code}}</td>
-            <td>{{eventData[0].city}}</td>
-            <td>2,780,387</td>
-          </tr>
+    <ul class="SG">
+      <li class="sgLi">
+        <div class="box">
 
-          </tbody>
-          <tfoot>
+          <ul class="df">
+            <li>Date : {{eventData[0].event_date}} </li>
+            <li>Début : {{eventData[0].start_hour}} </li>
+            <li>Fin : {{eventData[0].end_hour}} </li>
+            <li>Adresse : {{eventData[0].adress}} </li>
+            <li>Code Postal : {{eventData[0].postal_code}} </li>
+            <li>Ville : {{eventData[0].city}} </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
 
-          </tfoot>
-        </table>
-      </div><!--end of .table-responsive-->
-    </div>
+
+
   </div>
 

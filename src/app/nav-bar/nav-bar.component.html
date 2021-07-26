@@ -1,14 +1,24 @@
-<div class="page">
-  <div class="nav_logo">
-    <a routerLink="accueil" class="logo_kefi" ><img  src="assets/logo_nav_kefii.png" alt="logo_kefi" title="logo_kefi"></a>
-  <nav class="page__menu page__custom-settings menu">
+
+
+
+  <nav class="page__menu page__custom-settings menu nav_logo">
+
+    <a routerLink="accueil" id="logo_link"  ><img  src="assets/logo_nav_kefii.png" alt="logo_kefi" title="logo_kefi" class="logo_kefi"></a>
+    <input type="checkbox" id="menu_checkbox" class="burger_menu">
+    <label for="menu_checkbox" class="burger_menu">
+      <div></div>
+      <div></div>
+      <div></div>
+    </label>
     <ul class="menu__list r-list">
 
       <!--<li class="menu__group"><a routerLink="accueil" class="menu__link r-link text-underlined">Accueil</a></li> !-->
       <li class="menu__group"><a routerLink="fondateurs" class="menu__link r-link text-underlined">Fondateurs</a></li>
       <li class="menu__group" ><a  routerLink="membres/offset_0/limit_8/search_all/job_all/page_1" class="menu__link r-link text-underlined">Membres</a></li>
-      <li class="menu__group"><a routerLink="evenements" class="menu__link r-link text-underlined">Evênements</a></li>
+      <li class="menu__group"><a routerLink="evenements" class="menu__link r-link text-underlined">Événements</a></li>
+      <!--
       <li class="menu__group"><a routerLink="articles" class="menu__link r-link text-underlined">Articles</a></li>
+      !-->
       <li class="menu__group"><a routerLink="contact" class="menu__link r-link text-underlined">Contact</a></li>
       <div *ngIf="infosMemberPage === 'membre' ">
         <li class="menu__group"><a routerLink="espace_membre" class="menu__link r-link text-underlined">Profil</a></li>
@@ -19,7 +29,6 @@
       </div>
 
       <!--
-
       <div *ngIf="UserLogInfo.connect">
 
         <li class="menu__group menu__link r-link text-underlined"  id="firstNameUser" >{{UserLogInfo.username}}</li>
@@ -37,5 +46,5 @@
       <!--<li *ngIf="verifyConnection" class="menu__group"><a routerLink="member" class="menu__link r-link text-underlined">Membre Area</a></li>!-->
     </ul>
   </nav>
-  </div>
-</div>
+
+

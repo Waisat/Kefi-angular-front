@@ -10,14 +10,27 @@ gsap.registerPlugin(ScrollToPlugin);
 })
 export class HeaderComponent implements OnInit {
   scrollDown = ScrollToPlugin
+  heightNavBar:string = ""
+
+  images = [
+    {path: "assets/buffet.jpg"},
+    {path: "assets/roof.jpg"},
+    {path: "assets/cotedazur.jpg"},
+    {path: "assets/stone.jpg"},
+    {path: "assets/network.jpg"},
+    {path: "assets/chill.jpg"}
+  ]
   constructor() { }
 
   ngOnInit(): void {
     this.animateTitle()
    const aboutSection = this.getAboutSection()
     console.log('abouuut', aboutSection)
-
-
+    const GetHeightNavBar = document.getElementsByClassName('nav_logo')[0]
+    const getHeader = document.getElementsByTagName("header")[0]
+    this.heightNavBar = GetHeightNavBar.clientHeight.toString() + "px"
+    getHeader.style.marginTop = this.heightNavBar
+    console.log('client width', getHeader)
   }
 
   animateTitle(){

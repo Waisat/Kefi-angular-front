@@ -14,6 +14,14 @@ export class EventDetailsComponent implements OnInit {
 
   constructor(private event:EventsService , private _routerParameter:ActivatedRoute) { }
   eventDetail: any;
+
+  imagesEventCarousel = [
+
+    {path: 'assets/1.jpg'},
+    {path: 'assets/2.jpg'},
+    {path:'assets/3.jpg'},
+    {path: 'assets/4.jpg'},
+    ]
   ngOnInit(): void {
     this.getDetailEvent()
 
