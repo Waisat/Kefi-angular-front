@@ -30,7 +30,7 @@ import {FormUpdateProfileUser} from "../class/form-update-profile-user";
 
 export class UserService {
 
-  ConfigUrl: string = "https://mysterious-reaches-96425.herokuapp.com/"
+  ConfigUrl: string = "https://mysterious-reaches-96425.herokuapp.com"
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
   }
