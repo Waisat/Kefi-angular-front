@@ -5,35 +5,56 @@
   <div class="icon_wrapper">
     <i class="fas fa-envelope-open-text"></i>
   </div>
-  <form action="#" method="post" id="contact_form">
+
+  <form #contactData="ngForm" (ngSubmit)="contactMessage()" novalidate id="contact_form">
+
     <div class="name">
       <label for="name"></label>
-      <input type="text" placeholder="Mon nom est" name="name" id="name_input" required>
+      <input type="text" placeholder="Mon nom est *" name="name" id="name"  ngModel required #name="ngModel"  [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="formContact.name">
+      <small class="warning-text" *ngIf="name.touched && name.errors">Vous devez renseignez votre nom</small>
     </div>
     <div class="email">
       <label for="email"></label>
-      <input type="email" placeholder="Mon email est" name="email" id="email_input" required>
+      <input type="email" placeholder="Mon email est *" name="email" id="email" ngModel required #email="ngModel" [pattern]="emailPattern" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="formContact.email">
+      <small class="warning-text" *ngIf="email.touched && email.errors">Vous devez renseignez votre email</small>
     </div>
     <div class="telephone">
-      <label for="name"></label>
-      <input type="text" placeholder="Mon numéro est" name="telephone" id="telephone_input" required>
+      <label for="phone"></label>
+      <input type="text" placeholder="Mon numéro est" name="phone" id="phone" ngModel required #phone="ngModel"  [(ngModel)]="formContact.mobile">
     </div>
     <div class="subject">
       <label for="subject"></label>
-      <select placeholder="Sujet du message" name="subject" id="subject_input" required>
-        <option disabled hidden selected>Sujet du message</option>
-        <option>Je voudrais être adhérents</option>
-        <option>Je souhaite devenir partenir</option>
-        <option>Je suis déja membre et j'ai un probléme concernant le service</option>
+      <select placeholder="Sujet du message *" name="subject" id="subject" ngModel required #subject="ngModel"  [class.is-invalid]="subject.invalid && subject.touched" [(ngModel)]="formContact.subject">
+        <option disabled hidden selected>Sujet</option>
+        <option>Je voudrais être adhérent</option>
+        <option>Je souhaite devenir partenaire</option>
+        <option>J'ai un probléme concernant le service</option>
       </select>
+      <small class="warning-text" *ngIf="subject.touched && subject.errors">Vous devez renseignez le sujet de votre message</small>
+
     </div>
     <div class="message">
       <label for="message"></label>
-      <textarea name="message" placeholder="Je voudrais vous parler au sujet d'" id="message_input" cols="30" rows="5" required></textarea>
+      <textarea name="message" placeholder="Message *" id="message" cols="30" rows="5"  ngModel required #message="ngModel"  [class.is-invalid]="message.invalid && message.touched" [(ngModel)]="formContact.message"></textarea>
+    </div>
+
+    <div *ngIf="contactData.form.invalid && contactData.form.touched">
+      <p  class="warning-text">Verifier les champs munis *</p>
+
+    </div>
+    <div class="message-display">
+    <div *ngIf="messageSuccess">
+      <app-message-success></app-message-success>
+    </div>
+    <div *ngIf="errorMessage">
+      <app-message-error></app-message-error>
+    </div>
     </div>
     <div class="submit">
-      <input type="submit" value="Envoie du message" id="form_button" />
+      <input [disabled]="contactData.form.invalid" type="submit" value="Envoie du message" id="form_button" />
     </div>
+
+
   </form><!-- // End form -->
 </div><!-- // End #container -->
 <app-footer></app-footer>

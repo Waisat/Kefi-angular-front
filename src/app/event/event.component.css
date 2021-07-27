@@ -335,7 +335,7 @@ h3:after {
     background-size: 100%;
   }
   .card-info{
-    display:none
+    display:flex;
   }
   .blog-card:hover .title-content,.title-content{
     margin-top:40px

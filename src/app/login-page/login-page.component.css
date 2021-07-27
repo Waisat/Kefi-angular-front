@@ -426,7 +426,7 @@
     border: none;
   }
   button{
-    width: 80%;
+    width: 100%;
   }
   button:focus {
     outline: none;
@@ -480,7 +480,7 @@
     -webkit-align-self: flex-end;
     -ms-flex-item-align: end;
     align-self: flex-end;
-    font-size: 19px;
+    font-size: 12px;
     font-size: 1.2rem;
     font-family: roboto;
     font-weight: 300;
@@ -507,7 +507,7 @@
     font-weight: 300;
     letter-spacing: 0px;
     letter-spacing: 0.02rem;
-    font-size: 19px;
+    font-size: 12px;
     font-size: 1.2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.65);
     -webkit-transition: all .2s ease;
@@ -623,7 +623,7 @@
 
   #button_form_login {
     margin: 10% auto;
-    width: 30%;
+    width: 80%;
   }
   .window {
     width: 100%;

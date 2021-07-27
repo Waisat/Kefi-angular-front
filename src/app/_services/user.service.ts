@@ -24,13 +24,14 @@ import {FoundersPublicModel} from "../class/founders-public-model";
 import {FounderDetailPublic} from "../class/founder-detail-public";
 import {FormDataKefiUpdate} from "../class/form-data-kefi-update";
 import {FormUpdateProfileUser} from "../class/form-update-profile-user";
+import {ContactForm} from "../class/contact-form";
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
 
-  ConfigUrl: string = "https://mysterious-reaches-96425.herokuapp.com"
+  ConfigUrl: string = "http://localhost:5000"
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
   }
@@ -265,6 +266,16 @@ export class UserService {
   updateDataMemberKefi(FormDataUser: FormUpdateProfileUser): Observable<FormUpdateProfileUser> {
 
     return this.http.post<FormUpdateProfileUser>(this.ConfigUrl + "/update_kefi_data", FormDataUser, this.options)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  /*** Send  a message contact form Public***/
+
+  sendAMessage(formContact: ContactForm): Observable<ContactForm> {
+
+    return this.http.post<ContactForm>(this.ConfigUrl + "/contact_form_kefi", formContact, this.options)
       .pipe(
         catchError(this.handleError)
       );

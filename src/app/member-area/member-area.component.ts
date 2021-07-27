@@ -20,7 +20,7 @@ export class MemberAreaComponent implements OnInit, OnChanges, AfterViewInit {
 
   constructor(private users: UserService, private MemberAreaList: MemberAreaCommunicationService, private route: ActivatedRoute, private communicationPage: CommunicationPublicMemberListService) { }
   infosMemberPage:any;
-  public allUsers = new GetAllPublicUsers("", "","", "","")
+  public allUsers:any;
   public dataUsers:any;
   public transferUrl:any;
   public getDataNavPage:any = []
@@ -28,6 +28,7 @@ export class MemberAreaComponent implements OnInit, OnChanges, AfterViewInit {
   public keepDataInfo:any;
 
   ngOnInit(): void {
+    this.allUsers = new GetAllPublicUsers("", "","", "","")
     this.transferUrl = this.allUsers
     console.log("bent to it",this.allUsers)
     this.animateCardMembers()
@@ -78,7 +79,7 @@ export class MemberAreaComponent implements OnInit, OnChanges, AfterViewInit {
       this.allUsers.page = infoNav.page
       console.log("respnseo",this.allUsers)
 
-
+      if(this.allUsers.offset !== undefined){
         this.users.requestAllUsers(this.allUsers).pipe(
           catchError(err => {
             console.log('Handling error locally and rethrowing it...', err);
@@ -91,6 +92,8 @@ export class MemberAreaComponent implements OnInit, OnChanges, AfterViewInit {
           window.scroll(0, 0)
 
         })
+      }
+
 
     }else{
 

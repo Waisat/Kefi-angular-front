@@ -19,8 +19,7 @@ export class EventDetailsComponent implements OnInit {
 
     {path: 'assets/1.jpg'},
     {path: 'assets/2.jpg'},
-    {path:'assets/3.jpg'},
-    {path: 'assets/4.jpg'},
+    {path:'assets/3.jpg'}
     ]
   ngOnInit(): void {
     this.getDetailEvent()

@@ -62,6 +62,8 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import { AsideKefiUserComponent } from './aside-kefi-user/aside-kefi-user.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { MessageSuccessComponent } from './displayMessage/message-success/message-success.component';
+import { MessageErrorComponent } from './displayMessage/message-error/message-error.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -104,6 +106,8 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     FondateursDetailComponent,
     PayementSubcriptionComponent,
     AsideKefiUserComponent,
+    MessageSuccessComponent,
+    MessageErrorComponent,
 
 
 

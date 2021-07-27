@@ -4,7 +4,6 @@
     <div class='overlay'></div>
     <div class='content'>
       <div class='welcome'>Accès Membres</div>
-      <div class='subtitle'>Vous devez disposer d'un compte pour vous connecter. Si ce n'est pas le cas contacter nous pour devenir membre</div>
       <div class='input-fields'>
         <form #loginForm="ngForm" (ngSubmit)="Login()" novalidate>
           <input name="email" placeholder='Email' class='input-line full-width' ngModel required #email="ngModel" [pattern]="emailPattern" type="email" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="UserLoginModel.email">

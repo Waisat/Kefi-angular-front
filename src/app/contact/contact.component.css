@@ -137,6 +137,10 @@ textarea {
   width: 100%;
 }
 
+.message-display{
+  width: 60%;
+}
+
 ::-webkit-input-placeholder {
   color: #474544;
 }
@@ -201,6 +205,7 @@ textarea {
   #form_button {
     padding: 15px 25px;
   }
+
 }
 
 @media screen and (max-width: 420px) {
@@ -219,5 +224,8 @@ textarea {
 
   input[type='text'], [type='email'], select, textarea {
     font-size: 0.875em;
+  }
+  .fa-envelope-open-text{
+    width: 40%;
   }
 }

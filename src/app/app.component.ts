@@ -50,6 +50,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   ngAfterViewInit() {
+
     this.displayMessaging.messageToCheck.subscribe(infosNav =>this.messageDisplay = infosNav)
     this.timeOutToken()
   }

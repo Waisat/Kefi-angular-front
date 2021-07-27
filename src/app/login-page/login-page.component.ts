@@ -45,7 +45,10 @@ export class LoginPageComponent implements OnInit {
       ).subscribe(user => {
         this.userArray.push(user)
         userLoginInfo = JSON.parse(this.userArray)
-        this.cookieService.put(userLoginInfo.name, userLoginInfo.jwt, {domain:"radiant-crag-76180.herokuapp.com",  sameSite:'none', secure:true, expires: new Date(Date.now() + 100000*8)})
+        let date = new Date()
+        let timer = new Date(Date.now() +  3600000 )
+
+        this.cookieService.put(userLoginInfo.name, userLoginInfo.jwt, {domain:"radiant-crag-76180.herokuapp.com", expires:(timer.toString()), secure:false})
         const token = this.user.getCookieJwt("kefi_token")
         if(token){
           this.IsWait = false
