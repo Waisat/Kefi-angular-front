@@ -6,3 +6,13 @@
   position: absolute;
   top:20%
 }
+
+@media (max-width: 500px){
+  .spinner-load{
+    margin-top: 50%;
+    width:50%
+
+
+  }
+}
+
