@@ -48,7 +48,7 @@ export class LoginPageComponent implements OnInit {
         let date = new Date()
         let timer = new Date(Date.now() +  3600000 )
 
-        this.cookieService.put(userLoginInfo.name, userLoginInfo.jwt, {domain:"kefiassociation.fr", expires:(timer.toString()), secure:false})
+        this.cookieService.put(userLoginInfo.name, userLoginInfo.jwt, {domain:"kefiassociation.fr", expires:(timer.toString()), secure:true})
         const token = this.user.getCookieJwt("kefi_token")
         if(token){
           this.IsWait = false
