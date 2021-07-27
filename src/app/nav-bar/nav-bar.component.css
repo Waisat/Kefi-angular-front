@@ -631,11 +631,11 @@ DEMO
     display: flex;
     flex-direction: column;
 
-    width: 30%;
+    width: 60%;
     background-color: #151414;
   }
   .logo_kefi{
-    margin: 30% auto 0 auto ;
+    margin: 30% auto  ;
     z-index: 5;
     width: 150%;
   }
@@ -696,16 +696,6 @@ DEMO
     display: var(--menuLinkDisplay, block);
   }
 
-  ._ngcontent-wpe-c30{
-    display: none;
-  }
-._ngcontent-sry-c30{
-  display: none
-}
-
-._ngcontent-mcx-c30{
-  display: none;
-}
   /*
   focus state
   */
@@ -733,7 +723,16 @@ DEMO
 
     box-shadow: var(--menuBoxShadow, 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24));
   }
+  ._ngcontent-wpe-c30{
+    display: none;
+  }
+  ._ngcontent-sry-c30{
+    display: none
+  }
 
+  ._ngcontent-mcx-c30{
+    display: none;
+  }
 
   .menu__link{
     padding: var(--menuLinkPadding, 0.5rem 1.5rem);
