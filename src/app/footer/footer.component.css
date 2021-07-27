@@ -893,4 +893,8 @@ p {
   .copyright{
     width: 100%;
   }
+
+  footer{
+    display: none;
+  }
 }
