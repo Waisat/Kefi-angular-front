@@ -3,7 +3,7 @@
 
   <div class="scrollHalf__grupo" data-scroll  *ngFor="let detailFounder of founderDetail_response" >
     <div class="scrollHalf__grupo__imagen" *ngIf="detailFounder.detail_img !== '';else noPhoto">
-      <img class="profile" src="http://localhost:5000/{{detailFounder.detail_img}}" title="{{detailFounder.firstName}} {{detailFounder.name}}" alt="{{detailFounder.firstName}} {{detailFounder.name}}"/>
+      <img class="profile" src="https://mysterious-reaches-96425.herokuapp.com/{{detailFounder.detail_img}}" title="{{detailFounder.firstName}} {{detailFounder.name}}" alt="{{detailFounder.firstName}} {{detailFounder.name}}"/>
     </div>
     <ng-template #noPhoto>
       <div class="scrollHalf__grupo__imagen">
