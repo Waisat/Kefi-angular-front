@@ -59,7 +59,7 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
     this.user.getCookie().pipe(
       catchError(err => {
         console.log('Handling error locally and rethrowing it...', err);
-        this.cookieKefi.remove('kefi_token', {domain:'localhost'});
+        this.cookieKefi.remove('kefi_token', {domain:'kefiassociation.fr'});
         this._router.navigate(['/login'])
 
 
@@ -78,7 +78,7 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
         }
 
       }  , error =>{
-        this.cookieKefi.remove('kefi_token', {domain:'localhost'});
+        this.cookieKefi.remove('kefi_token', {domain:'kefiassociation.fr'});
         this._router.navigate(['/login'])
       }
     )
