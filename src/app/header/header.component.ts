@@ -22,6 +22,9 @@ export class HeaderComponent implements OnInit {
   ]
   constructor() { }
 
+  widthCarousel:any;
+  heightCarousel:any;
+
   ngOnInit(): void {
     this.animateTitle()
    const aboutSection = this.getAboutSection()
@@ -31,8 +34,22 @@ export class HeaderComponent implements OnInit {
     this.heightNavBar = GetHeightNavBar.clientHeight.toString() + "px"
     getHeader.style.marginTop = this.heightNavBar
     console.log('client width', getHeader)
+    this.getCarouselSizeHeader()
   }
 
+  getCarouselSizeHeader(){
+    this.widthCarousel = window.screen.width
+
+    if(this.widthCarousel < 500){
+      this.widthCarousel = 500
+      this.heightCarousel = 500
+    }else{
+      this.widthCarousel = 2000
+      this.heightCarousel = 1000
+    }
+
+
+  }
   animateTitle(){
     gsap.from("#main-slogan", {opacity:0, duration:1 ,
       ease: "bounce. out",

@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private servicesUser:UserService) { }
 
   ngOnInit(): void {
+    window.scroll(0, 0)
     //this.showConfigResponse()
 
   }

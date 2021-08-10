@@ -14,6 +14,7 @@ export class FondateursComponent implements OnInit {
   constructor(private foundersPublic: UserService) { }
   allFounders: any;
   ngOnInit(): void {
+    window.scroll(0, 0)
     this.displayAllFounders()
 
   }

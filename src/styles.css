@@ -4,5 +4,11 @@ body{
 }
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-datepicker-toggle .mat-icon-button {
+  background-color: #4682B4 ;;
+}
+.mat-calendar {
+  background-color: #4682B4;
+}

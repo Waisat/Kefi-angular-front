@@ -1,6 +1,7 @@
 export class FormdataUser {
 
   constructor(
+    public genre:string,
     public city: string,
     public postal_code: string,
     public country: string,
@@ -18,9 +19,9 @@ export class FormdataUser {
     public description:string,
     public linkedinAddress:string,
     public photoUrl:string,
-    public profileVisibility: number,
-    public consentNewsLetter:number
-
+    public profileVisibility: string,
+    public consentNewsLetter:string,
+    public readCgu:string,
 
   ) {
   }

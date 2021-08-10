@@ -9,6 +9,7 @@ export class FounderDetailPublic {
     public description_founder:string,
     public job:string,
     public slugID:string,
+    public detail_img:string
 
 
   ) {

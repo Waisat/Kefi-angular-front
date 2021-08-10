@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;1,300&family=Mukta:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 .scrollHalf { position: relative}
@@ -100,7 +100,7 @@ hr {
   -webkit-column-count: 2;
   -moz-column-count: 2;
   column-count: 2;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Merriweather', serif;
   text-align: justify;
 }
 
@@ -148,13 +148,28 @@ i {
   h1 {
     font-size: 1.4em;
   }
+  .carousel-event{
+    width: 80%;
+  }
 
+  .container{
+    margin: 30% auto 30% auto;
+  }
   p {
+
     -webkit-column-count: 1;
     -moz-column-count: 1;
     column-count: 1;
   }
-
+  .resume_p {
+    margin: 0 auto;
+    width: 80%;
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    font-family: 'Merriweather', serif;
+    text-align: justify;
+  }
   .crew-members {
     flex-flow: row wrap;
   }
@@ -162,5 +177,15 @@ i {
   .member {
     margin-bottom: 20px;
     flex: 1 100%;
+  }
+
+  .scrollHalf__grupo__imagen{
+    margin: 30% auto 30% auto;
+    width: 100%;
+    z-index: -1;
+
+
+
+
   }
 }

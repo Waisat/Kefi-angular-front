@@ -19,6 +19,8 @@ import {EventDetailsComponent} from "./event-details/event-details.component";
 import {MembersAreaDetailComponent} from "./members-area-detail/members-area-detail.component";
 import {FondateursDetailComponent} from "./fondateurs-detail/fondateurs-detail.component";
 import {PayementSubcriptionComponent} from "./payement-subcription/payement-subcription.component";
+import {MemberAreaScrollComponent} from "./member-area-scroll/member-area-scroll.component";
+import {CguComponent} from "./cgu/cgu.component";
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -27,16 +29,18 @@ const routes: Routes = [
   { path: 'fondateur/:name', component: FondateursDetailComponent, data: {animation: 'FoundersDetailPage'}},
   {path: 'login', component: LoginPageComponent ,data: {animation: 'LoginPage'}},
   {path: 'contact', component: ContactComponent, data: {animation: 'ContactPage'}},
+  {path: 'conditions_generales_utilisation', component: CguComponent, data: {animation: 'CGUPage'}},
   {path: 'articles', component: ArticlesComponent, data: {animation: 'ArticlesPage'}},
   {path: 'evenements', component: EventComponent, data: {animation: 'EventPage'}},
-  {path: 'evenements/:articleId', component: EventDetailsComponent},
+  {path: 'evenements/:articleId', component: EventDetailsComponent, data:{ animation: 'EventPageDetail'}},
   {path:'admin', component:AdminAreaComponent, canActivate:[AuthGuard]},
   {path:'admin/member_list/:specific/:order/:option/:page/:offset/:limit/:way', component:MemberListComponent, canActivate:[AuthGuard]},
   {path:'admin/ajout_membre', component:AddMemberComponent, canActivate:[AuthGuard]},
   {path:'admin/creation_evenement', component:CreateEventComponent, canActivate:[AuthGuard]},
-  {path:'membres/:offset/:limit/:search/:job/:page', component:MemberAreaComponent, data: {animation: 'MemberSearch'}},
+ // {path:'membres/:offset/:limit/:search/:job/:page', component:MemberAreaScrollComponent, data: {animation: 'MemberSearch'}},
+  {path:'membres', component:MemberAreaScrollComponent, data: {animation: 'MemberSearch'}},
   {path:'membre/:slugUrl', component:MembersAreaDetailComponent, data: {animation: 'MemberAreaDetail'}},
-  {path:'espace_membre', component:KefiMemberComponent, canActivate:[AuthGuard]},
+  {path:'espace_membre', component:KefiMemberComponent, canActivate:[AuthGuard],  data: {animation: 'ZoneMemberPage'}},
   {path:'email_verification/:username/:token', component:EmailVerificationComponent},
   {path:'inscription', component:PayementSubcriptionComponent},
   { path: '**', component: PageNotFoundComponent },

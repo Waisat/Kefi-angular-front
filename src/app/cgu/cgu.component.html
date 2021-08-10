@@ -1,0 +1,18 @@
+<div class="container">
+
+  <div class="cgu-class-text" *ngIf="cguText && !noCGu; else refNoCgu">
+  <h3>Conditions Générales d'utilisation KEFI association</h3>
+  <p>
+    {{this.cguText}}
+  </p>
+  </div>
+
+  <ng-template #refNoCgu>
+    <p>
+      Erreur d'affichage concernant les conditions générales d'utilisation
+    </p>
+
+  </ng-template>
+</div>
+
+

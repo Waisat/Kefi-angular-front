@@ -4,17 +4,12 @@
   <nav class="page__menu page__custom-settings menu nav_logo">
 
     <a routerLink="accueil" id="logo_link"  ><img  src="assets/logo_nav_kefii.png" alt="logo_kefi" title="logo_kefi" class="logo_kefi"></a>
-    <input type="checkbox" id="menu_checkbox" class="burger_menu">
-    <label for="menu_checkbox" class="burger_menu">
-      <div></div>
-      <div></div>
-      <div></div>
-    </label>
+
     <ul class="menu__list r-list">
 
       <!--<li class="menu__group"><a routerLink="accueil" class="menu__link r-link text-underlined">Accueil</a></li> !-->
       <li class="menu__group"><a routerLink="fondateurs" class="menu__link r-link text-underlined">Fondateurs</a></li>
-      <li class="menu__group" ><a  routerLink="membres/offset_0/limit_8/search_all/job_all/page_1" class="menu__link r-link text-underlined">Membres</a></li>
+      <li class="menu__group" ><a  routerLink="membres" class="menu__link r-link text-underlined">Membres</a></li>
       <li class="menu__group"><a routerLink="evenements" class="menu__link r-link text-underlined">Événements</a></li>
       <!--
       <li class="menu__group"><a routerLink="articles" class="menu__link r-link text-underlined">Articles</a></li>
@@ -41,10 +36,55 @@
       <li class="menu__group"><a routerLink="login" class="menu__link r-link text-underlined" [state]="{ data: {Info:transferInfoConnexion}}" >Connexion</a></li>
         </ng-template>
       <ng-template #elseBlock>
-      <li  class="menu__group " (click)="logOut()" ><a routerLink="#" class="menu__link r-link text-underlined">Deconnexion</a> </li>
+      <li  class="menu__group menu__link r-link text-underlined" (click)="logOut()" >Deconnexion </li>
       </ng-template>
       <!--<li *ngIf="verifyConnection" class="menu__group"><a routerLink="member" class="menu__link r-link text-underlined">Membre Area</a></li>!-->
     </ul>
+
+
+
   </nav>
 
+
+  <nav role="navigation" id="nav-bar-phone">
+
+    <a routerLink="accueil"   ><img  src="assets/logo_nav_kefii.png" alt="logo_kefi" title="logo_kefi" class="logo_kefi"></a>
+    <div id="menuToggle">
+
+      <input type="checkbox" />
+
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+
+      <ul id="menu">
+
+        <div id="flex-nav-wrap">
+          <li class="nav-phone-style"><a routerLink="accueil">Accueil</a></li>
+          <li class="nav-phone-style"><a routerLink="fondateurs">Fondateurs</a></li>
+          <li class="nav-phone-style"><a routerLink="membres">Membres</a></li>
+          <li class="nav-phone-style"><a routerLink="evenements">Evenements</a></li>
+          <li class="nav-phone-style"> <a routerLink="contact">Contact</a></li>
+        <div *ngIf="infosMemberPage === 'logout';then block else elseBlock"> </div>
+        <ng-template  #block>
+          <li class="menu__group"><a routerLink="login" [state]="{ data: {Info:transferInfoConnexion}}" >Connexion</a></li>
+        </ng-template>
+        <ng-template #elseBlock>
+          <li  class="menu__group " (click)="logOut()" >Deconnexion</li>
+        </ng-template>
+        <!--<li *ngIf="verifyConnection" class="menu__group"><a routerLink="member" class="menu__link r-link text-underlined">Membre Area</a></li>!-->
+
+        <div *ngIf="infosMemberPage === 'membre' ">
+          <li class="menu__group"><a routerLink="espace_membre">Profil</a></li>
+        </div>
+
+        <div *ngIf="infosMemberPage === 'admin'">
+          <li class="menu__group"><a routerLink="admin">Admin</a></li>
+        </div>
+        </div>
+      </ul>
+    </div>
+  </nav>
 

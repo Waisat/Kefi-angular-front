@@ -13,6 +13,7 @@ export class EventComponent implements OnInit {
   constructor(private events: EventsService ) { }
 
   ngOnInit(): void {
+    window.scroll(0, 0)
     this.getEventData()
   }
   getEventData(){

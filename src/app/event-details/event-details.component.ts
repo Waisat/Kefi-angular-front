@@ -11,9 +11,11 @@ import {throwError} from "rxjs";
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
-
+  errorEventDetailUrl:any
   constructor(private event:EventsService , private _routerParameter:ActivatedRoute) { }
   eventDetail: any;
+  widthCarousel:any;
+  heightCarousel:any;
 
   imagesEventCarousel = [
 
@@ -23,6 +25,20 @@ export class EventDetailsComponent implements OnInit {
     ]
   ngOnInit(): void {
     this.getDetailEvent()
+    this.getCarouselSize()
+  }
+
+
+  getCarouselSize(){
+    this.widthCarousel = window.screen.width
+
+    if(this.widthCarousel < 500){
+      this.widthCarousel = 300
+      this.heightCarousel = 500
+    }else{
+      this.heightCarousel = 1000
+    }
+
 
   }
 
@@ -40,6 +56,9 @@ export class EventDetailsComponent implements OnInit {
         return throwError(err);
       })).subscribe((result=>{
         this.eventDetail = result
+        if(this.eventDetail.status === "failed"){
+          this.errorEventDetailUrl = true
+        }
         console.log(result)
       }))
 

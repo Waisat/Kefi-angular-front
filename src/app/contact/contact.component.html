@@ -10,27 +10,27 @@
 
     <div class="name">
       <label for="name"></label>
-      <input type="text" placeholder="Mon nom est *" name="name" id="name"  ngModel required #name="ngModel"  [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="formContact.name">
+      <input type="text" placeholder="Nom *" name="name" id="name"  ngModel required #name="ngModel"  [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="formContact.name">
       <small class="warning-text" *ngIf="name.touched && name.errors">Vous devez renseignez votre nom</small>
     </div>
     <div class="email">
       <label for="email"></label>
-      <input type="email" placeholder="Mon email est *" name="email" id="email" ngModel required #email="ngModel" [pattern]="emailPattern" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="formContact.email">
+      <input type="email" placeholder="Email *" name="email" id="email" ngModel required #email="ngModel" [pattern]="emailPattern" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="formContact.email">
       <small class="warning-text" *ngIf="email.touched && email.errors">Vous devez renseignez votre email</small>
     </div>
     <div class="telephone">
       <label for="phone"></label>
-      <input type="text" placeholder="Mon numéro est" name="phone" id="phone" ngModel required #phone="ngModel"  [(ngModel)]="formContact.mobile">
+      <input type="text" placeholder="Téléphone" name="phone" id="phone" ngModel required #phone="ngModel"  [(ngModel)]="formContact.mobile">
     </div>
     <div class="subject">
       <label for="subject"></label>
       <select placeholder="Sujet du message *" name="subject" id="subject" ngModel required #subject="ngModel"  [class.is-invalid]="subject.invalid && subject.touched" [(ngModel)]="formContact.subject">
-        <option disabled hidden selected>Sujet</option>
-        <option>Je voudrais être adhérent</option>
+        <option value="" disabled selected>Sujet *</option>
+        <option>Je souhaite être adhérent</option>
         <option>Je souhaite devenir partenaire</option>
-        <option>J'ai un probléme concernant le service</option>
+        <option>J'ai un problème concernant le service</option>
       </select>
-      <small class="warning-text" *ngIf="subject.touched && subject.errors">Vous devez renseignez le sujet de votre message</small>
+      <small class="warning-text" *ngIf="subject.touched && subject.errors">Vous devez renseigner le sujet de votre message</small>
 
     </div>
     <div class="message">
@@ -51,7 +51,7 @@
     </div>
     </div>
     <div class="submit">
-      <input [disabled]="contactData.form.invalid" type="submit" value="Envoie du message" id="form_button" />
+      <input [disabled]="contactData.form.invalid" type="submit" value="Envoyer" id="form_button" />
     </div>
 
 

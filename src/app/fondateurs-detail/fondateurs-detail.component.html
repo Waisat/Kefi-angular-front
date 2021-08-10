@@ -2,9 +2,16 @@
 <div class="scrollHalf" *ngIf="founderDetail_response; else founderDetailLoading ">
 
   <div class="scrollHalf__grupo" data-scroll  *ngFor="let detailFounder of founderDetail_response" >
-    <div class="scrollHalf__grupo__imagen">
-      <img class="profile" src="https://mysterious-reaches-96425.herokuapp.com/{{detailFounder.img_founder}}" title="{{detailFounder.firstName}} {{detailFounder.name}}" alt="{{detailFounder.firstName}} {{detailFounder.name}}"/>
+    <div class="scrollHalf__grupo__imagen" *ngIf="detailFounder.detail_img !== '';else noPhoto">
+      <img class="profile" src="http://localhost:5000/{{detailFounder.detail_img}}" title="{{detailFounder.firstName}} {{detailFounder.name}}" alt="{{detailFounder.firstName}} {{detailFounder.name}}"/>
     </div>
+    <ng-template #noPhoto>
+      <div class="scrollHalf__grupo__imagen">
+        <img class="profile" src="https://mysterious-reaches-96425.herokuapp.com/{{detailFounder.img_founder}}" title="{{detailFounder.firstName}} {{detailFounder.name}}" alt="{{detailFounder.firstName}} {{detailFounder.name}}"/>
+      </div>
+    </ng-template>
+
+
     <div class="scrollHalf__grupo__contenido">
       <h1>{{detailFounder.job}}</h1>
       <h4>{{detailFounder.firstName}} {{detailFounder.name}}</h4>

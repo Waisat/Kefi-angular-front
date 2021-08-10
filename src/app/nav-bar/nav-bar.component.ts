@@ -14,6 +14,7 @@ export class NavBarComponent implements OnInit {
   @Input('loginCheck') public Info:any
   @Input('userInfo') public UserLogInfo: any
   infosMemberPage:any;
+  public heightNav:any;
 
   public verifyConnexion:any
   public myData:any
@@ -21,7 +22,6 @@ export class NavBarComponent implements OnInit {
   transferInfoConnexion:any
 
   ngOnInit(): void {
-
   this.transferInfoConnexion = this.Info
     this.getDataLoginService()
     this.verifyConnexion = this.UserLogInfo
@@ -30,6 +30,7 @@ export class NavBarComponent implements OnInit {
     this.MemberAreaList.currentMessage.subscribe(infosNav =>this.infosMemberPage = infosNav)
 
   }
+
 
   getDataLoginService(){
     this.loginService.getData().subscribe(data => {

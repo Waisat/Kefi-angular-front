@@ -1,3 +1,165 @@
+@media (min-width: 500px) {
+  form {
+    position: relative;
+    width: 30rem;
+    border-radius: 20px;
+    margin: 5% 0;
+  }
+  input,
+  button {
+
+
+    border: solid 3px black;
+    color: black;
+    font-size: 1.8rem;
+  }
+  input #search {
+
+    outline: 0;
+    width: 100%;
+    background:red;
+    padding: 0 1.6rem;
+    border-radius: 20px;
+    appearance: none;
+    height: 100%;
+
+    z-index: 1;
+    position: relative;
+  }
+  button {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10%;
+    height: auto;
+    font-weight: bold;
+    background: green;
+    border-radius: 0 10% 10% 0;
+  }
+  input:not(:placeholder-shown) {
+    border-radius: 10% 0 0 10%;
+    width: calc(100% - 10%);
+
+  }
+
+  input + button {
+    display: block;
+  }
+  label {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+  }
+
+
+  @media screen and (prefers-color-scheme: dark) {
+    body, input {
+      color: #f1f1f1;
+    }
+    body {
+      background: #171717;
+    }
+    .search-bar input {
+      box-shadow: 0 0 0 0.4em #f1f1f1 inset;
+    }
+    .search-bar input:focus,
+    .search-bar input:valid {
+      background: #3d3d3d;
+      box-shadow: 0 0 0 0.1em #3d3d3d inset;
+    }
+    .search-btn {
+      background: #f1f1f1;
+    }
+  }
+}
+
+
+@media (max-width: 499px) {
+  form {
+    position: relative;
+    width: 20%;
+    border-radius: 20px;
+    margin: 5% 20%;
+  }
+  input,
+  button {
+
+
+    border: solid 3px black;
+    color: black;
+    font-size: 1.2rem;
+  }
+  input #search {
+
+    outline: 0;
+    width: 100%;
+    background:red;
+    padding: 0 1.6rem;
+    border-radius: 20px;
+    appearance: none;
+    height: 100%;
+
+    z-index: 1;
+    position: relative;
+  }
+  button {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10%;
+    height: auto;
+    font-weight: bold;
+    background: green;
+    border-radius: 0 10% 10% 0;
+  }
+  input:not(:placeholder-shown) {
+    border-radius: 10% 0 0 10%;
+    width: calc(100% - 10%);
+
+  }
+
+  input + button {
+    display: block;
+  }
+  label {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+  }
+
+
+  @media screen and (prefers-color-scheme: dark) {
+    body, input {
+      color: #f1f1f1;
+    }
+    body {
+      background: #171717;
+    }
+    .search-bar input {
+      box-shadow: 0 0 0 0.4em #f1f1f1 inset;
+    }
+    .search-bar input:focus,
+    .search-bar input:valid {
+      background: #3d3d3d;
+      box-shadow: 0 0 0 0.1em #3d3d3d inset;
+    }
+    .search-btn {
+      background: #f1f1f1;
+    }
+  }
+}
+
+/*
 .filter-search-member{
   width: 100%;
 }
@@ -109,3 +271,4 @@ form{
     padding: 0 6px;
   }
 }
+*/

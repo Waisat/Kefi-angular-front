@@ -83,7 +83,7 @@ li{
 
 /* responsive grid*/
 @media (max-width: 970px){
-  .SG .sgLi{width: 180px;}}
+  .SG .sgLi{width: 100%;}}
 @media (max-width: 425px){
   .SG .sgLi{width: 100%;}
 }

@@ -54,8 +54,8 @@
   width: 70%;
 }
 .avatar-preview {
-  width: 192px;
-  height: 192px;
+  width: 50%;
+  height: 100%;
   position: relative;
   border-radius: 100%;
   border: 6px solid #F8F8F8;
@@ -136,14 +136,18 @@
   }
 
   .container{
-    width: 80%;
-    margin:20% auto 5% auto;
+    width: 90%;
+    margin:30% auto 5% auto;
   }
   .top-part{
-    width: 30%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 
+  }
+
+  .card-body{
+    width: 100%;
   }
   .col-sm-3{
     display: flex;
@@ -151,7 +155,7 @@
     width: 100%;
   }
   .rounded-circle{
-    width: 80%;
+    width: 50%;
   }
 
   .item-card{
@@ -172,7 +176,7 @@
     font-size: 50px;
   }
   .data_user_infos{
-    width: 70%;
+    width: 100%;
   }
   .avatar-preview {
     width: 192px;
@@ -198,6 +202,7 @@
   }
 
   .card-body {
+    width: 100%;
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1rem;
@@ -226,4 +231,16 @@
     box-shadow: none!important;
   }
 
+
+  .profil-position {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 499px) {
+  .container{
+    width: 90%;
+    margin:30% auto 30% auto;
+  }
 }

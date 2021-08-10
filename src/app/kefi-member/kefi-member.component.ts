@@ -31,6 +31,9 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
   regexLinkedinMember: RegExp =/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)/
   newFormModel:any;
   newImg:string =""
+  checkIfEmailUpdate:any;
+  defaultMenUrl: string = "defaultmen.png"
+  defaultWomanUrl: string = "defaultwoman.png"
     /*
     =  new FormUpdateProfileUser("", "", "", "", "",  "","" , {networkExpenssion:false, getSomeContract:false, findpartners:false, pitchProject:false, other:false},"", "",1,1)
 */
@@ -38,7 +41,7 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
   constructor(private user: UserService, private cookieKefi: CookieService, private _router: Router, private firstConnexionServices: CheckForFirstConnexionService) { }
 
   ngOnInit(): void {
-
+    window.scroll(0, 0)
     this.getDataMember()
     this.firstConnexionServices.currentMessage.subscribe(infosConnexionFirst =>this.checkingStatsConnexionFirst = infosConnexionFirst)
 
@@ -83,13 +86,17 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
 
   checkIfUpdateProfile(update:boolean){
     this.checkChanges = update
-    console.log("this changes ",this.checkChanges)
+    if(this.checkChanges ){
+      this.getDataMember()
+      console.log("this changes ",this.checkChanges)
+    }
+
   }
   /*** Edition à partir du paneau administrateur***/
   editFromPanel(){
     this.editToValid = true
     this.lookingForChoice = JSON.parse(this.tokenUser.looking_for)
-    this.newFormModel = new FormUpdateProfileUser(this.tokenUser.city, this.tokenUser.postal_code, this.tokenUser.country, this.tokenUser.company, this.tokenUser.job,  this.tokenUser.domain_job,this.tokenUser.mobile , {networkExpenssion: this.parseLookingForInfos.networkExpenssion, getSomeContract: this.parseLookingForInfos.getSomeContract, findpartners: this.parseLookingForInfos.findpartners, pitchProject: this.parseLookingForInfos.pitchProject, other: this.parseLookingForInfos.other},this.tokenUser.description, this.tokenUser.linkedin,this.tokenUser.public_profil,this.tokenUser.news_letter)
+    this.newFormModel = new FormUpdateProfileUser(this.tokenUser.city, this.tokenUser.postal_code, this.tokenUser.country, this.tokenUser.company, this.tokenUser.job,  this.tokenUser.domain_job,this.tokenUser.mobile , {networkExpenssion: this.parseLookingForInfos.networkExpenssion, getSomeContract: this.parseLookingForInfos.getSomeContract, findpartners: this.parseLookingForInfos.findpartners, pitchProject: this.parseLookingForInfos.pitchProject, other: this.parseLookingForInfos.other},this.tokenUser.description, this.tokenUser.linkedin,this.tokenUser.public_profil.toString(),this.tokenUser.news_letter.toString())
 
   }
 
@@ -105,7 +112,7 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
           return throwError(err);
         }
       )).subscribe((result=>{
-
+        this.getDataMember()
         console.log(result)
       }))
     }
@@ -175,11 +182,16 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
         return throwError(err);
       })
     ).subscribe(result=>{
-      console.log(result)
+      console.log("res",result)
+      this.checkIfEmailUpdate = result
+      if(this.checkIfEmailUpdate.checkUpdateFirstCo === true){
+        this.getDataMember()
+      }else{
+        console.log('error to charge image')
+      }
 
     })
 
-   this.photoChange = this.newImg
     console.log(this.photoChange)
   }
 

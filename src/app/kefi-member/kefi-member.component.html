@@ -25,18 +25,18 @@
                     <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" (change)="onFileSelect($event)" />
                    </i> </label>
                   </div>
-                  <div class="avatar-preview" >
-                    <div  id="imagePreview" *ngIf="tokenUser.photo_url; else defaultMen"  style="background-image: url(https://mysterious-reaches-96425.herokuapp.com/{{photoChange}})">
+                  <div class="avatar-preview" *ngIf="tokenUser.photo_url && tokenUser.photo_url !== defaultWomanUrl || tokenUser.photo_url !== defaultMenUrl ; else defaultMen" >
+                    <div  id="imagePreview"  style="background-image: url(https://mysterious-reaches-96425.herokuapp.com/{{photoChange}})">
 
                     </div>
-                    <ng-template #defaultMen>
-                      <div  id="imagePreviewDefault"   style="background-image: url(https://bootdey.com/img/Content/avatar/avatar7.png)">
 
-                      </div>
-                    </ng-template>
-                  </div>
                 </div>
+                  <ng-template #defaultMen>
+                    <div  id="imagePreviewDefault"   style="background-image: url(https://mysterious-reaches-96425.herokuapp.com/{{photoChange}})">
 
+                    </div>
+                  </ng-template>
+                </div>
                 <div class="card-member">
                 <h4>{{tokenUser.first_name}}</h4>
                   <div >
@@ -50,7 +50,7 @@
         </div>
         <div class="card card-member">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap" >
+            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap" *ngIf="tokenUser.linkedin || editToValid" >
               <h6 class="mb-0"><a href="{{tokenUser.linkedin}}" target="_blank"><i class="fab fa-linkedin"></i></a> </h6>
               <span class="text-secondary" *ngIf="editToValid === false; else linkedinToEdit"></span>
               <ng-template #linkedinToEdit>
@@ -77,18 +77,21 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">Email</h6>
+                <h6 class="mb-0">Email </h6>
               </div>
               <div class="col-sm-9 text-secondary">
                 {{tokenUser.email}}
               </div>
+              <div class="col-sm-9 text-third">
+                <p>Non visible</p>
+              </div>
             </div>
             <hr>
 
-            <div class="row" *ngIf="tokenUser.news_letter">
-
-              <div class="col-sm-3">
-                <h6 class="mb-0">Inscription <span class="required">*</span></h6>
+            <div class="row" *ngIf="tokenUser.news_letter || tokenUser.news_letter === 0">
+              <div class="subcribe-flex">
+              <div class="col-sm-9">
+                <h6 class="mb-0">Inscription NewsLetter <span class="required">*</span></h6>
               </div>
               <div class="newsLetterClass" *ngIf="editToValid === false; else newsLetterToEdit">
                 <div class="col-sm-9 text-secondary" *ngIf="tokenUser.news_letter === 1; else newLetterTrue">
@@ -103,7 +106,7 @@
               <ng-template #newsLetterToEdit>
                 <div class="question-answer">
                   <div>
-                    <input type="radio" value="1" id="radio_newsLetter1" name="newsLetter" [value]="tokenUser.news_letter" ngModel required #newsLetter ="ngModel" [class.is-invalid]="newsLetter.invalid && newsLetter.touched"   [(ngModel)]="newFormModel.consentNewsLetter"  />
+                    <input type="radio" value="1" id="radio_newsLetter1" name="newsLetter"  ngModel required #newsLetter ="ngModel" [class.is-invalid]="newsLetter.invalid && newsLetter.touched"   [(ngModel)]="newFormModel.consentNewsLetter"  />
                     <label for="radio_newsLetter1" class="radio"><span>Oui</span></label>
                   </div>
                   <div>
@@ -114,11 +117,12 @@
               </ng-template>
 
             </div>
+            </div>
             <hr>
 
-            <div class="row" *ngIf="tokenUser.public_profil">
-
-              <div class="col-sm-3">
+            <div class="row" *ngIf="tokenUser.public_profil || tokenUser.public_profil === 0">
+              <div class="subcribe-flex">
+              <div class="col-sm-9">
                 <h6 class="mb-0">Profil Public<span class="required">*</span></h6>
               </div>
               <div class="newsLetterClass" *ngIf="editToValid === false; else publicProfileToEdit">
@@ -134,7 +138,7 @@
               <ng-template #publicProfileToEdit>
                 <div class="question-answer">
                   <div>
-                    <input type="radio" value="1" id="radio_publicProfile1" name="radio_publicProfile1" [value]="tokenUser.public_profil"  ngModel required #publicProfile ="ngModel" [class.is-invalid]="publicProfile.invalid && publicProfile.touched" [checked]="true"  [(ngModel)]="newFormModel.profileVisibility"  />
+                    <input type="radio" value="1" id="radio_publicProfile1" name="radio_publicProfile1"  ngModel required #publicProfile ="ngModel" [class.is-invalid]="publicProfile.invalid && publicProfile.touched"  [(ngModel)]="newFormModel.profileVisibility"  />
                     <label for="radio_publicProfile1" class="radio"><span>Oui</span></label>
                   </div>
                   <div>
@@ -143,13 +147,13 @@
                   </div>
                 </div>
               </ng-template>
-
+              </div>
             </div>
             <hr>
 
             <div class="row" *ngIf="tokenUser.company || editToValid === true">
               <div class="col-sm-3">
-                <h6 class="mb-0">Entreprise</h6>
+                <h6 class="mb-0">Entreprise / Société</h6>
               </div>
               <div class="col-sm-9 text-secondary" *ngIf="editToValid === false ; else companyEdit">
                 {{tokenUser.company}}
@@ -195,7 +199,7 @@
 
             <div class="row" *ngIf="tokenUser.domain_job">
               <div class="col-sm-3">
-                <h6 class="mb-0">Domaine<span class="required">*</span></h6>
+                <h6 class="mb-0">Domaine d'activité<span class="required">*</span></h6>
               </div>
               <div class="col-sm-9 text-secondary" *ngIf="editToValid === false; else domainToEdit">
                 {{tokenUser.domain_job}}
@@ -208,7 +212,7 @@
 
             <div class="row" *ngIf="tokenUser.job">
               <div class="col-sm-3">
-                <h6 class="mb-0">Emploi<span class="required">*</span></h6>
+                <h6 class="mb-0">Profession<span class="required">*</span></h6>
               </div>
               <div class="col-sm-9 text-secondary" *ngIf="editToValid === false; else jobToEdit">
                 {{tokenUser.job}}
@@ -250,7 +254,7 @@
 
                 <div>
                   <input type="checkbox" id="findPartners" name="findPartners" value="findPartners"  #findPartners [(ngModel)]="newFormModel.lookingFor.findpartners" >
-                  <label for="findPartners">Trouvers des partenaires</label>
+                  <label for="findPartners">Trouver des partenaires</label>
                 </div>
 
                 <div>
@@ -292,7 +296,7 @@
 
             <div class="row">
               <div class="col-sm-12" *ngIf="editToValid === false; else otherButtons"  >
-                <a  class="btn btn-info " id="edit" (click)="editFromPanel()">Edit</a>
+                <a  class="btn btn-info " id="edit" (click)="editFromPanel()">Mise à jour</a>
 
               </div>
               <ng-template #otherButtons>

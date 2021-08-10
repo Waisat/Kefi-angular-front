@@ -14,6 +14,7 @@ export class FondateursDetailComponent implements OnInit {
   constructor(private founder: UserService, private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    window.scroll(0, 0)
     this.getFounderInfo()
   }
 

@@ -14,6 +14,7 @@ import {SearchByName} from "../class/search-by-name";
 export class SearchBarMemberAreaComponent implements OnInit {
   @Input('urlInfo') public url:any
   @Output() public infoUrl = new EventEmitter()
+  @Output() public searchNameInput = new EventEmitter()
   constructor(private domainUser:UserService, private _route: ActivatedRoute) { }
   public memberDomain: any
   public result_display:any
@@ -23,11 +24,18 @@ export class SearchBarMemberAreaComponent implements OnInit {
   public infosPage:any;
   public resultSearchName:any;
   public optionSearch:any = new SearchByName("")
-
+  public autoFocusInput: any;
   ngOnInit(): void {
+    /*
     this.getAllJobNameSelect()
     this.getQueryMemberSpecificJob()
+
+     */
+    this.autoFocusInput = document.getElementById("search")
+    this.autoFocusInput.nativeElement.focus()
   }
+
+  /*
 
   getAllJobNameSelect(){
     this.domainUser.getAllDomainPublic().pipe(
@@ -70,7 +78,7 @@ export class SearchBarMemberAreaComponent implements OnInit {
   }))
 
   }
-
+*/
   /*** Keydow Event pour la recherche **/
 
   keyDownSearch(){
@@ -83,8 +91,18 @@ export class SearchBarMemberAreaComponent implements OnInit {
         })
       ).subscribe((result=>{
         this.resultSearchName = result
-        console.log("result search query name", this.resultSearchName)
+        if(this.resultSearchName.status_verify){
+          this.searchNameInput.emit(this.resultSearchName)
+          console.log("result search query name", this.resultSearchName)
+        }else{
+          this.searchNameInput.emit(this.resultSearchName)
+          console.log("result search query error", this.resultSearchName)
+        }
+
       }))
+    }else{
+      this.resultSearchName= {status_verify:false, reason:"failed"}
+      this.searchNameInput.emit(this.resultSearchName)
     }
 
   }

@@ -25,6 +25,10 @@ import {FounderDetailPublic} from "../class/founder-detail-public";
 import {FormDataKefiUpdate} from "../class/form-data-kefi-update";
 import {FormUpdateProfileUser} from "../class/form-update-profile-user";
 import {ContactForm} from "../class/contact-form";
+import {UsernameResendCodeEmail} from "../class/username-resend-code-email";
+import {IdPublicPage} from "../class/id-public-page";
+import {ArrayMembersValuesToCheck} from "../class/array-members-values-to-check";
+import {Cgu} from "../class/cgu";
 @Injectable({
   providedIn: 'root'
 })
@@ -130,8 +134,13 @@ export class UserService {
       catchError(this.handleError)
     );
   }
-
-
+  /*** Button resend email for verification  ***/
+  resendVerifyCode(username: UsernameResendCodeEmail): Observable<UsernameResendCodeEmail> {
+    return this.http.post<UsernameResendCodeEmail>(this.ConfigUrl + "/resend_verification_code_email", username, this.options)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
   /*** Update password member***/
 
   updatePasswordMember(passwordModel: PasswordUser): Observable<PasswordUser> {
@@ -279,5 +288,30 @@ export class UserService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+
+  getAllTheIdFromPublicProfile(): Observable<IdPublicPage>{
+    return this.http.get<IdPublicPage>(this.ConfigUrl + `/member_get_scroll_loading`
+    ).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+  /*** Get member by scroll***/
+  omitIdFromPublicProfile(arrayValues:IdPublicPage): Observable<IdPublicPage>{
+    return this.http.post<IdPublicPage>(this.ConfigUrl + `/member_get_scroll_omit`, arrayValues
+    ).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+/*** CGU***/
+  getCguFromDb():Observable<Cgu>{
+    return this.http.get<Cgu>(this.ConfigUrl + `/cgu_kefi_association`
+    ).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
   }
 }

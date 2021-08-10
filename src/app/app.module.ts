@@ -50,7 +50,7 @@ import { KefiEventTableInfosComponent } from './kefi-event-table-infos/kefi-even
 import { ButtonsParticipationEventComponent } from './buttons-participation-event/buttons-participation-event.component';
 import { CommentsEventsSectionComponent } from './comments-events-section/comments-events-section.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatNativeDateModule} from "@angular/material/core";
+import {MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
 import {MatCheckbox, MatCheckboxModule} from "@angular/material/checkbox";
 import { MembersAreaDetailComponent } from './members-area-detail/members-area-detail.component';
 import { PaginationMemberComponent } from './pagination-member/pagination-member.component';
@@ -64,6 +64,9 @@ import { AsideKefiUserComponent } from './aside-kefi-user/aside-kefi-user.compon
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { MessageSuccessComponent } from './displayMessage/message-success/message-success.component';
 import { MessageErrorComponent } from './displayMessage/message-error/message-error.component';
+import { MemberAreaScrollComponent } from './member-area-scroll/member-area-scroll.component';
+import {MY_FORMAT} from "./_utilities/formatPicker";
+import { CguComponent } from './cgu/cgu.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,6 +111,8 @@ import { MessageErrorComponent } from './displayMessage/message-error/message-er
     AsideKefiUserComponent,
     MessageSuccessComponent,
     MessageErrorComponent,
+    MemberAreaScrollComponent,
+    CguComponent,
 
 
 
@@ -135,10 +140,12 @@ import { MessageErrorComponent } from './displayMessage/message-error/message-er
     IvyCarouselModule
 
   ],
-  providers: [UserService,EventsService, AuthGuard, LoginService,{
+  providers: [UserService,EventsService, AuthGuard, LoginService,[ { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMAT }],{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
-    multi: true
+    multi: true,
+
   }],
   bootstrap: [AppComponent]
 })

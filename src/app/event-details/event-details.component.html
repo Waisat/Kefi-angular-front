@@ -5,10 +5,9 @@
 
   <div class="scrollHalf__grupo" data-scroll >
     <div class="scrollHalf__grupo__imagen">
-      <carousel [images]="imagesEventCarousel" [arrowsTheme]="'dark'" [height]="1000" [autoplay]="true" [autoplayInterval]="5000" [pauseOnHover]="true" [dots]="true" [transitionTimingFunction]="'ease-in-out'" [width]="800" [cellsToScroll]="1" [cellWidth]="500" [loop]="true" [cellsToShow]="1" >
+      <carousel class="carousel-event" [images]="imagesEventCarousel" [arrowsTheme]="'dark'" [height]="heightCarousel"  [dots]="true" [transitionTimingFunction]="'ease-in-out'" [width]="800" [cellsToScroll]="1" [cellWidth]="widthCarousel" [loop]="true" [cellsToShow]="1" >
 
       </carousel>
-     <!-- <img class="profile" src="http://localhost:5000/kefi_{{eventDetail[0].main_photo}}" title="{{eventDetail[0].title}}" alt="{{eventDetail[0].title}}"/> !-->
     </div>
     <div class="scrollHalf__grupo__contenido">
       <h1>{{eventDetail[0].title}}</h1>

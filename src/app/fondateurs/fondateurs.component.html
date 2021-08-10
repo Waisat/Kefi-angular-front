@@ -9,7 +9,7 @@
       <h3>{{founder.first_name}} {{founder.last_name}}</h3>
       <h5>{{founder.job}}</h5>
       <p>{{founder.short_intro}}</p>
-      <div class="icons"><a href="{{founder.linkedinLink}}"><i class="ion-social-linkedin"></i></a>
+      <div *ngIf="founder.linkedinLink !== null" class="icons"><a href="{{founder.linkedinLink}}"><i class="ion-social-linkedin"></i></a>
       </div>
     </figcaption>
   </figure>

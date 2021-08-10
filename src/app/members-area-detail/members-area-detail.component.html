@@ -5,7 +5,6 @@
 
       <!-- /Breadcrumb -->
 
-
       <div class="profil-position" *ngIf="dataUser">
 
         <div class="top-part">
@@ -30,7 +29,7 @@
           </div>
           <div class="card card-member">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap" *ngIf="dataUser[0].linkedin">
                 <h6 class="mb-0"><a href="{{dataUser[0].linkedin}}" target="_blank"><i class="fab fa-linkedin"></i></a> </h6>
               </li>
 
@@ -63,7 +62,7 @@
 
               <div class="row" *ngIf="dataUser[0].domain_job">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Job Domaine</h6>
+                  <h6 class="mb-0">Domaine d'activité</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   {{dataUser[0].domain_job}}
@@ -73,7 +72,7 @@
 
               <div class="row" *ngIf="dataUser[0].job">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Job</h6>
+                  <h6 class="mb-0">Profession</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
                   {{dataUser[0].job}}
@@ -81,15 +80,25 @@
               </div>
               <hr>
 
+              <div class="row" *ngIf="dataUser[0].company">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Entreprise / Société</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  {{dataUser[0].company}}
+                </div>
+              </div>
+              <hr>
+
 
               <div class="row" *ngIf="parseLookingForInfos">
                 <div class="col-sm-3">
-                  <h6 class="mb-0">Mes recherche en évenement</h6>
+                  <h6 class="mb-0">Mes recherches</h6>
                 </div>
 
                 <ul>
                   <li *ngIf="parseLookingForInfos.networkExpenssion"> Je souhaite développer mon réseau</li>
-                  <li *ngIf="parseLookingForInfos.findpartners"> Je souhaite trouver des invesitisseurs ou partenaire pour mon projet</li>
+                  <li *ngIf="parseLookingForInfos.findpartners"> Je souhaite trouver des investisseurs ou partenaires pour mon projet</li>
                   <li *ngIf="parseLookingForInfos.getSomeContract"> Je souhaite trouver des contrats</li>
                   <li *ngIf="parseLookingForInfos.pitchProject"> Je souhaite Pitcher mon projet</li>
                   <li *ngIf="parseLookingForInfos.other"> Autre raison</li>
@@ -110,9 +119,6 @@
 
             </div>
           </div>
-
-
-
 
         </div>
       </div>

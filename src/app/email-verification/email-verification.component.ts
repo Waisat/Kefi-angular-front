@@ -9,6 +9,8 @@ import {VerifyEmailUrl} from "../class/verify-email-url";
 import {CookieService} from "ngx-cookie";
 import {CheckToken} from "../_utilities/CheckToken";
 import {MemberAreaCommunicationService} from "../_services/member-area-communication.service";
+import {UsernameResendCodeEmail} from "../class/username-resend-code-email";
+import set = gsap.set;
 @Component({
   selector: 'app-email-verification',
   templateUrl: './email-verification.component.html',
@@ -24,9 +26,19 @@ export class EmailVerificationComponent implements OnInit {
   parseTokenUser:any;
   userTokenCheck:any = []
   IsWait:boolean = true
+  getErrorValidationCode:any;
+  resultEmailVerify:any
+  userNameIdKefi:any
+  resendVerifyCodeMessage:any;
+  emailResendOk:any
+
   ngOnInit(): void {
     const usernameId = this.route.snapshot.paramMap.get('username');
     const tokenVerifyMail = this.route.snapshot.paramMap.get('token');
+    if(usernameId && tokenVerifyMail)
+      this.userNameIdKefi = usernameId
+
+
     console.log(usernameId, tokenVerifyMail)
     if(usernameId !== null && tokenVerifyMail !== null){
       this.emailVerification.user_name = usernameId
@@ -41,13 +53,22 @@ export class EmailVerificationComponent implements OnInit {
       console.log('Handling error locally and rethrowing it...', err);
       return throwError(err);
     })).subscribe(result=>{
-      this.emailUserVerify  = result
-      console.log('this email log', this.emailUserVerify)
+      this.resultEmailVerify  = result
+      if(this.resultEmailVerify.email === 'invalid'){
+        this.getErrorValidationCode = true
+
+      }else if(this.resultEmailVerify.email === 'Email_verify' || this.resultEmailVerify.email === 'notFind_user'){
+          this.router.navigate(['/accueil'])
+      }else{
+          this.emailUserVerify = result
+        }
+
     })
   }
 
   passwordConfirmation(){
-    this.UserPassword.email = this.emailUserVerify
+    this.UserPassword.email = this.emailUserVerify.email
+
     this.user_http.updatePasswordMember(this.UserPassword).pipe(
       catchError(err => {
 
@@ -57,7 +78,7 @@ export class EmailVerificationComponent implements OnInit {
     ).subscribe(result =>{
       this.tokenUser = result
       this.parseTokenUser = JSON.parse(this.tokenUser)
-      this.cookieService.put(this.parseTokenUser.name, this.parseTokenUser.jwt, {domain:"localhost", expires: new Date(Date.now() + 100000*3),})
+      this.cookieService.put(this.parseTokenUser.name, this.parseTokenUser.jwt, {domain:"localhost", expires: new Date(Date.now() + 100000*3)})
       const token = this.user_http.getCookieJwt("kefi_token")
       if(token){
         this.IsWait = false
@@ -67,6 +88,31 @@ export class EmailVerificationComponent implements OnInit {
       console.log('resultat nondd' ,this.parseTokenUser)
 
     })
+  }
+
+  resendVerificationCode() {
+    this.userNameIdKefi = this.route.snapshot.paramMap.get('username');
+
+    const formUsername = new UsernameResendCodeEmail(this.userNameIdKefi)
+    this.user_http.resendVerifyCode(formUsername).pipe(catchError(err => {
+      console.log('Handling error locally and rethrowing it...', err);
+      return throwError(err);
+    })).subscribe(result => {
+    this.resendVerifyCodeMessage = result
+      console.log("resend code" ,this.resendVerifyCodeMessage)
+      if(this.resendVerifyCodeMessage.status === "email_resend"){
+        this.emailResendOk = true
+        setTimeout(()=>this.navigateToHomePage(), 5000)
+      }else{
+        this.emailResendOk = false
+
+
+      }
+    })
+  }
+
+  navigateToHomePage(){
+    this.router.navigate(['/accueil'])
   }
 
 }

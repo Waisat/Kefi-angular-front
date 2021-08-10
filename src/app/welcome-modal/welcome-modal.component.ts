@@ -19,20 +19,27 @@ export class WelcomeModalComponent implements OnInit, AfterViewInit {
   @Input('userId') public userId:any
   @Input('userFirstName') public userFirstName:any
   @Output() public outPutRefresh = new EventEmitter<boolean>()
+  @Output() public adaptNewContent = new EventEmitter<boolean>()
   JsonJobData: any
   jobControl = new FormControl();
   JsonJobInterface: JobFormControl[] = []
-  newFormModel = new FormdataUser("", "", "", "", "", "", "", {networkExpenssion:false, getSomeContract:false, findpartners:false, pitchProject:false, other:false},"", "","",1,1)
+  newFormModel: any;
   form = new FormGroup({
     group: new FormControl(),
   });
   regexLinkedin:RegExp = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)/
   photoProfile:any;
-
+  updateArrayResponse:any;
+  checkPhotoSend:any;
 
   ngOnInit(): void {
     //Initialisation de la data concernants les métiers pour le formulaire d'entrer
     let getRadioProfilPublic = document.getElementById('radio_5')
+    this.newFormModel= new FormdataUser("","", "", "", "", "", "", "", {networkExpenssion:false, getSomeContract:false, findpartners:false, pitchProject:false, other:false},"", "","","1","1", "")
+
+  }
+
+  openVideo(){
 
   }
 
@@ -94,7 +101,15 @@ export class WelcomeModalComponent implements OnInit, AfterViewInit {
         return throwError(err);
       })
     ).subscribe(result=>{
-      console.log(result)
+      this.checkPhotoSend = result
+      console.log("result update ",this.checkPhotoSend)
+      if(this.checkPhotoSend.checkUpdateFirstCo === true){
+        this.firstConnexionServices.checkForValidationForms("success_send")
+        this.outPutRefresh.emit(true)
+      }else if(this.checkPhotoSend.responseVerify === 'No-image'){
+        this.firstConnexionServices.checkForValidationForms("success_send")
+        this.outPutRefresh.emit(true)
+      }
     })
 
   }
@@ -106,29 +121,25 @@ export class WelcomeModalComponent implements OnInit, AfterViewInit {
       formData.append("file", this.photoProfile, this.newFormModel.photoUrl)
     }
 
-    if(formData){
-      this.sendPhotoUser(formData)
-    }
-
     this.user.updateDataToDb(this.newFormModel).pipe(
       catchError(err => {
         console.log('Handling error locally and rethrowing it...', err);
         return throwError(err);
       })
     ).subscribe(result=>{
+        this.updateArrayResponse = result
+        console.log("response arr",this.updateArrayResponse)
 
-        this.outPutRefresh.emit(true)
-
-
-      console.log("result update ",result)
     })
 
-    this.firstConnexionServices.checkForValidationForms("success_send")
+    if(formData){
+      this.sendPhotoUser(formData)
+    }else{
+
+      console.log('No form create data missing')
+    }
 
   }
-
-
-
 
 
 }

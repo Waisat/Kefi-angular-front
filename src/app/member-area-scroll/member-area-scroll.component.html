@@ -1,0 +1,66 @@
+<div class="container member-area-page " id="page_area"  *ngIf="stockUserArrayDisplay ; else memberLoad">
+
+
+  <app-search-bar-member-area (searchNameInput)="getEmitter($event)"  id="searchBarUsers"></app-search-bar-member-area>
+
+  <div class="row" *ngIf="stockUserArrayDisplay && !checkForNameValue; else searchQuery" (scroll)="scrollHandler($event)">
+    <div class="cardUsers col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let users of stockUserArrayDisplay ">
+      <div class="our-team " id="card-member-{{users.id.toString()}}" >
+        <div class="picture">
+          <a routerLink="/membre/{{users.slug_url}}"><img class="img-fluid" title="{{users.first_name}} {{users.name}}" alt="{{users.first_name}} {{users.name}}" src="https://mysterious-reaches-96425.herokuapp.com/{{users.photo_url}}"></a>
+        </div>
+        <div class="team-content">
+          <h3 class="name">{{users.first_name}} {{users.name}}</h3>
+          <h4 class="title">{{users.job}}</h4>
+        </div>
+        <ul class="social" *ngIf="users.linkedin">
+          <li><a href="{{users.linkedin}}" class="fa fa-linkedin" aria-hidden="true"></a></li>
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+
+<ng-template #searchQuery>
+  <div class="row" *ngIf="searchNameValue && !noResult;else noResultFound ">
+    <div class="cardUsers col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let userSearch of searchNameValue">
+      <div class="our-team " id="card-member" >
+        <div class="picture">
+          <a routerLink="/membre/{{userSearch.slug_url}}"><img class="img-fluid" title="{{userSearch.first_Name}} {{userSearch.name}}" alt="{{userSearch.first_Name}} {{userSearch.name}}" src="https://mysterious-reaches-96425.herokuapp.com/{{userSearch.photo_url}}"></a>
+        </div>
+        <div class="team-content">
+          <h3 class="name">{{userSearch.first_Name}} {{userSearch.name}}</h3>
+          <h4 class="title">{{userSearch.job}}</h4>
+        </div>
+        <ul class="social" *ngIf="userSearch.linkedin">
+          <li><a href="{{userSearch.linkedin}}" class="fa fa-linkedin" aria-hidden="true"></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <ng-template #noResultFound>
+
+    <p style="font-size: 100px">Aucun resultats</p>
+
+  </ng-template>
+</ng-template >
+
+  </div>
+
+
+
+
+<ng-template #memberLoad>
+  <div class="kefi-loadingTime">
+    <div class="spinner-load">
+      <mat-spinner></mat-spinner>
+    </div>
+
+
+    <p>Chargement de la page</p>
+
+  </div>
+</ng-template>
+
+<app-footer></app-footer>

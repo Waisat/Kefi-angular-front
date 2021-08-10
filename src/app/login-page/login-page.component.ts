@@ -28,6 +28,7 @@ export class LoginPageComponent implements OnInit {
   userArray: any= []
   userToken: any = []
   ngOnInit(): void {
+    window.scroll(0, 0)
     console.log(history.state.data)
   }
 
@@ -48,7 +49,7 @@ export class LoginPageComponent implements OnInit {
         let date = new Date()
         let timer = new Date(Date.now() +  3600000 )
 
-        this.cookieService.put(userLoginInfo.name, userLoginInfo.jwt, {domain:"kefiassociation.fr", expires:(timer.toString()), secure:true})
+        this.cookieService.put(userLoginInfo.name, userLoginInfo.jwt, {domain:"radiant-crag-76180.herokuapp.com", expires:(timer.toString()), secure:true})
         const token = this.user.getCookieJwt("kefi_token")
         if(token){
           this.IsWait = false

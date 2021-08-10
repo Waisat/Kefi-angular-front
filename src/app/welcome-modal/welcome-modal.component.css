@@ -11,6 +11,14 @@ h1 {
 p.top-info {
   margin: 10px 0;
 }
+/*
+.looking-for-class{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+ */
 .testbox {
   margin-top: 5%;
   display: flex;
@@ -27,9 +35,42 @@ form {
   box-shadow: 0 0 25px 0 #1c87c9;
 }
 
+#description-user{
+  display: flex;
+  flex-direction: column;
+}
+
 .warning-text{
   color: red;
 }
+
+#flex_cgu{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+ label.radio {
+  margin-left:5% ;
+  width: 50%;
+}
+
+#flex_cgu label{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+}
+
+#flex_cgu input{
+ width: 5%;
+}
+#welcome-intro-explanation{
+  text-align: center;
+  margin: 5% auto;
+  width: 80%;
+  font-size:30px
+}
+
 .banner {
   position: relative;
   height: 210px;
@@ -57,6 +98,15 @@ input {
   padding: 5px;
 }
 input[type="date"] {
+  width: 20%;
+}
+
+label{
+  width: 60%;
+}
+
+
+input[type="checkbox"] {
   padding: 4px 5px;
 }
 select {
@@ -107,6 +157,9 @@ label.radio {
 .question span {
   margin-left: 30px;
 }
+.question{
+  width: 50%;
+}
 span.required {
   margin-left: 0;
   color: red;
@@ -143,6 +196,27 @@ input[type=radio]:checked + label:after {
   margin-top: 10px;
   text-align: center;
 }
+
+#welcome-title{
+  text-transform: uppercase;
+}
+
+.flex-cgu{
+  width: 60%;
+}
+
+#label-cgu{
+  width: 60%;
+}
+
+.birth-item{
+  margin: 3% 0;
+}
+
+
+#description{
+  height: 200px;
+}
 button {
   width: auto;
   padding: 10px;
@@ -154,6 +228,10 @@ button {
   color: #fff;
   cursor: pointer;
 }
+
+.input_looking-for{
+  width: 20%;
+}
 button:hover {
   background: #1e6fa0;
 }
@@ -162,6 +240,9 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+  #welcome-title{
+    text-transform: uppercase;
   }
   .name-item input {
     width: calc(50% - 20px);

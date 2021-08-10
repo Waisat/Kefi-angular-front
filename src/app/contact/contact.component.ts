@@ -51,6 +51,10 @@ export class ContactComponent implements OnInit {
         console.log(result)
         if(result){
           this.messageSuccess = true
+          let inputContactForm = document.getElementsByTagName('input')
+          for(let i = 0; i < inputContactForm.length -1; i++){
+            inputContactForm[i].value = ""
+          }
           setTimeout(()=>this.setIntervalAfter(this.messageSuccess), 3000)
         }
       }))

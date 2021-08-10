@@ -2,40 +2,41 @@
 <div class='container'>
   <div class='window'>
     <div class='overlay'></div>
-    <div class='content'>
-      <div class='welcome'>Votre email vient dêtre confirmer!</div>
-      <div class='subtitle'>Veuillez saisir votre mot de passe</div>
+    <div class='content' *ngIf="!getErrorValidationCode;else validationCodeErreur">
+      <div class='welcome'>Confirmation de votre email !</div>
+      <div class='subtitle'>Veuillez saisir un mot de passe</div>
+      <div class='subtitle'>Le mot de pass doit contenir des Majuscules, minuscules, chiffres, caractéres spéciaux. (Minimum 8 caractéres)</div>
       <div class='input-fields'>
         <form #passwordFormMember="ngForm" (ngSubmit)="passwordConfirmation()" novalidate>
 
-          <input name="password" placeholder='Password' class='input-line full-width' ngModel required #password="ngModel" type="password" [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="UserPassword.password">
+          <input name="password" placeholder='mot de passe' class='input-line full-width' ngModel required #password="ngModel" type="password" [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="UserPassword.password">
           <div *ngIf="password.errors && (password.invalid || password.touched)">
-            <small class="warning-text" *ngIf="password.touched && password.errors.required">Le mot de pass est requis</small>
-            <small class="warning-text" *ngIf="password.errors.pattern">L'Email doit etre valide</small>
+            <small class="warning-text" *ngIf="password.touched && password.errors.required">Le mot de passe est requis</small>
+            <small class="warning-text" *ngIf="password.errors.pattern">Le mot de passe doit etre valide</small>
 
           </div>
 
-          <input name="confirm_password" placeholder='confirm password' class='input-line full-width' ngModel required #cPassword="ngModel" [pattern]="patternPassword" type="password" [class.is-invalid]="cPassword.invalid && cPassword.touched" [(ngModel)]="UserPassword.confirm_password">
+          <input name="confirm_password" placeholder='confirmation de mot de passe' class='input-line full-width' ngModel required #cPassword="ngModel" [pattern]="patternPassword" type="password" [class.is-invalid]="cPassword.invalid && cPassword.touched" [(ngModel)]="UserPassword.confirm_password">
           <div *ngIf="cPassword.errors && (cPassword.invalid || cPassword.touched)">
-            <small class="warning-text" *ngIf="cPassword.touched && cPassword.errors.required">Vous devez confirmez votre password</small>
-            <small class="warning-text" *ngIf="cPassword.errors.pattern">Le password doit contenir oh moin 1 Majuscule, minuscule, chiffres, caractére spécial</small>
+            <small class="warning-text" *ngIf="cPassword.touched && cPassword.errors.required">Vous devez confirmez votre mot de passe</small>
+            <small class="warning-text" *ngIf="cPassword.errors.pattern">Le mot de pass doit contenir des Majuscules, minuscules, chiffres, caractéres spéciaux. (Minimum 8 caractéres) </small>
 
           </div>
 
 
           <div *ngIf="passwordFormMember.form.invalid && passwordFormMember.form.touched">
-            <p  class="warning-text">Tous les champs sont requis pour confirmer votre password</p>
+            <p  class="warning-text">Tous les champs sont requis pour confirmer votre mot de passe</p>
 
           </div>
 
 
           <div *ngIf="passwordFormMember.form.valid">
-            <p class="succes-entry">Message envoyer</p>
+            <p class="succes-entry">Identification réussi</p>
 
           </div>
           <div class="form-group row">
 
-            <div><button [disabled]="passwordFormMember.form.invalid" type="submit" class='ghost-round full-width'>Confirmer password</button></div>
+            <div><button [disabled]="passwordFormMember.form.invalid" type="submit" class='ghost-round full-width'>Confirmer votre mot de passe</button></div>
 
 
           </div>
@@ -44,5 +45,25 @@
       </div>
 
     </div>
+
+    <ng-template  #validationCodeErreur>
+      <div class="content">
+      <div class='welcome'>Bienvenue, Le précédent lien que nous vous avons envoyé n'est plus valide </div>
+        <div class='subtitle'>Cliquer sur le bouton pour obtenir un nouveau code de validation.</div>
+        <div class="message-resend-class" *ngIf="emailResendOk === true; else emailResendFalse">
+          <div class='subtitle'>Un lien pour confirmer votre email vient de vous être envoyé</div>
+        </div>
+        <ng-template #emailResendFalse>
+          <div class='subtitle'>Cliquer sur le bouton pour obtenir un nouveau code de validation.</div>
+        </ng-template>
+
+      <button class="ghost-round full-width" [value]="userNameIdKefi" (click)="resendVerificationCode()">Cliquez ici !</button>
+      </div>
+
+
+    </ng-template>
+
+
   </div>
 </div>
+<app-footer></app-footer>
