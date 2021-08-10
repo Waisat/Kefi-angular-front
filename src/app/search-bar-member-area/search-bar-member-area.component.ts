@@ -31,8 +31,8 @@ export class SearchBarMemberAreaComponent implements OnInit {
     this.getQueryMemberSpecificJob()
 
      */
-    this.autoFocusInput = document.getElementById("search")
-    this.autoFocusInput.nativeElement.focus()
+
+
   }
 
   /*
