@@ -187,7 +187,7 @@
 
 
   <label id="label-cgu" for="cgu"><a routerLink="/conditions_generales_utilisation" target="_blank">Je confirme avoir lu les Conditions générales d'utilisation<span class="required">*</span></a> </label>
-    <input class="input_looking-for" type="checkbox" id="cgu" name="cgu" value="1" ngModel required #cguRead="ngModel" [class.is-invalid]="cguRead.invalid && cguRead.touched" [(ngModel)]="newFormModel.readCgu">
+    <input class="input_looking-for" type="checkbox" id="cgu" name="cguRead" value="1" ngModel required #cguRead="ngModel" [class.is-invalid]="cguRead.invalid && cguRead.touched" [(ngModel)]="newFormModel.readCgu">
     <div *ngIf="cguRead.errors && (cguRead.invalid || cguRead.untouched)">
       <small class="warning-text" *ngIf="cguRead.touched && cguRead.errors">Vous devez  avoir  lu les conditions générales d'utilisation</small>
 
