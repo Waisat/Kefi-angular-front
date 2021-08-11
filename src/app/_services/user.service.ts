@@ -44,7 +44,8 @@ export class UserService {
     responseType: 'json',
   };
   optionFile: object = {
-    responseType: "multipart/form-data"
+    responseType: "multipart/form-data",
+    header: {'Access-Control-Allow-Origin': 'https://www.kefiassociation.fr'},
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -180,7 +181,7 @@ export class UserService {
 
   sendPhotoUser(photoUser: FormData): Observable<FormData> {
 
-    return this.http.post<FormData>(this.ConfigUrl + "/send_user_photo", photoUser, this.options)
+    return this.http.post<FormData>(this.ConfigUrl + "/send_user_photo", photoUser, this.optionFile)
       .pipe(
         catchError(this.handleError)
       );
@@ -265,7 +266,7 @@ export class UserService {
 
   destroyPrevious(FormPhotoUser: FormDataKefiUpdate): Observable<FormDataKefiUpdate> {
 
-    return this.http.post<FormDataKefiUpdate>(this.ConfigUrl + "/update_photo_profil_kefi_member", FormPhotoUser, this.options)
+    return this.http.post<FormDataKefiUpdate>(this.ConfigUrl + "/update_photo_profil_kefi_member", FormPhotoUser, this.optionFile)
       .pipe(
         catchError(this.handleError)
       );
