@@ -44,7 +44,8 @@ export class UserService {
     responseType: 'json',
   };
   optionFile: object = {
-    responseType: "multipart/form-data",
+    responseType: 'json',
+    dataType: "multipart/form-data",
     header: {'Access-Control-Allow-Origin': 'https://www.kefiassociation.fr'},
   }
 
@@ -266,7 +267,7 @@ export class UserService {
 
   destroyPrevious(FormPhotoUser: FormDataKefiUpdate): Observable<FormDataKefiUpdate> {
 
-    return this.http.post<FormDataKefiUpdate>(this.ConfigUrl + "/update_photo_profil_kefi_member", FormPhotoUser, this.optionFile)
+    return this.http.post<FormDataKefiUpdate>(this.ConfigUrl + "/update_photo_profil_kefi_member", FormPhotoUser, this.options)
       .pipe(
         catchError(this.handleError)
       );
