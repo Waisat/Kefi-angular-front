@@ -10,7 +10,7 @@ import {Config} from "../interfaces/Config.interfaces";
   providedIn: 'root'
 })
 export class HttpJsonLocalService {
-  private localJobJson:string ="https://mysterious-reaches-96425.herokuapp.com"
+  private localJobJson:string ="https://mysterious-reaches-96425.herokuapp.com/job.json"
   constructor(private http: HttpClient) { }
 
   private handleError(error: HttpErrorResponse) {
