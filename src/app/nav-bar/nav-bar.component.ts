@@ -44,7 +44,7 @@ export class NavBarComponent implements OnInit {
   }
 
   logOut(){
-    this.cookie.remove("kefi_token")
+    this.cookie.remove("kefi_token", {domain:"kefiassociation.fr", secure:true})
     this._route.navigate(['/accueil']).then(() => {
       window.location.reload();
     });
