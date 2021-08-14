@@ -182,7 +182,7 @@ export class UserService {
 
   sendPhotoUser(photoUser: FormData): Observable<FormData> {
 
-    return this.http.post<FormData>(this.ConfigUrl + "/send_user_photo", photoUser, this.optionFile)
+    return this.http.post<FormData>(this.ConfigUrl + "/send_user_photo", photoUser, this.options)
       .pipe(
         catchError(this.handleError)
       );
