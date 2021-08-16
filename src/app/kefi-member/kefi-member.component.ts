@@ -184,7 +184,7 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
     ).subscribe(result=>{
       console.log("res",result)
       this.checkIfEmailUpdate = result
-      if(this.checkIfEmailUpdate.checkUpdateFirstCo === true){
+      if(this.checkIfEmailUpdate){
         this.getDataMember()
       }else{
         console.log('error to charge image')
