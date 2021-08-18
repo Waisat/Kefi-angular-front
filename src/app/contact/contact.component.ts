@@ -4,6 +4,8 @@ import {UserService} from "../_services/user.service";
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
 
+
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -14,9 +16,11 @@ export class ContactComponent implements OnInit {
   emailPattern:RegExp= /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   messageSuccess:any
   errorMessage:any
+
   constructor(private contact: UserService) { }
 
   ngOnInit(): void {
+
     this.formContact = new ContactForm("", "","","")
   }
 
@@ -70,4 +74,8 @@ export class ContactComponent implements OnInit {
     this.messageSuccess = false
     console.log(value)
   }
+
+
+
+
 }

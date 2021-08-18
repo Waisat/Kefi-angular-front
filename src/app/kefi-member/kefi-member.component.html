@@ -22,7 +22,7 @@
                 <div class="avatar-upload">
                   <div class="avatar-edit">
                     <label for="imageUpload" id="imgUpload">  <i class="fas fa-camera-retro">
-                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" (change)="onFileSelect($event)" />
+                    <input id="imageUpload" type='file'  accept=".png, .jpg, .jpeg" (change)="onFileSelect($event)" />
                    </i> </label>
                   </div>
                   <div class="avatar-preview" *ngIf="tokenUser.photo_url && tokenUser.photo_url !== defaultWomanUrl || tokenUser.photo_url !== defaultMenUrl ; else defaultMen" >
