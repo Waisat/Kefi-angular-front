@@ -11,6 +11,7 @@ import {CheckToken} from "../_utilities/CheckToken";
 import {MemberAreaCommunicationService} from "../_services/member-area-communication.service";
 import {UsernameResendCodeEmail} from "../class/username-resend-code-email";
 import set = gsap.set;
+import {CommunicationPublicMemberListService} from "../_services/communication-public-member-list.service";
 @Component({
   selector: 'app-email-verification',
   templateUrl: './email-verification.component.html',
@@ -19,7 +20,7 @@ import set = gsap.set;
 export class EmailVerificationComponent implements OnInit {
   patternPassword: RegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
   private emailUserVerify: any
-  constructor(private user_http: UserService,  private route: ActivatedRoute, private router: Router, private cookieService:CookieService, private MemberAreaList: MemberAreaCommunicationService ) { }
+  constructor(private user_http: UserService,  private route: ActivatedRoute, private router: Router, private cookieService:CookieService, private MemberAreaList: MemberAreaCommunicationService, private checkMessage: CommunicationPublicMemberListService ) { }
   UserPassword: PasswordUser = new PasswordUser("","", "")
   emailVerification: VerifyEmailUrl = new VerifyEmailUrl("","")
   tokenUser: any;
@@ -78,11 +79,13 @@ export class EmailVerificationComponent implements OnInit {
     ).subscribe(result =>{
       this.tokenUser = result
       this.parseTokenUser = JSON.parse(this.tokenUser)
-      this.cookieService.put(this.parseTokenUser.name, this.parseTokenUser.jwt, {domain:"localhost", expires: new Date(Date.now() + 100000*3)})
+      let timer = new Date(Date.now() +  3600000 )
+      this.cookieService.put(this.parseTokenUser.name, this.parseTokenUser.jwt, {domain:"kefiassociation.fr", expires:(timer.toString()), secure:true})
       const token = this.user_http.getCookieJwt("kefi_token")
       if(token){
         this.IsWait = false
         CheckToken(this.user_http, this.IsWait, this.userTokenCheck, this.router, this.MemberAreaList)
+        this.checkMessage.checkMessageDisplay('receiveMessage')
       }
 
       console.log('resultat nondd' ,this.parseTokenUser)
