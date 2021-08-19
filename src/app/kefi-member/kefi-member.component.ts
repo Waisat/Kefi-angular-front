@@ -32,7 +32,7 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
   newFormModel:any;
   newImg:string =""
   checkIfEmailUpdate:any;
-  defaultMenUrl: string = "defaultmen.png"
+  defaultMenUrl: string = "defaultman.png"
   defaultWomanUrl: string = "defaultwoman.png"
     /*
     =  new FormUpdateProfileUser("", "", "", "", "",  "","" , {networkExpenssion:false, getSomeContract:false, findpartners:false, pitchProject:false, other:false},"", "",1,1)
