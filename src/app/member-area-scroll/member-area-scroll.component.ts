@@ -33,12 +33,15 @@ export class MemberAreaScrollComponent implements OnInit, AfterViewInit {
   checkForNameValue: boolean = false
   checkValidSearch:any
   noResult:any
+  defaultMenUrl: string = "";
+  defaultWomanUrl: string = ""
   ngOnInit(): void {
     window.scroll(0, 0)
     this.getAllPublicIDUser()
     this.departPoint = 0
     this.scrollPosition = 8
-
+    this.defaultMenUrl ="defaultman.png"
+    this.defaultWomanUrl = "defaultwoman.png"
 
   }
   ngAfterViewInit() {

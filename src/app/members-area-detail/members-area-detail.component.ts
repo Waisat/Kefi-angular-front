@@ -16,11 +16,13 @@ export class MembersAreaDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private user: UserService ){ }
   public dataUser: any
   public parseLookingForInfos: any
-
+  defaultMenUrl: string = "";
+  defaultWomanUrl: string = ""
   ngOnInit(): void {
     window.scroll(0, 0)
     this.getDetailMemberPublic()
-
+    this.defaultMenUrl ="defaultman.png"
+    this.defaultWomanUrl = "defaultwoman.png"
   }
 
   getDetailMemberPublic() {

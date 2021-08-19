@@ -7,7 +7,13 @@
     <div class="cardUsers col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let users of stockUserArrayDisplay ">
       <div class="our-team " id="card-member-{{users.id.toString()}}" >
         <div class="picture">
-          <a routerLink="/membre/{{users.slug_url}}"><img class="img-fluid" title="{{users.first_name}} {{users.name}}" alt="{{users.first_name}} {{users.name}}" src="https://mysterious-reaches-96425.herokuapp.com/{{users.photo_url}}"></a>
+          <a routerLink="/membre/{{users.slug_url}}">
+            <img *ngIf="users.photo_url === defaultMenUrl || users.photo_url === defaultWomanUrl; else truePhotoProfil" class="img-fluid" title="{{users.first_name}} {{users.name}}" alt="{{users.first_name}} {{users.name}}" src="https://mysterious-reaches-96425.herokuapp.com/{{users.photo_url}}">
+            <ng-template #truePhotoProfil>
+              <img *ngIf="users.photo_url === defaultMenUrl || users.photo_url === defaultWomanUrl; else truePhotoProfil" class="img-fluid" title="{{users.first_name}} {{users.name}}" alt="{{users.first_name}} {{users.name}}" src="https://waisatusbucket.s3.eu-west-3.amazonaws.com/users_kefi/{{users.photo_url}}">
+
+            </ng-template>
+          </a>
         </div>
         <div class="team-content">
           <h3 class="name">{{users.first_name}} {{users.name}}</h3>
