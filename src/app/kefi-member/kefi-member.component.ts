@@ -187,7 +187,11 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
       })
     ).subscribe(result=>{
       console.log("res",result)
-      this.checkIfEmailUpdate = result
+      this.checkIfEmailUpdate = false
+      if(result){
+        this.checkIfEmailUpdate = true
+      }
+
       if(this.checkIfEmailUpdate){
         this.getDataMember()
       }else{
