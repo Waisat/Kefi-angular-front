@@ -25,7 +25,7 @@
                     <input id="imageUpload" type='file'  accept=".png, .jpg, .jpeg" (change)="onFileSelect($event)" />
                    </i> </label>
                   </div>
-                  <div class="avatar-preview" *ngIf="tokenUser.photo_url && tokenUser.photo_url !== defaultWomanUrl || tokenUser.photo_url !== defaultMenUrl ; else defaultMen" >
+                  <div class="avatar-preview" *ngIf="tokenUser.photo_url && (tokenUser.photo_url !== defaultWomanUrl || tokenUser.photo_url !== defaultMenUrl); else defaultMen" >
                     <div  id="imagePreview"  style="background-image: url(https://waisatusbucket.s3.eu-west-3.amazonaws.com/users_kefi/{{photoChange}})" >
 
                     </div>
