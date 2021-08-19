@@ -32,8 +32,8 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
   newFormModel:any;
   newImg:string =""
   checkIfEmailUpdate:any;
-  defaultMenUrl: string = "defaultman.png"
-  defaultWomanUrl: string = "defaultwoman.png"
+  defaultMenUrl: string = "";
+  defaultWomanUrl: string = ""
     /*
     =  new FormUpdateProfileUser("", "", "", "", "",  "","" , {networkExpenssion:false, getSomeContract:false, findpartners:false, pitchProject:false, other:false},"", "",1,1)
 */
@@ -43,6 +43,8 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnInit(): void {
     window.scroll(0, 0)
     this.getDataMember()
+    this.defaultMenUrl ="defaultman.png"
+    this.defaultWomanUrl = "defaultwoman.png"
     this.firstConnexionServices.currentMessage.subscribe(infosConnexionFirst =>this.checkingStatsConnexionFirst = infosConnexionFirst)
 
 
