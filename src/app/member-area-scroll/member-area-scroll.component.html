@@ -33,7 +33,11 @@
     <div class="cardUsers col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let userSearch of searchNameValue">
       <div class="our-team " id="card-member" >
         <div class="picture">
-          <a routerLink="/membre/{{userSearch.slug_url}}"><img class="img-fluid" title="{{userSearch.first_Name}} {{userSearch.name}}" alt="{{userSearch.first_Name}} {{userSearch.name}}" src="https://mysterious-reaches-96425.herokuapp.com/{{userSearch.photo_url}}"></a>
+          <a *ngIf="userSearch.photo_url === defaultMenUrl || userSearch.photo_url === defaultWomanUrl; else photoWithSearch" routerLink="/membre/{{userSearch.slug_url}}"><img class="img-fluid" title="{{userSearch.first_Name}} {{userSearch.name}}" alt="{{userSearch.first_Name}} {{userSearch.name}}" src="https://mysterious-reaches-96425.herokuapp.com/{{userSearch.photo_url}}"></a>
+        <ng-template #photoWithSearch>
+          <a  routerLink="/membre/{{userSearch.slug_url}}"><img class="img-fluid" title="{{userSearch.first_Name}} {{userSearch.name}}" alt="{{userSearch.first_Name}} {{userSearch.name}}" src="https://waisatusbucket.s3.eu-west-3.amazonaws.com/users_kefi/{{userSearch.photo_url}}"></a>
+
+        </ng-template>
         </div>
         <div class="team-content">
           <h3 class="name">{{userSearch.first_Name}} {{userSearch.name}}</h3>
