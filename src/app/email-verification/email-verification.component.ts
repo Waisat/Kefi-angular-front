@@ -85,7 +85,7 @@ export class EmailVerificationComponent implements OnInit {
       if(token){
         this.IsWait = false
         CheckToken(this.user_http, this.IsWait, this.userTokenCheck, this.router, this.MemberAreaList)
-
+        this.checkMessage.checkMessageDisplay('receiveMessage')
       }
 
       console.log('resultat nondd' ,this.parseTokenUser)
