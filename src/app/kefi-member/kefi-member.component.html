@@ -241,7 +241,7 @@
 
               <ul *ngIf="editToValid === false; else lookingForEdit">
                 <li *ngIf="parseLookingForInfos.networkExpenssion"> Je souhaite développer mon réseau</li>
-                <li *ngIf="parseLookingForInfos.findpartners"> Je souhaite trouver des invesitisseurs ou partenaire pour mon projet</li>
+                <li *ngIf="parseLookingForInfos.findpartners"> Je souhaite trouver des investisseurs ou partenaires pour mon projet</li>
                 <li *ngIf="parseLookingForInfos.getSomeContract"> Je souhaite trouver des contrats</li>
                 <li *ngIf="parseLookingForInfos.pitchProject"> Je souhaite Pitcher mon projet</li>
                 <li *ngIf="parseLookingForInfos.other"> Autre raison</li>
@@ -294,7 +294,7 @@
                   {{tokenUser.description}}
                 </textarea>
                 <ng-template #textArea>
-                  <textarea cols="30" >
+                  <textarea cols="30" [(ngModel)]="newFormModel.description" >
 
                 </textarea>
                 </ng-template>
