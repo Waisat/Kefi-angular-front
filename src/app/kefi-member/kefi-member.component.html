@@ -282,15 +282,15 @@
 
             <hr>
 
-            <div class="row" *ngIf="tokenUser.description || tokenUser.description === null">
-              <div class="col-sm-3" *ngIf="tokenUser.description !== null || editToValid === true">
+            <div class="row" *ngIf="tokenUser.description || tokenUser.description === ''">
+              <div class="col-sm-3" *ngIf="tokenUser.description !== '' || editToValid === true">
                 <h6 class="mb-0">Description</h6>
               </div>
               <div class="col-sm-9 text-secondary" *ngIf="editToValid === false; else descriptionEdit">
                 {{tokenUser.description}}
               </div>
               <ng-template #descriptionEdit>
-                <textarea cols="30" *ngIf="tokenUser.description !== null; else textArea" [(ngModel)]="newFormModel.description">
+                <textarea cols="30" name="description" *ngIf="tokenUser.description !== ''; else textArea" [(ngModel)]="newFormModel.description">
                   {{tokenUser.description}}
                 </textarea>
                 <ng-template #textArea>
