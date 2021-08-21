@@ -179,7 +179,7 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
 
   sendPhotoUserUpdate(formData:FormData){
 
-
+    this.checkIfEmailUpdate = false
     this.user.sendPhotoUser(formData).pipe(
       catchError(err => {
         console.log('Handling error locally and rethrowing it...', err);
@@ -187,7 +187,6 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
       })
     ).subscribe(result=>{
       console.log("res",result)
-      this.checkIfEmailUpdate = false
       if(result){
         this.checkIfEmailUpdate = true
       }

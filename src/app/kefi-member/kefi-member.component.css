@@ -204,6 +204,10 @@
     flex-direction: row;
 
   }
+
+  .spinner-load{
+    width: 50%;
+  }
 }
 
 
