@@ -22,11 +22,14 @@ p.top-info {
 .testbox {
   margin-top: 5%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: inherit;
   padding: 20px;
 }
+
+
 form {
   width: 100%;
   padding: 20px;
