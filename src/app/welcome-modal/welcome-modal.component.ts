@@ -95,6 +95,7 @@ export class WelcomeModalComponent implements OnInit, AfterViewInit {
   }
 
   sendPhotoUser(photo:any){
+    this.checkPhotoSend = ""
     this.user.sendPhotoUser(photo).pipe(
       catchError(err => {
         console.log('Handling error locally and rethrowing it...', err);
