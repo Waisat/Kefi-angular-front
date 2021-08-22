@@ -36,6 +36,7 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
   defaultWomanUrl: string = ""
   successDisplaySaveData: any;
   failedDisplaySaveData: any;
+  updateKefiValidation:any
     /*
     =  new FormUpdateProfileUser("", "", "", "", "",  "","" , {networkExpenssion:false, getSomeContract:false, findpartners:false, pitchProject:false, other:false},"", "",1,1)
 */
@@ -116,6 +117,15 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
           return throwError(err);
         }
       )).subscribe((result=>{
+        this.updateKefiValidation = result
+        if(this.updateKefiValidation.status === "success"){
+          this.successDisplaySaveData = true
+          setTimeout(()=> this.hiddenMessageTimeOut(), 3000)
+        }else {
+          this.failedDisplaySaveData = true
+          setTimeout(()=> this.hiddenMessageTimeOut(), 3000)
+        }
+
         this.getDataMember()
         console.log(result)
       }))
