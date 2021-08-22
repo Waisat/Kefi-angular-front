@@ -34,6 +34,8 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
   checkIfEmailUpdate:any;
   defaultMenUrl: string = "";
   defaultWomanUrl: string = ""
+  successDisplaySaveData: any;
+  failedDisplaySaveData: any;
     /*
     =  new FormUpdateProfileUser("", "", "", "", "",  "","" , {networkExpenssion:false, getSomeContract:false, findpartners:false, pitchProject:false, other:false},"", "",1,1)
 */
@@ -193,7 +195,11 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
 
       if(this.checkIfEmailUpdate){
         this.getDataMember()
+        this.successDisplaySaveData = true
+        setTimeout(()=> this.hiddenMessageTimeOut(this.successDisplaySaveData), 3000)
       }else{
+        setTimeout(()=> this.hiddenMessageTimeOut(this.failedDisplaySaveData), 3000)
+
         console.log('error to charge image')
       }
 
@@ -212,6 +218,10 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
       console.log(result)
     })
 
+  }
+
+  hiddenMessageTimeOut(messageToHide: boolean){
+    messageToHide = false
   }
 
 
