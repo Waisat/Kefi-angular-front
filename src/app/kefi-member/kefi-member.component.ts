@@ -196,10 +196,10 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
       if(this.checkIfEmailUpdate){
         this.getDataMember()
         this.successDisplaySaveData = true
-        setTimeout(()=> this.hiddenMessageTimeOut(this.successDisplaySaveData), 3000)
+        setTimeout(()=> this.hiddenMessageTimeOut, 3000)
       }else{
         this.failedDisplaySaveData = true
-        setTimeout(()=> this.hiddenMessageTimeOut(this.failedDisplaySaveData), 3000)
+        setTimeout(()=> this.hiddenMessageTimeOut, 3000)
         console.log('error to charge image')
       }
 
@@ -220,8 +220,9 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
 
   }
 
-  hiddenMessageTimeOut(messageToHide: boolean){
-    messageToHide = false
+  hiddenMessageTimeOut(){
+    this.successDisplaySaveData = false
+    this.failedDisplaySaveData = false
   }
 
 
