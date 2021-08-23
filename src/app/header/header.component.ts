@@ -13,12 +13,10 @@ export class HeaderComponent implements OnInit {
   heightNavBar:string = ""
 
   images = [
-    {path: "assets/buffet.jpg"},
-    {path: "assets/roof.jpg"},
-    {path: "assets/cotedazur.jpg"},
-    {path: "assets/stone.jpg"},
-    {path: "assets/network.jpg"},
-    {path: "assets/chill.jpg"}
+    {path: "https://waisatusbucket.s3.eu-west-3.amazonaws.com/header/saut.jpg"},
+    {path: "https://waisatusbucket.s3.eu-west-3.amazonaws.com/header/stone21920.jpg"},
+    {path: "https://waisatusbucket.s3.eu-west-3.amazonaws.com/header/stones-1920.jpg"},
+    {path: "https://waisatusbucket.s3.eu-west-3.amazonaws.com/header/stonne.jpg"},
   ]
   constructor() { }
 
