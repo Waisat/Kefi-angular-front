@@ -80,8 +80,12 @@
       <div class="company-item">
 
 
-          <input type="text" placeholder="Entreprise / société *" name="company"  #company="ngModel"  [class.is-invalid]="titleJob.invalid && titleJob.touched" [(ngModel)]="newFormModel.company"/>
+          <input type="text" placeholder="Entreprise / société * (Lieu de travail)" name="company"  #company="ngModel"  [class.is-invalid]="company.invalid && company.touched" [(ngModel)]="newFormModel.company"/>
 
+        <div *ngIf="bdate.errors && (bdate.invalid || bdate.touched)">
+          <small class="warning-text" *ngIf="bdate.touched && bdate.errors">Le lieu de travail est requis</small>
+
+        </div>
       </div>
 
 

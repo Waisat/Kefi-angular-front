@@ -192,13 +192,17 @@
 
             <div class="row" *ngIf="tokenUser.company || editToValid === true">
               <div class="col-sm-3">
-                <h6 class="mb-0">Entreprise / Société</h6>
+                <h6 class="mb-0">Entreprise / Société *</h6>
               </div>
               <div class="col-sm-9 text-secondary" *ngIf="editToValid === false ; else companyEdit">
                 {{tokenUser.company}}
               </div>
               <ng-template #companyEdit>
-                <input type="text" name="companyToEdit" id="companyToEdit" value="{{tokenUser.company}}" [(ngModel)]="newFormModel.company"/>
+                <input type="text" name="companyToEdit" id="companyToEdit" value="{{tokenUser.company}}"  required #companyToEdit="ngModel"  [class.is-invalid]="companyToEdit.invalid && companyToEdit.touched" [(ngModel)]="newFormModel.company"/>
+                <div *ngIf="companyToEdit.errors && (companyToEdit.invalid || companyToEdit.touched)">
+                  <small class="warning-text" *ngIf="companyToEdit.touched && companyToEdit.errors">Le lieu de travail est requis</small>
+
+                </div>
               </ng-template>
             </div>
             <hr>
@@ -222,7 +226,11 @@
                 {{tokenUser.mobile}}
               </div>
               <ng-template #mobilePhoneEdit>
-                <input type="text" name="mobileToEdit" id="mobileToEdit" value="{{tokenUser.mobile}}" [(ngModel)]="newFormModel.mobile"/>
+                <input type="text" name="mobileToEdit" id="mobileToEdit" value="{{tokenUser.mobile}}" required #mobileToEdit="ngModel"  [class.is-invalid]="mobileToEdit.invalid && mobileToEdit.touched" [(ngModel)]="newFormModel.mobile"/>
+                <div *ngIf="mobileToEdit.errors && (mobileToEdit.invalid || mobileToEdit.touched)">
+                  <small class="warning-text" *ngIf="mobileToEdit.touched && mobileToEdit.errors">mon numero de téléphone</small>
+
+                </div>
               </ng-template>
             </div>
             <hr>
@@ -245,6 +253,10 @@
               </div>
               <ng-template #domainToEdit>
                 <input type="text" name="JobDomainToEdit" id="JobDomainToEdit" value="{{tokenUser.domain_job}}" ngModel required #JobDomainToEdit="ngModel"  [class.is-invalid]="JobDomainToEdit.invalid && JobDomainToEdit.touched" [(ngModel)]="newFormModel.subjectJob"/>
+                <div *ngIf="JobDomainToEdit.errors && (JobDomainToEdit.invalid || JobDomainToEdit.touched)">
+                  <small class="warning-text" *ngIf="JobDomainToEdit.touched && JobDomainToEdit.errors">Votre domaine de travail est requis</small>
+
+                </div>
               </ng-template>
             </div>
             <hr>
@@ -258,6 +270,10 @@
               </div>
               <ng-template #jobToEdit>
                 <input type="text" name="JobToEdit" id="JobToEdit"  value="{{tokenUser.job}}"  ngModel required #JobToEdit="ngModel"  [class.is-invalid]="JobToEdit.invalid && JobToEdit.touched" [(ngModel)]="newFormModel.jobTitle"/>
+                <div *ngIf="JobToEdit.errors && (JobToEdit.invalid || JobToEdit.touched)">
+                  <small class="warning-text" *ngIf="JobToEdit.touched && JobToEdit.errors">Votre profession est requise</small>
+
+                </div>
               </ng-template>
             </div>
             <hr>

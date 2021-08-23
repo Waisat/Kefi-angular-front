@@ -120,10 +120,10 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
         this.updateKefiValidation = result
         if(this.updateKefiValidation.status === "success"){
           this.successDisplaySaveData = true
-          setTimeout(()=> this.hiddenMessageTimeOut(), 3000)
+          setTimeout(()=> this.hiddenMessageTimeOut(), 5000)
         }else {
           this.failedDisplaySaveData = true
-          setTimeout(()=> this.hiddenMessageTimeOut(), 3000)
+          setTimeout(()=> this.hiddenMessageTimeOut(), 5000)
         }
 
         this.getDataMember()
