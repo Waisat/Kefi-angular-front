@@ -270,7 +270,7 @@
               </div>
               <ng-template #jobToEdit>
                 <input type="text" name="JobToEdit" id="JobToEdit"  value="{{tokenUser.job}}"  ngModel required #JobToEdit="ngModel"  [class.is-invalid]="JobToEdit.invalid && JobToEdit.touched" [(ngModel)]="newFormModel.jobTitle"/>
-                <div *ngIf="JobToEdit.errors && (JobToEdit.invalid || JobToEdit.touched)">
+                <div *ngIf="JobToEdit.value === ''">
                   <small class="warning-text" *ngIf="JobToEdit.touched && JobToEdit.errors">Votre profession est requise</small>
 
                 </div>
