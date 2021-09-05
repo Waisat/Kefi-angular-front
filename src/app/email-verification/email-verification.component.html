@@ -3,16 +3,16 @@
   <div class='window'>
     <div class='overlay'></div>
     <div class='content' *ngIf="!getErrorValidationCode;else validationCodeErreur">
-      <div class='welcome'>Confirmation de votre email !</div>
+      <div class='welcome'>Confirmation de votre email</div>
       <div class='subtitle'>Veuillez saisir un mot de passe</div>
-      <div class='subtitle'>Le mot de pass doit contenir des Majuscules, minuscules, chiffres, caractéres spéciaux. (Minimum 8 caractéres)</div>
+      <div class='subtitle'>Le mot de pass doit contenir des majuscules, minuscules, chiffres, caractéres spéciaux. (Minimum 8 caractéres)</div>
       <div class='input-fields'>
         <form #passwordFormMember="ngForm" (ngSubmit)="passwordConfirmation()" novalidate>
 
           <input name="password" placeholder='mot de passe' class='input-line full-width' ngModel required #password="ngModel" type="password" [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="UserPassword.password">
           <div *ngIf="password.errors && (password.invalid || password.touched)">
             <small class="warning-text" *ngIf="password.touched && password.errors.required">Le mot de passe est requis</small>
-            <small class="warning-text" *ngIf="password.errors.pattern">Le mot de passe doit etre valide</small>
+            <small class="warning-text" *ngIf="password.errors.pattern">Le mot de pass doit contenir des Majuscules, minuscules, chiffres, caractéres spéciaux.</small>
 
           </div>
 

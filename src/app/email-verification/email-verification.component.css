@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500);
 @media (min-width: 769px) {
+
+  .warning-text{
+    color:red;
+  }
   .container {
 
     margin: 8% auto 3% auto;
@@ -227,7 +231,9 @@
   }
 }
 @media (min-width: 500px) and (max-width: 768px) {
-
+  .warning-text{
+    color:red;
+  }
   .container {
 
     margin: 40% auto 3% auto;
@@ -436,6 +442,10 @@
   }
 }
 @media (max-width: 499px) {
+
+  .warning-text{
+    color:red;
+  }
   .container {
 
     margin: 30% auto 30% auto;
