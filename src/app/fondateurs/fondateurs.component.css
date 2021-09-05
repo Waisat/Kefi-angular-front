@@ -177,6 +177,11 @@
 
 
 @media (min-width: 500px) and  (max-width: 769px) {
+
+  #img-sprinkle{
+    position: absolute;
+    z-index: -2;
+  }
   .container {
     width: 100%;
     margin-top: 38%;
@@ -347,6 +352,11 @@
 
 
 @media (max-width: 499px) {
+
+  #img-sprinkle{
+    position: absolute;
+    z-index: -2;
+  }
   .container {
     width: 100%;
     margin: 30% auto 30% auto;
