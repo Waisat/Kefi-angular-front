@@ -1,6 +1,63 @@
 
 
 <div class="container" *ngIf="allFounders; else loadFounders">
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"  width="1440" height="560" preserveAspectRatio="none" viewBox="0 0 1440 560">
+    <g mask="url(&quot;#SvgjsMask1042&quot;)" fill="none">
+      <rect width="1440" height="560" x="0" y="0" fill="url(#SvgjsLinearGradient1043)"></rect>
+      <path d="M-19.708227032225924-52.122553530052926L-48.88112088027022 113.32514897599802 116.56658162578074 142.4980428240423 145.73947547382502-22.949659682008633z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float3"></path>
+      <path d="M140.8436358321148 157.11270781167764L155.48580061372135-10.248001467735605-11.87490866569189-24.890166249342144-26.51707344729843 142.4705430300711z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float2"></path>
+      <path d="M-75.81237363805022 49.092006215603284L36.601568230237945 173.9403368958055 161.44989891044017 61.526395027517346 49.035957042152006-63.32193565268488z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float2"></path>
+      <path d="M1260.7736705996158 8.697843973765252L1329.1054266363503 162.1734808577222 1482.5810635203072 93.84172482098776 1414.2493074835727-59.63391206296918z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float1"></path>
+      <path d="M1493.4273766902593-17.809697553304456L1328.5140098710517-49.865608776563974 1296.4580986477922 115.04775804264355 1461.3714654669998 147.10366926590308z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float2"></path>
+      <path d="M1424.7881622818898-69.53305556660536L1275.099066218244 6.7373483896385125 1351.3694701744878 156.42644445328432 1501.0585662381336 80.15604049704044z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float1"></path>
+      <path d="M-57.14031137506197 571.9815575297907L105.86937063930543 612.6244359905348 146.51224910004956 449.61475397616744-16.49743291431784 408.97187551542333z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float2"></path>
+      <path d="M183.49570435321422 469.83762898011906L38.003436517428526 385.8376289801191-45.99656348257142 531.3298968159048 99.49570435321426 615.3298968159047z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float1"></path>
+      <path d="M-43.616582240368594 417.40462619186803L-31.897494651355636 584.9953866355186 135.69326579229485 573.2762990465055 123.9741782032819 405.68553860285505z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float1"></path>
+      <path d="M1268.5560885028367 440.00839492201027L1314.8631642800926 601.5003598396478 1476.35512919773 555.1932840623919 1430.0480534204742 393.7013191447543z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float2"></path>
+      <path d="M1277.2152048073654 426.41630494820873L1303.496194934124 592.3479461681918 1469.4278361541074 566.0669560414331 1443.1468460273486 400.1353148214499z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float3"></path>
+      <path d="M1253.6317903110407 524.6482959276976L1389.546645366032 623.3962183128331 1488.2945677511675 487.4813632578419 1352.3797126961763 388.7334408727064z" fill="rgba(28, 83, 142, 0.4)" class="triangle-float2"></path>
+    </g>
+    <defs>
+      <mask id="SvgjsMask1042">
+        <rect width="1440" height="560" fill="#ffffff"></rect>
+      </mask>
+      <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient1043">
+        <stop stop-color="#0e2a47" offset="0"></stop>
+        <stop stop-color="#00459e" offset="1"></stop>
+      </linearGradient>
+      <style>
+        @keyframes float1 {
+          0%{transform: translate(0, 0)}
+          50%{transform: translate(-10px, 0)}
+          100%{transform: translate(0, 0)}
+        }
+
+        .triangle-float1 {
+          animation: float1 5s infinite;
+        }
+
+        @keyframes float2 {
+          0%{transform: translate(0, 0)}
+          50%{transform: translate(-5px, -5px)}
+          100%{transform: translate(0, 0)}
+        }
+
+        .triangle-float2 {
+          animation: float2 4s infinite;
+        }
+
+        @keyframes float3 {
+          0%{transform: translate(0, 0)}
+          50%{transform: translate(0, -10px)}
+          100%{transform: translate(0, 0)}
+        }
+
+        .triangle-float3 {
+          animation: float3 6s infinite;
+        }
+      </style>
+    </defs>
+  </svg>
   <div id="founders-contains" class="fonders-countains-class"  *ngFor="let founder of allFounders">
 <div class="flex-display-founders" >
   <figure class="snip1559">

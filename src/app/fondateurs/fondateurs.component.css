@@ -2,6 +2,11 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald);
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 @media (min-width: 769px) {
+
+  .svg{
+    position: absolute;
+    z-index: -2;
+  }
   .container {
     width: 100%;
     margin-top: 5%;
