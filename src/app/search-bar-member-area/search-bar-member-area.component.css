@@ -3,7 +3,7 @@
     position: relative;
     width: 30rem;
     border-radius: 20px;
-    margin: 5% 0;
+    margin: 5% auto;
   }
   input,
   button {
