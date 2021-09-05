@@ -5,6 +5,7 @@
   <label for="search">Rechercher un membre</label>
   <input id="search" type="search" name="searchInput" placeholder="Rechercher un membre"  ngModel required #searchInput="ngModel"  [class.is-invalid]="searchInput.invalid && searchInput.touched" [(ngModel)]="optionSearch.searchName" (keyup)="keyDownSearch()" autofocus />
 </form>
+</div>
 <!--
 
   <div class="col-md-8 ftco-animate fadeInUp ftco-animated">
