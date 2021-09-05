@@ -16,6 +16,7 @@ export class FormAddMemberComponent implements OnInit {
   UserAddModel:MemberToAdd= new MemberToAdd("","", "", "", "")
   userInsert:boolean = false;
   displayingMessage:any
+  resultFromAddMember:any
   constructor(private userHttp : UserService) { }
 
   ngOnInit(): void {
@@ -33,8 +34,12 @@ export class FormAddMemberComponent implements OnInit {
     ).subscribe(result=>{
     if(result){
       this.userInsert = true
-      this.displayingMessage = true
-      setTimeout(()=>this.displayingMessageFunc, 3000)
+      this.resultFromAddMember = result
+      if(this.resultFromAddMember.infos === "utilisateur ajouté et message envoyé"){
+        this.displayingMessage = true
+        setTimeout(()=>this.displayingMessageFunc(), 3000)
+      }
+
       console.log(result)
     }
     })
