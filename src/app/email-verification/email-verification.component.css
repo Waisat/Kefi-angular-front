@@ -494,6 +494,9 @@
     margin-top: 10px;
     color: rgba(255, 255, 255, 0.65)
   }
+  input[placeholder]{
+    font-size: 12px;
+  }
 
   .input-line:focus {
     outline: none;
