@@ -25,7 +25,7 @@ export class ForgetPasswordComponent implements OnInit {
         return throwError(err);
       })
     ).subscribe(result =>{
-
+        console.log(result)
       }
     )
 
