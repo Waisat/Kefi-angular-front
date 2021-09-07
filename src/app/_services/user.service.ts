@@ -321,7 +321,7 @@ export class UserService {
   /*** Forget password user***/
 
   iForgotMyPassword(email:ForgetPassword):Observable<ForgetPassword>{
-    return this.http.put<ForgetPassword>(this.ConfigUrl + '/forget_my_password', email).pipe(
+    return this.http.post<ForgetPassword>(this.ConfigUrl + '/forget_my_password', email).pipe(
       retry(3),
       catchError(this.handleError)
     );
