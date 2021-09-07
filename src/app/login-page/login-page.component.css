@@ -210,6 +210,10 @@
     margin: 10% auto;
     width: 30%;
   }
+
+  .ling_forget_password_class{
+    margin: 0 auto 20% auto;
+  }
 }
 @media (min-width: 500px) and (max-width: 768px) {
 
