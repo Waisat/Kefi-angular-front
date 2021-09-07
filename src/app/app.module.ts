@@ -67,6 +67,7 @@ import { MessageErrorComponent } from './displayMessage/message-error/message-er
 import { MemberAreaScrollComponent } from './member-area-scroll/member-area-scroll.component';
 import {MY_FORMAT} from "./_utilities/formatPicker";
 import { CguComponent } from './cgu/cgu.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -113,6 +114,7 @@ import { CguComponent } from './cgu/cgu.component';
     MessageErrorComponent,
     MemberAreaScrollComponent,
     CguComponent,
+    ForgetPasswordComponent,
 
 
 

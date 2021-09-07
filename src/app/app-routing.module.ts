@@ -21,6 +21,7 @@ import {FondateursDetailComponent} from "./fondateurs-detail/fondateurs-detail.c
 import {PayementSubcriptionComponent} from "./payement-subcription/payement-subcription.component";
 import {MemberAreaScrollComponent} from "./member-area-scroll/member-area-scroll.component";
 import {CguComponent} from "./cgu/cgu.component";
+import {ForgetPasswordComponent} from "./forget-password/forget-password.component";
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'fondateurs', component: FondateursComponent, data: {animation: 'FoundersPage'}},
   { path: 'fondateur/:name', component: FondateursDetailComponent, data: {animation: 'FoundersDetailPage'}},
   {path: 'login', component: LoginPageComponent ,data: {animation: 'LoginPage'}},
+  {path: 'forgetPassword', component: ForgetPasswordComponent ,data: {animation: 'ForgetPasswordPage'}},
   {path: 'contact', component: ContactComponent, data: {animation: 'ContactPage'}},
   {path: 'conditions_generales_utilisation', component: CguComponent, data: {animation: 'CGUPage'}},
   {path: 'articles', component: ArticlesComponent, data: {animation: 'ArticlesPage'}},

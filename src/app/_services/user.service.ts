@@ -29,6 +29,7 @@ import {UsernameResendCodeEmail} from "../class/username-resend-code-email";
 import {IdPublicPage} from "../class/id-public-page";
 import {ArrayMembersValuesToCheck} from "../class/array-members-values-to-check";
 import {Cgu} from "../class/cgu";
+import {ForgetPassword} from "../class/forget-password";
 @Injectable({
   providedIn: 'root'
 })
@@ -312,6 +313,15 @@ export class UserService {
   getCguFromDb():Observable<Cgu>{
     return this.http.get<Cgu>(this.ConfigUrl + `/cgu_kefi_association`
     ).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
+  /*** Forget password user***/
+
+  iForgotMyPassword(email:ForgetPassword):Observable<ForgetPassword>{
+    return this.http.put<ForgetPassword>(this.ConfigUrl + '/forget_my_password', email).pipe(
       retry(3),
       catchError(this.handleError)
     );
