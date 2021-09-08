@@ -326,4 +326,15 @@ export class UserService {
       catchError(this.handleError)
     );
   }
+
+  /*** check url befor showing confirm page***/
+
+
+  checkUrlBeforePasswordChange(dataUser: VerifyEmailUrl): Observable<VerifyEmailUrl[]> {
+    return this.http.get<VerifyEmailUrl[]>(
+      this.ConfigUrl + `/nouveau_mot_de_passe/${dataUser.user_name}/${dataUser.urlToken}`).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
 }
