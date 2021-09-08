@@ -5,21 +5,21 @@
     <div class='content' *ngIf="!getErrorValidationCode;else validationCodeErreur">
       <div class='welcome'>Confirmation de votre email</div>
       <div class='subtitle'>Veuillez saisir un mot de passe</div>
-      <div class='subtitle'>Le mot de pass doit contenir des majuscules, minuscules, chiffres, caractéres spéciaux. (Minimum 8 caractéres)</div>
+      <div class='subtitle'>Votre mot de passe doit contenir au minimum 8 caractères, à savoir : au moins une lettre minuscule et une lettre majuscule, un caractère spécial et un chiffre</div>
       <div class='input-fields'>
         <form #passwordFormMember="ngForm" (ngSubmit)="passwordConfirmation()" novalidate>
 
           <input name="password" placeholder='mot de passe' class='input-line full-width' ngModel required #password="ngModel" type="password" [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="UserPassword.password">
           <div *ngIf="password.errors && (password.invalid || password.touched)">
             <small class="warning-text" *ngIf="password.touched && password.errors.required">Le mot de passe est requis</small>
-            <small class="warning-text" *ngIf="password.errors.pattern">Le mot de pass doit contenir des Majuscules, minuscules, chiffres, caractéres spéciaux.</small>
+            <small class="warning-text" *ngIf="password.errors.pattern">Votre mot de passe doit contenir au minimum 8 caractères, à savoir : au moins une lettre minuscule et une lettre majuscule, un caractère spécial et un chiffre</small>
 
           </div>
 
           <input name="confirm_password" placeholder='confirmation de mot de passe' class='input-line full-width' ngModel required #cPassword="ngModel" [pattern]="patternPassword" type="password" [class.is-invalid]="cPassword.invalid && cPassword.touched" [(ngModel)]="UserPassword.confirm_password">
           <div *ngIf="cPassword.errors && (cPassword.invalid || cPassword.touched)">
             <small class="warning-text" *ngIf="cPassword.touched && cPassword.errors.required">Vous devez confirmez votre mot de passe</small>
-            <small class="warning-text" *ngIf="cPassword.errors.pattern">Le mot de pass doit contenir des Majuscules, minuscules, chiffres, caractéres spéciaux. (Minimum 8 caractéres) </small>
+            <small class="warning-text" *ngIf="cPassword.errors.pattern">Votre mot de passe de confirmation doit contenir au minimum 8 caractères, à savoir : au moins une lettre minuscule et une lettre majuscule, un caractère spécial et un chiffre </small>
 
           </div>
 

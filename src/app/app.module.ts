@@ -68,6 +68,7 @@ import { MemberAreaScrollComponent } from './member-area-scroll/member-area-scro
 import {MY_FORMAT} from "./_utilities/formatPicker";
 import { CguComponent } from './cgu/cgu.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ForgetPasswordLinkComponent } from './forget-password-link/forget-password-link.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -115,6 +116,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     MemberAreaScrollComponent,
     CguComponent,
     ForgetPasswordComponent,
+    ForgetPasswordLinkComponent,
 
 
 
