@@ -47,7 +47,7 @@ export class ForgetPasswordLinkComponent implements OnInit {
       this.resultEmailCode = result
       if(this.resultEmailCode){
         this.tokenWaitResponse = true
-        if(this.resultEmailCode === 'Valid_code'){
+        if(this.resultEmailCode.result === 'Valid_code'){
           this.checkValue = true
         }else{
           this.checkValue = false
