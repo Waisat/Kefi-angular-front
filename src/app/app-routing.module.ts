@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'fondateur/:name', component: FondateursDetailComponent, data: {animation: 'FoundersDetailPage'}},
   {path: 'login', component: LoginPageComponent ,data: {animation: 'LoginPage'}},
   {path: 'mot_de_passe_oublier', component: ForgetPasswordComponent ,data: {animation: 'ForgetPasswordPage'}},
-  {path: 'nouveau_mot_de_passe/:username}/:token', component: ForgetPasswordLinkComponent},
+  {path: 'nouveau_mot_de_passe/:username/:token', component: ForgetPasswordLinkComponent},
   {path: 'contact', component: ContactComponent, data: {animation: 'ContactPage'}},
   {path: 'conditions_generales_utilisation', component: CguComponent, data: {animation: 'CGUPage'}},
   {path: 'articles', component: ArticlesComponent, data: {animation: 'ArticlesPage'}},
