@@ -17,6 +17,8 @@ export class ForgetPasswordLinkComponent implements OnInit {
   usernameKefi: any;
   resultEmailCode: any;
   emailVerification: VerifyEmailUrl = new VerifyEmailUrl("", "")
+  tokenWaitResponse:any;
+  checkValue:any;
 
   constructor(private serviceUsers: UserService, private route: ActivatedRoute) {
   }
@@ -43,6 +45,15 @@ export class ForgetPasswordLinkComponent implements OnInit {
       return throwError(err);
     })).subscribe(result => {
       this.resultEmailCode = result
+      if(this.resultEmailCode){
+        this.tokenWaitResponse = true
+        if(this.resultEmailCode === 'Valid_code'){
+          this.checkValue = true
+        }else{
+          this.checkValue = false
+
+        }
+      }
       console.log(result)
 
 
