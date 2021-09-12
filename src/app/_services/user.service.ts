@@ -337,4 +337,12 @@ export class UserService {
       catchError(this.handleError)
     );
   }
+
+  /*** Send new password to DB***/
+
+  sendNewPassword(passwordUser: PasswordUser): Observable<PasswordUser>{
+    return this.http.post<PasswordUser>(this.ConfigUrl + '/change_password_user', passwordUser).pipe(
+      retry(3),
+      catchError(this.handleError))
+  }
 }

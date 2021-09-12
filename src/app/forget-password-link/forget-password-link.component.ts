@@ -5,6 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {VerifyEmailUrl} from "../class/verify-email-url";
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
+import {ChangePasswordUser} from "../class/change-password-user";
 
 @Component({
   selector: 'app-forget-password-link',
@@ -13,12 +14,13 @@ import {throwError} from "rxjs";
 })
 export class ForgetPasswordLinkComponent implements OnInit {
   patternPassword: RegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
-  newPassword: PasswordUser = new PasswordUser("", "", "")
+  newPassword: ChangePasswordUser = new ChangePasswordUser("", "", "", "")
   usernameKefi: any;
   resultEmailCode: any;
   emailVerification: VerifyEmailUrl = new VerifyEmailUrl("", "")
   tokenWaitResponse:any;
   checkValue:any;
+
 
   constructor(private serviceUsers: UserService, private route: ActivatedRoute) {
   }
@@ -49,6 +51,8 @@ export class ForgetPasswordLinkComponent implements OnInit {
         this.tokenWaitResponse = true
         if(this.resultEmailCode.result === 'Valid_code'){
           this.checkValue = true
+          this.newPassword.email = this.resultEmailCode.email
+          this.newPassword.token = this.resultEmailCode.token
         }else{
           this.checkValue = false
 
@@ -59,5 +63,12 @@ export class ForgetPasswordLinkComponent implements OnInit {
 
     })
   }
-  confirmPassword():void {}
+  confirmPassword():void {
+    this.serviceUsers.sendNewPassword(this.newPassword).pipe(catchError(err => {
+      console.log('Handling error locally and rethrowing it...', err);
+      return throwError(err);
+    })).subscribe((result=>{
+      console.log(result)
+    }))
+  }
 }
