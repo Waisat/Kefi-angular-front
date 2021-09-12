@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-error-change-pw-message',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./error-change-pw-message.component.css']
 })
 export class ErrorChangePwMessageComponent implements OnInit {
-
+  @Input('dataError') public data:any
   constructor() { }
 
   ngOnInit(): void {
