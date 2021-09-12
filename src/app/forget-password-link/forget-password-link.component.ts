@@ -75,9 +75,10 @@ export class ForgetPasswordLinkComponent implements OnInit {
         this.resultConfirmPassword = result
         if(this.resultConfirmPassword.result === "password_update"){
         this.validationConfirmPassword = "confirmation_change"
+          setTimeout(()=>this.TimeOutConfirmPassword, 5000)
         }else{
           this.validationConfirmPassword = "failed_change"
-          setTimeout(()=>this.TimeOutConfirmPassword(), 5000)
+          setTimeout(()=>this.TimeOutConfirmPassword, 5000)
 
         }
       }
