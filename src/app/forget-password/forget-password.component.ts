@@ -27,21 +27,22 @@ export class ForgetPasswordComponent implements OnInit {
         return throwError(err);
       })
     ).subscribe(result =>{
-      const getInputEmail = document.getElementById("email_password_forget")
+
       this.resultFromForgetPassword = result
       if(this.resultFromForgetPassword.status_verify === "okay"){
         this.emailToVerifyEmailSend = {status:"email_send", message:"Un email vient de vous être envoyé afin de réinitialiser votre mot de passe"}
-        if(getInputEmail)
-        getInputEmail.textContent = ""
+
+        this.emailToCheck.email = ""
         setTimeout(()=> this.hideMessage(), 5000)
       }else if(this.resultFromForgetPassword.status_verify === "email-not-confirm"){
         this.emailToVerifyEmailSend = {status:"email_send", message:"Un email vient de vous être envoyé afin de confirmer votre compte et choisir votre mot de passe"}
-        if(getInputEmail)
-        getInputEmail.textContent = ""
+
+       this.emailToCheck.email = ""
         setTimeout(()=> this.hideMessage(), 5000)
 
       }else{
         this.emailToVerifyEmailSend = {status:"email_not_send", message:"Il semble que vous ne soyez pas inscrit parmis nos membre envoyé nous un mail en cas d'erreur de notre part"}
+        this.emailToCheck.email = ""
         setTimeout(()=> this.hideMessage(), 5000)
 
       }
