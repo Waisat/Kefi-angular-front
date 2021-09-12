@@ -23,23 +23,31 @@ export class ForgetPasswordComponent implements OnInit {
     this.httpForgetPassword.iForgotMyPassword(this.emailToCheck).pipe(
       catchError(err => {
         console.log('Handling error locally and rethrowing it...', err);
-        //this.checkMessage.checkMessageDisplay('error')
+
         return throwError(err);
       })
     ).subscribe(result =>{
       this.resultFromForgetPassword = result
       if(this.resultFromForgetPassword.status_verify === "okay"){
         this.emailToVerifyEmailSend = {status:"email_send", message:"Un email vient de vous être envoyé afin de réinitialiser votre mot de passe"}
+        setTimeout(()=> this.hideMessage, 5000)
       }else if(this.resultFromForgetPassword.status_verify === "email-not-confirm"){
         this.emailToVerifyEmailSend = {status:"email_send", message:"Un email vient de vous être envoyé afin de confirmer votre compte et choisir votre mot de passe"}
+        setTimeout(()=> this.hideMessage, 5000)
+
       }else{
         this.emailToVerifyEmailSend = {status:"email_not_send", message:"Il semble que vous ne soyez pas inscrit parmis nos membre envoyé nous un mail en cas d'erreur de notre part"}
+        setTimeout(()=> this.hideMessage, 5000)
 
       }
 
-        console.log(this.resultFromForgetPassword)
       }
     )
+
+  }
+
+  hideMessage(){
+    this.emailToVerifyEmailSend = {status:"hide", message:"cacher le message"}
 
   }
 
