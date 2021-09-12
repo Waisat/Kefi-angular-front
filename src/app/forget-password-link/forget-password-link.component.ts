@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PasswordUser} from "../class/password-user";
 import {UserService} from "../_services/user.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {VerifyEmailUrl} from "../class/verify-email-url";
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
@@ -24,7 +24,7 @@ export class ForgetPasswordLinkComponent implements OnInit {
   validationConfirmPassword: any;
 
 
-  constructor(private serviceUsers: UserService, private route: ActivatedRoute) {
+  constructor(private serviceUsers: UserService, private route: ActivatedRoute, private _router:Router) {
   }
 
   ngOnInit(): void {
@@ -75,9 +75,13 @@ export class ForgetPasswordLinkComponent implements OnInit {
         this.resultConfirmPassword = result
         if(this.resultConfirmPassword.result === "password_update"){
         this.validationConfirmPassword = "confirmation_change"
+          this.newPassword.password = ""
+          this.newPassword.confirm_password= ""
           setTimeout(()=>this.TimeOutConfirmPassword(), 5000)
         }else{
           this.validationConfirmPassword = "failed_change"
+          this.newPassword.password = ""
+          this.newPassword.confirm_password= ""
           setTimeout(()=>this.TimeOutConfirmPassword(), 5000)
 
         }
@@ -87,5 +91,8 @@ export class ForgetPasswordLinkComponent implements OnInit {
 
   TimeOutConfirmPassword(){
     this.validationConfirmPassword = ""
+    this._router.navigate(["login"])
   }
+
+
 }
