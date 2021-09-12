@@ -73,7 +73,7 @@ export class ForgetPasswordLinkComponent implements OnInit {
       console.log(result)
       if(result){
         this.resultConfirmPassword = result
-        if(this.resultConfirmPassword.result === "resultConfirmPassword"){
+        if(this.resultConfirmPassword.result === "password_update"){
         this.validationConfirmPassword = "confirmation_change"
         }else{
           this.validationConfirmPassword = "failed_change"
