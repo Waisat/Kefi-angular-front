@@ -69,6 +69,8 @@ import {MY_FORMAT} from "./_utilities/formatPicker";
 import { CguComponent } from './cgu/cgu.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ForgetPasswordLinkComponent } from './forget-password-link/forget-password-link.component';
+import { SuccessChangePwMessageComponent } from './displayMessageChangePw/success-change-pw-message/success-change-pw-message.component';
+import { ErrorChangePwMessageComponent } from './displayMessageChangePw/error-change-pw-message/error-change-pw-message.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -117,6 +119,8 @@ import { ForgetPasswordLinkComponent } from './forget-password-link/forget-passw
     CguComponent,
     ForgetPasswordComponent,
     ForgetPasswordLinkComponent,
+    SuccessChangePwMessageComponent,
+    ErrorChangePwMessageComponent,
 
 
 

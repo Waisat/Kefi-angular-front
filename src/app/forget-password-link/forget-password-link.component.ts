@@ -20,6 +20,8 @@ export class ForgetPasswordLinkComponent implements OnInit {
   emailVerification: VerifyEmailUrl = new VerifyEmailUrl("", "")
   tokenWaitResponse:any;
   checkValue:any;
+  resultConfirmPassword: any;
+  validationConfirmPassword: any;
 
 
   constructor(private serviceUsers: UserService, private route: ActivatedRoute) {
@@ -69,6 +71,20 @@ export class ForgetPasswordLinkComponent implements OnInit {
       return throwError(err);
     })).subscribe((result=>{
       console.log(result)
+      if(result){
+        this.resultConfirmPassword = result
+        if(this.resultConfirmPassword.result === "resultConfirmPassword"){
+        this.validationConfirmPassword = "confirmation_change"
+        }else{
+          this.validationConfirmPassword = "failed_change"
+          setTimeout(()=>this.TimeOutConfirmPassword(), 5000)
+
+        }
+      }
     }))
+  }
+
+  TimeOutConfirmPassword(){
+    this.validationConfirmPassword = ""
   }
 }
