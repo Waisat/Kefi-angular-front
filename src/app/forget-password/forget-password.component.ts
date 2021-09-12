@@ -30,14 +30,14 @@ export class ForgetPasswordComponent implements OnInit {
       this.resultFromForgetPassword = result
       if(this.resultFromForgetPassword.status_verify === "okay"){
         this.emailToVerifyEmailSend = {status:"email_send", message:"Un email vient de vous être envoyé afin de réinitialiser votre mot de passe"}
-        setTimeout(()=> this.hideMessage, 5000)
+        setTimeout(()=> this.hideMessage(), 5000)
       }else if(this.resultFromForgetPassword.status_verify === "email-not-confirm"){
         this.emailToVerifyEmailSend = {status:"email_send", message:"Un email vient de vous être envoyé afin de confirmer votre compte et choisir votre mot de passe"}
-        setTimeout(()=> this.hideMessage, 5000)
+        setTimeout(()=> this.hideMessage(), 5000)
 
       }else{
         this.emailToVerifyEmailSend = {status:"email_not_send", message:"Il semble que vous ne soyez pas inscrit parmis nos membre envoyé nous un mail en cas d'erreur de notre part"}
-        setTimeout(()=> this.hideMessage, 5000)
+        setTimeout(()=> this.hideMessage(), 5000)
 
       }
 
