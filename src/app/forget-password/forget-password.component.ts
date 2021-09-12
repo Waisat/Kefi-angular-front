@@ -47,7 +47,7 @@ export class ForgetPasswordComponent implements OnInit {
   }
 
   hideMessage(){
-    this.emailToVerifyEmailSend = {status:"hide", message:"cacher le message"}
+    this.emailToVerifyEmailSend.status = "hide"
 
   }
 
