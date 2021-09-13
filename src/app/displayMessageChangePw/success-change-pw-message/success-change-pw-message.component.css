@@ -216,9 +216,9 @@
 @media (max-width: 499px) {
   .succes-connexion-display{
     width: 100%;
-    z-index: 3;
+    z-index: 6;
     position: absolute;
-    margin:10% 0 0 0;
+    margin:20% 0 0 0;
   }
 
 }
