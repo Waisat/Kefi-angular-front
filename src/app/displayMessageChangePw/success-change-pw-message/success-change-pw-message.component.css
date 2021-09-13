@@ -212,3 +212,13 @@
     opacity: 0;
   }
 }
+
+@media (max-width: 499px) {
+  .succes-connexion-display{
+    width: 100%;
+    z-index: 3;
+    position: absolute;
+    margin:0.5% 0 0 0;
+  }
+
+}
