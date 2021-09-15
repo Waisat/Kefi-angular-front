@@ -663,7 +663,7 @@ DEMO
   #flex-nav-wrap{
     display: flex;
     flex-wrap: wrap;
-    width: 65%;
+    width: 100%;
     margin-left: 10%;
     padding: 2%;
   }
@@ -792,8 +792,7 @@ DEMO
   {
     margin: 0 10%;
     padding: 1% 0;
-    font-size: 15px;
-    width: 15%;
+    width: auto;
   }
 
   /*
