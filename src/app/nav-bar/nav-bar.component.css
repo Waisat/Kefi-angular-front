@@ -691,10 +691,10 @@ DEMO
 
   }
   .logo_kefi{
-    width: 15%;
+    width: 20%;
     position: absolute;
     z-index: 2;
-    margin: 1% 70%;
+    margin: 4% 70%;
   }
 
   #nav-bar-phone{
