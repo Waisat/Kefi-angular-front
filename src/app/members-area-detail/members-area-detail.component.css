@@ -251,7 +251,7 @@
   .kefi-loadingTime{
     width: 60%;
     height: 100vh;
-    margin: 30% auto;
+    margin: 50% auto;
     text-align: center;
   }
   .kefi-loadingTime p{
@@ -262,9 +262,20 @@
 
   }
 
+  ul{
+    padding: 10%;
+  }
 
+  .mb-0{
+    font-weight: bold;
+  }
   .text-secondary{
     text-align: center;
     padding: 10%;
+  }
+
+  .description-text{
+    text-align: justify;
+    padding: 5%;
   }
 }
