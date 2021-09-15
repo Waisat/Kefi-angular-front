@@ -313,6 +313,12 @@ h3:after {
 }
 
 @media (max-width:500px){
+
+  .kefi-loadingTime{
+    margin: 30% auto;
+    width: 60%;
+    height: 100vh;
+  }
   .utility-info li:last-of-type{
     width:100%
   }
