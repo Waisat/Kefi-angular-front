@@ -275,7 +275,7 @@
   }
 
   .description-text{
-    text-align: justify;
+    justify-content: space-between;
     padding: 5%;
   }
 }
