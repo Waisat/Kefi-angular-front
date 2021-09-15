@@ -245,7 +245,7 @@
 @media (max-width: 499px) {
   .container{
     width: 90%;
-
+    margin: 0 0 10% 0;
   }
 
   .kefi-loadingTime{
