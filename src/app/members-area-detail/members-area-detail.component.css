@@ -243,4 +243,18 @@
     width: 90%;
     margin:30% auto 30% auto;
   }
+
+  .kefi-loadingTime{
+    height: 100vh;
+    margin: 10% auto;
+    text-align: center;
+  }
+  .kefi-loadingTime p{
+    margin-top: 5%;
+    padding: 2%;
+    width: 100%;
+    font-size: 1.1rem;
+
+  }
+
 }
