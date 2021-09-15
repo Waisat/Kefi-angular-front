@@ -1,4 +1,6 @@
-
+.upperCase-name{
+  text-transform: uppercase;
+}
 .container{
   margin: 10% auto;
   padding: 2% 0;
@@ -129,6 +131,14 @@
   .container{
     margin: 30% auto 10% auto;
   }
+  .our-team .picture {
+    display: inline-block;
+    height: 130px;
+    width: 130px;
+    margin-bottom: 35px;
+    z-index: 1;
+    position: relative;
+  }
 }
 
 
@@ -137,6 +147,13 @@
   .container{
     margin: 30% auto 25% auto;
   }
-
+  .our-team .picture {
+    display: inline-block;
+    height: 130px;
+    width: 130px;
+    margin-bottom: 20px;
+    z-index: 1;
+    position: relative;
+  }
 
 }
