@@ -236,6 +236,10 @@
     display: flex;
     flex-direction: column;
   }
+
+  .mb-0{
+    font-weight: bold;
+  }
 }
 
 @media (max-width: 499px) {
@@ -258,4 +262,9 @@
 
   }
 
+
+  .text-secondary{
+    text-align: center;
+    padding: 10%;
+  }
 }
