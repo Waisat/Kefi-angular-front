@@ -4,12 +4,12 @@ import {CookieService} from "ngx-cookie";
 import {Observable, throwError} from "rxjs";
 import {User} from "../class/user.model";
 import {catchError, switchMap} from "rxjs/operators";
-
+import {environment} from "../../environments/environment"
 @Injectable({
   providedIn: 'root'
 })
 export class StripeServices {
-  ConfigUrl: string = "http://localhost:5000"
+  ConfigUrl: string = environment.API_URL
 
   constructor(private http: HttpClient) {
   }

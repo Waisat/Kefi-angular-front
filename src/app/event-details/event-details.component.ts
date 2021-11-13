@@ -17,12 +17,7 @@ export class EventDetailsComponent implements OnInit {
   widthCarousel:any;
   heightCarousel:any;
 
-  imagesEventCarousel = [
-
-    {path: 'assets/1.jpg'},
-    {path: 'assets/2.jpg'},
-    {path:'assets/3.jpg'}
-    ]
+  imagesEventCarousel:any = []
   ngOnInit(): void {
     this.getDetailEvent()
     this.getCarouselSize()
@@ -42,6 +37,15 @@ export class EventDetailsComponent implements OnInit {
 
   }
 
+  createCarousel(images:any=[], folderName:string){
+
+    for(let i =0; i < images.length; i++){
+
+      this.imagesEventCarousel.push({path:`https://waisatusbucket.s3.eu-west-3.amazonaws.com/events/${folderName}${images[i]}`})
+    }
+
+  }
+
 
 
   getDetailEvent(){
@@ -56,6 +60,8 @@ export class EventDetailsComponent implements OnInit {
         return throwError(err);
       })).subscribe((result=>{
         this.eventDetail = result
+        console.log("tetee",this.eventDetail.photos)
+        this.createCarousel(this.eventDetail.photos, this.eventDetail.main_photo)
         if(this.eventDetail.status === "failed"){
           this.errorEventDetailUrl = true
         }

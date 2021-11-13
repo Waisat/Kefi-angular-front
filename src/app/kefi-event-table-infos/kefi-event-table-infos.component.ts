@@ -7,9 +7,13 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class KefiEventTableInfosComponent implements OnInit {
   @Input('eventD') public eventData:any
+  public formatEventDate:string = ""
   constructor() { }
 
   ngOnInit(): void {
+   const replaceT = this.eventData.event_date.replace("T", " ")
+    const splitTable = replaceT.split(" ")
+    this.formatEventDate = splitTable[0]
   }
 
 }

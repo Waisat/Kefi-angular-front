@@ -56,12 +56,12 @@
                   <div class="avatar-preview"  *ngIf="tokenUser.photo_url">
 
 
-                    <div  id="imagePreview" *ngIf="tokenUser.photo_url === defaultWomanUrl || tokenUser.photo_url === defaultMenUrl; else defaultMen"  style="background-image: url(https://mysterious-reaches-96425.herokuapp.com/{{photoChange}})" >
+                    <div  id="imagePreview" *ngIf="tokenUser.photo_url === defaultWomanUrl || tokenUser.photo_url === defaultMenUrl; else defaultMen"  style="background-image: url({{urlDefaultImg}}/{{photoChange}})" >
 
                     </div>
 
                     <ng-template #defaultMen>
-                      <div  id="imagePreviewDefault"   style="background-image: url(https://waisatusbucket.s3.eu-west-3.amazonaws.com/users_kefi/{{photoChange}})">
+                      <div  id="imagePreviewDefault"   style="background-image: url(https://waisatusbucket.s3.eu-west-3.amazonaws.com/{{urlAmzDirectoryUser}}{{photoChange}})">
 
                       </div>
                     </ng-template>

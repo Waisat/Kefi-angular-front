@@ -30,13 +30,15 @@ import {IdPublicPage} from "../class/id-public-page";
 import {ArrayMembersValuesToCheck} from "../class/array-members-values-to-check";
 import {Cgu} from "../class/cgu";
 import {ForgetPassword} from "../class/forget-password";
+import {environment} from "../../environments/environment"
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
 
-  ConfigUrl: string = "https://mysterious-reaches-96425.herokuapp.com"
+  ConfigUrl: string = environment.API_URL
 
   constructor(private http: HttpClient, private cookieService: CookieService) {
   }
@@ -157,7 +159,7 @@ export class UserService {
 
   sendPhotoEvent(photo: FormData): Observable<FormData> {
 
-    return this.http.post<FormData>(this.ConfigUrl + "/send_photo_server", photo, this.options)
+    return this.http.post<FormData>(this.ConfigUrl + "/send_multiple_photos", photo, this.options)
       .pipe(
         catchError(this.handleError)
       );

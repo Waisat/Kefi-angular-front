@@ -9,7 +9,7 @@ import {MemberAreaCommunicationService} from "../_services/member-area-communica
 import {TweenLite, TimelineMax, Linear, Back, Sine, gsap, TweenMax} from 'gsap/all'
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {CommunicationPublicMemberListService} from "../_services/communication-public-member-list.service";
-
+import {environment} from "../../environments/environment";
 gsap.registerPlugin(ScrollTrigger);
 @Component({
   selector: 'app-member-area',
@@ -26,6 +26,7 @@ export class MemberAreaComponent implements OnInit, OnChanges, AfterViewInit {
   public getDataNavPage:any = []
   public infoNavList:any
   public keepDataInfo:any;
+  public usrImgFolder : string = environment.IMGDIRECTORYUSER
 
   ngOnInit(): void {
     this.allUsers = new GetAllPublicUsers("", "","", "","")

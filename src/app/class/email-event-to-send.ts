@@ -3,7 +3,7 @@ export class EmailEventToSend {
     public mailContact: string,
     public title: string,
     public people_attend:string,
-    public imageEvent:string,
+    public imageEvent:[string],
     public address:string,
     public city:string,
     public postal_code:string,

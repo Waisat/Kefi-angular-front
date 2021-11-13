@@ -15,11 +15,12 @@ import {EmailEventToSend} from "../../class/email-event-to-send";
 })
 export class CreateEventComponent implements OnInit {
   uploadForm:any= FormGroup;
-  image:any;
+  image:any = [];
+  newImageFormatName:any
   constructor(private formBuilder: FormBuilder, private user: UserService) { }
   emailPattern:RegExp= /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  ngModelEvent = new EventKefi("","","","","","","","","", "", "", "", "", "")
+  ngModelEvent = new EventKefi("","","",[""],"","","","","", "", "", "", "", "", "")
   ngOnInit(): void {
     this.uploadForm = this.formBuilder.group({
       profile: [''],
@@ -28,10 +29,19 @@ export class CreateEventComponent implements OnInit {
   }
   createEvent(){
     const formData = new FormData()
-    formData.append("file", this.image)
+    const transformTitle = this.ngModelEvent.title.replace(/\s/g, '-')
+    console.log(transformTitle)
+    this.ngModelEvent.imageEvent.shift()
+    for(let i =0; i < this.image.length; i++){
+      const definitiveTitle = transformTitle +'_' +i + '.jpeg'
+      this.ngModelEvent.imageEvent.push(definitiveTitle)
+
+      formData.append("file", this.image[i], definitiveTitle)
+    }
+    this.ngModelEvent.folderName = transformTitle + '/'
     this.addNewEvent()
     if(this.ngModelEvent.send_MailTo === "verifyEmailUser" || this.ngModelEvent.send_MailTo ==="newsLetterSubscriber"){
-      let ngSendMail = new EmailEventToSend("","","","","","","","","","", "", "")
+      let ngSendMail = new EmailEventToSend("","","",[""],"","","","","","", "", "")
       ngSendMail.mailContact = this.ngModelEvent.mailContact
       ngSendMail.people_attend = this.ngModelEvent.people_attend
       ngSendMail.title = this.ngModelEvent.title
@@ -55,13 +65,19 @@ export class CreateEventComponent implements OnInit {
 
   onFileSelect(event:any) {
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.image  = file
-      this.ngModelEvent.imageEvent = this.image.name
+     // const file = event.target.files[0];
+      //this.image  = file
+      let files = []
+      for(let i =0; i < event.target.files.length; i++ ){
 
+          files.push(event.target.files[i])
+
+
+      }
+      this.image = files
 
       //this.uploadForm.get('profile').setValue(file);
-      console.log('this upload', this.uploadForm)
+      console.log('this upload', this.image[0])
 
 
     }else{

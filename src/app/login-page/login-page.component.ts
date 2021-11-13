@@ -10,6 +10,8 @@ import {UserTokenInterfaces} from "../interfaces/UserToken.interfaces";
 import {CheckToken} from "../_utilities/CheckToken";
 import {MemberAreaCommunicationService} from "../_services/member-area-communication.service";
 import {CommunicationPublicMemberListService} from "../_services/communication-public-member-list.service";
+import {environment} from "../../environments/environment";
+import checkForSecureParameter from "../_utilities/checkForSecureParameter";
 
 @Component({
   selector: 'app-login-page',
@@ -49,7 +51,7 @@ export class LoginPageComponent implements OnInit {
         let date = new Date()
         let timer = new Date(Date.now() +  3600000 )
 
-        this.cookieService.put(userLoginInfo.name, userLoginInfo.jwt, {domain:"kefiassociation.fr", expires:(timer.toString()), secure:true})
+        this.cookieService.put(userLoginInfo.name, userLoginInfo.jwt, {domain:environment.DOMAIN, expires:(timer.toString()), secure:checkForSecureParameter(environment.FALSE)})
         const token = this.user.getCookieJwt("kefi_token")
         if(token){
           this.IsWait = false
@@ -66,6 +68,10 @@ export class LoginPageComponent implements OnInit {
       });
 
   }
+
+  /**** Return value if url is secure or not ***/
+
+
 
 
 

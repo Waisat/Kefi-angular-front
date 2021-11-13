@@ -68,7 +68,7 @@ img, #event_kefi_id {
   transition: background 0.3s cubic-bezier(0.33, 0.66, 0.66, 1);
 }
 .blog-card .gradient-overlay {
-  background-image: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.6) 21%);
+  background-image: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.6) 40%);
   width: 550px;
   height: 500px;
   position: absolute;

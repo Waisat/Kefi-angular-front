@@ -1,7 +1,105 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;1,300&family=Mukta:wght@600&family=Overpass&display=swap');
 
+#block-event-of-moment{
+
+  left: 79.5%;
+  width: 20%;
+  height: 20%;
+  background-color: white;
+  position: absolute;
+  z-index: 5;
+  border-radius: 5%;
+}
+
+#text-block-event-of-moment{
+  padding: 20px;
+  width:90%;
+  height: 90%;
+  margin: 2% auto 0 auto;
+  background-color:black ;
+  border-radius: 5%;
+}
+
+a {
+  border: 4px solid #FFFFFF;
+  color: #FFFFFF;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 24px;
+  margin: auto;
+  padding: 12px 32px 12px 82px;
+  position: relative;
+  text-decoration: none;
+}
+
+a .label,
+a .icon-arrow {
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  perspective: 1000;
+}
+
+a .label {
+  display: inline-block;
+  transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+a .icon-arrow {
+  fill: #FFFFFF;
+  height: 15px;
+  top: 17px;
+  transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1), opacity .4s cubic-bezier(0.86, 0, 0.07, 1);
+  width: 35px;
+}
+
+a .icon-arrow.before {
+  left: 32px;
+  margin-right: 15px;
+  position: absolute;
+  transform-origin: left center;
+}
+
+a .icon-arrow.after {
+  margin-left: 15px;
+  opacity: 0;
+  position: absolute;
+  right: 32px;
+  transform: translateX(75%) scaleX(0.1);
+  transform-origin: right center;
+}
+
+a:hover .label {
+  transform: translateX(-52px);
+}
+
+a:hover .icon-arrow.before {
+  opacity: 0;
+  transform: translateX(-75%) scaleX(0.1);
+}
+
+a:hover .icon-arrow.after {
+  opacity: 1;
+  transform: translateX(0) scaleX(1);
+}
+
+a:active {
+  border-color: #FD6154;
+  color: #FD6154;
+}
+
+a:active .icon-arrow {
+  fill: #FD6154;
+}
+
+#text-description-event-home , #date-description-event-home{
+  color: #FFFFFF;
+  font-size:15px ;
+}
 
 @media (min-width: 769px)   {
+
+
   header {
 
     text-align: center;
@@ -17,6 +115,8 @@
     z-index: 1;
 
   }
+
+
 
   header .overlay {
     margin-top:16vh;
@@ -72,6 +172,11 @@
   #button-about-us{
     font-family: 'Mukta', sans-serif;
   }
+
+
+
+
+
 }
 @media (min-width: 500px )  and (max-width: 769px)   {
   header {
@@ -165,7 +270,8 @@
   }
 
   header .overlay {
-    margin-top:40%;
+    /*margin-top:40%;*/
+    margin-top:80%;
     z-index: 3;
     width: 100%;
     height: 100%;
@@ -218,5 +324,25 @@
 
   #button-about-us{
     font-family: 'Mukta', sans-serif;
+  }
+
+  #block-event-of-moment{
+
+    left: 10%;
+    width: 80%;
+    height: 28%;
+    background-color: white;
+    position: absolute;
+    z-index: 5;
+    border-radius: 5%;
+  }
+
+  #text-block-event-of-moment{
+    padding: 20px;
+    width:90%;
+    height: 90%;
+    margin: 2% auto 0 auto;
+    background-color:black ;
+    border-radius: 5%;
   }
 }

@@ -4,13 +4,13 @@ import {HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse} from '@angular
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import {Config} from "../interfaces/Config.interfaces";
-
+import {environment} from "../../environments/environment"
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpJsonLocalService {
-  private localJobJson:string ="https://mysterious-reaches-96425.herokuapp.com/job.json"
+  private localJobJson:string =`${environment.API_URL}/job.json`
   constructor(private http: HttpClient) { }
 
   private handleError(error: HttpErrorResponse) {

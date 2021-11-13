@@ -10,7 +10,7 @@
           <a routerLink="/membre/{{users.slug_url}}">
             <img *ngIf="users.photo_url === defaultMenUrl || users.photo_url === defaultWomanUrl; else truePhotoProfil" class="img-fluid" title="{{users.first_name}} {{users.name}}" alt="{{users.first_name}} {{users.name}}" src="https://mysterious-reaches-96425.herokuapp.com/{{users.photo_url}}">
             <ng-template #truePhotoProfil>
-              <img class="img-fluid" title="{{users.first_name}} {{users.name}}" alt="{{users.first_name}} {{users.name}}" src="https://waisatusbucket.s3.eu-west-3.amazonaws.com/users_kefi/{{users.photo_url}}">
+              <img class="img-fluid" title="{{users.first_name}} {{users.name}}" alt="{{users.first_name}} {{users.name}}" src="https://waisatusbucket.s3.eu-west-3.amazonaws.com/{{urlImgUserFolder}}{{users.photo_url}}">
 
             </ng-template>
           </a>

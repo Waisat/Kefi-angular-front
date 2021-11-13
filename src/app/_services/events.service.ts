@@ -5,12 +5,12 @@ import {catchError, retry} from "rxjs/operators";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {CookieService} from "ngx-cookie";
 import {GetTokenArticleDetail} from "../class/get-token-article-detail";
-
+import {environment} from "../../environments/environment"
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
-  ConfigUrl:string ="https://mysterious-reaches-96425.herokuapp.com"
+  ConfigUrl:string =environment.API_URL
   options:object = {
     responseType: 'json',
   };

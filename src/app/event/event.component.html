@@ -4,7 +4,7 @@
     <div *ngFor="let event of eventsKefi">
 
     <div class="blog-card spring-fever" >
-      <img id="event_kefi_id" src="https://mysterious-reaches-96425.herokuapp.com//kefi_{{event.main_photo}}" title="{{event.title}}" alt="{{event.title}}">
+      <img id="event_kefi_id" src="https://waisatusbucket.s3.eu-west-3.amazonaws.com/events/{{event.main_photo}}{{event.photos[0]}}" title="{{event.title}}" alt="{{event.title}}">
       <div class="title-content" >
         <h3>{{event.title}}</h3>
       </div>

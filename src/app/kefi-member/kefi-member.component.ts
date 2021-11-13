@@ -11,6 +11,7 @@ import {Form} from "@angular/forms";
 import {FormUpdateProfileUser} from "../class/form-update-profile-user";
 import {parse} from "@angular/compiler/src/render3/view/style_parser";
 import {checkFields} from "../_utilities/verifyFields";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-kefi-member',
@@ -24,7 +25,8 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
   parseLookingForInfos:any;
   photoProfile:any;
   photoChange:string= ""
-
+  urlDefaultImg : string = environment.API_URL
+  urlAmzDirectoryUser:string = environment.IMGDIRECTORYUSER
   public checkChanges:boolean = false;
   public editToValid:boolean = false;
   public lookingForChoice: any;
@@ -64,7 +66,7 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
     this.user.getCookie().pipe(
       catchError(err => {
         console.log('Handling error locally and rethrowing it...', err);
-        this.cookieKefi.remove('kefi_token', {domain:'kefiassociation.fr'});
+        this.cookieKefi.remove('kefi_token', {domain:environment.DOMAIN});
         this._router.navigate(['/login'])
 
 
@@ -83,7 +85,7 @@ export class KefiMemberComponent implements OnInit, OnChanges, AfterViewInit {
         }
 
       }  , error =>{
-        this.cookieKefi.remove('kefi_token', {domain:'kefiassociation.fr'});
+        this.cookieKefi.remove('kefi_token', {domain:environment.DOMAIN});
         this._router.navigate(['/login'])
       }
     )

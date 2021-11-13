@@ -6,7 +6,7 @@ import {throwError} from "rxjs";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {ArrayMembersValuesToCheck} from "../class/array-members-values-to-check";
 import {animate} from "@angular/animations";
-
+import {environment} from "../../environments/environment";
 
 
 @Component({
@@ -35,6 +35,7 @@ export class MemberAreaScrollComponent implements OnInit, AfterViewInit {
   noResult:any
   defaultMenUrl: string = "";
   defaultWomanUrl: string = ""
+  public urlImgUserFolder = environment.IMGDIRECTORYUSER
   ngOnInit(): void {
     window.scroll(0, 0)
     this.getAllPublicIDUser()

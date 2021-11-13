@@ -42,7 +42,7 @@
   margin: 0 auto;
 }
 .kefi-loadingTime p{
-  margin-top: 5%;
+  margin: 5%;
   padding: 2%;
   width: 100%;
   font-size: 1.5rem;
@@ -64,6 +64,7 @@ h1, h2, h4, .meta-data {
 h1 {
   font-weight: 900;
   font-size: 3rem;
+  margin-bottom: 5%;
 }
 
 h1:first-of-type {

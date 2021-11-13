@@ -13,7 +13,7 @@
               <div class="item-card" >
                 <img *ngIf="dataUser[0].photo_url === defaultMenUrl || dataUser[0].photo_url === defaultWomanUrl ; else imgUser" src="https://mysterious-reaches-96425.herokuapp.com/{{dataUser[0].photo_url}}" alt="{{dataUser[0].photo_url}}" class="rounded-circle" width="150">
                 <ng-template #imgUser>
-                  <img src="https://waisatusbucket.s3.eu-west-3.amazonaws.com/users_kefi/{{dataUser[0].photo_url}}" alt="{{dataUser[0].photo_url}}" class="rounded-circle" width="150">
+                  <img src="https://waisatusbucket.s3.eu-west-3.amazonaws.com/{{ImgFolderUser}}{{dataUser[0].photo_url}}" alt="{{dataUser[0].photo_url}}" class="rounded-circle" width="150">
                 </ng-template>
                 <div class="card-member">
                   <h4>{{dataUser[0].first_name}}</h4>

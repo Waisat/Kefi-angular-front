@@ -6,7 +6,7 @@ import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
 import {JwtCookie} from "../class/jwtcookie";
 import {HttpErrorResponse} from "@angular/common/http";
-
+import {environment} from "../../environments/environment"
 @Component({
   selector: 'app-admin-area',
   templateUrl: './admin-area.component.html',
@@ -47,7 +47,7 @@ export class AdminAreaComponent implements OnInit {
     this.user.getCookie().pipe(
       catchError(err => {
         console.log('Handling error locally and rethrowing it...', err);
-        this.cookieKefi.remove('kefi_token', {domain:'kefiassociation.fr'});
+        this.cookieKefi.remove('kefi_token', {domain:environment.DOMAIN});
         this._router.navigate(['/login'])
         return throwError(err);
       })
@@ -60,7 +60,7 @@ export class AdminAreaComponent implements OnInit {
       }
 
     }  , error =>{
-      this.cookieKefi.remove('kefi_token', {domain:'kefiassociation.fr'});
+      this.cookieKefi.remove('kefi_token', {domain:environment.DOMAIN});
         this._router.navigate(['/login'])
     }
     )

@@ -4,6 +4,8 @@ import {LoginService} from "../_services/login-info.service";
 import {LoginPageComponent} from "../login-page/login-page.component";
 import {CookieService} from "ngx-cookie";
 import {MemberAreaCommunicationService} from "../_services/member-area-communication.service";
+import {environment} from "../../environments/environment";
+import checkForSecureParameter from "../_utilities/checkForSecureParameter";
 
 @Component({
   selector: 'app-nav-bar',
@@ -44,7 +46,7 @@ export class NavBarComponent implements OnInit {
   }
 
   logOut(){
-    this.cookie.remove("kefi_token", {domain:"kefiassociation.fr", secure:true})
+    this.cookie.remove("kefi_token", {domain:environment.DOMAIN, secure:checkForSecureParameter(environment.FALSE)})
     this._route.navigate(['/accueil']).then(() => {
       window.location.reload();
     });

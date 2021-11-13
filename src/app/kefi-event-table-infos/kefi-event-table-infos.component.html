@@ -7,12 +7,12 @@
         <div class="box">
 
           <ul class="df">
-            <li>Date : {{eventData[0].event_date}} </li>
-            <li>Début : {{eventData[0].start_hour}} </li>
-            <li>Fin : {{eventData[0].end_hour}} </li>
-            <li>Adresse : {{eventData[0].adress}} </li>
-            <li>Code Postal : {{eventData[0].postal_code}} </li>
-            <li>Ville : {{eventData[0].city}} </li>
+            <li>Date : {{formatEventDate}} </li>
+            <li>Début : {{eventData.start_hour}} </li>
+            <li>Fin : {{eventData.end_hour}} </li>
+            <li>Adresse : {{eventData.adress}} </li>
+            <li>Code Postal : {{eventData.postal_code}} </li>
+            <li>Ville : {{eventData.city}} </li>
           </ul>
         </div>
       </li>

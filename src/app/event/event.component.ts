@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {EventsService} from "../_services/events.service";
 import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-event',
@@ -10,6 +11,8 @@ import {throwError} from "rxjs";
 })
 export class EventComponent implements OnInit {
   eventsKefi:any
+  urlSite: string = environment.API_URL
+  photosEvents:any
   constructor(private events: EventsService ) { }
 
   ngOnInit(): void {
@@ -24,7 +27,7 @@ export class EventComponent implements OnInit {
       })
     ).subscribe((result=>{
       this.eventsKefi = result
-        console.log('result all events', result)
+
     }))
 
   }
