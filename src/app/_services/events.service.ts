@@ -10,7 +10,7 @@ import {environment} from "../../environments/environment"
   providedIn: 'root'
 })
 export class EventsService {
-  ConfigUrl:string =environment.API_URL
+  ConfigUrl:string = environment.API_URL
   options:object = {
     responseType: 'json',
   };

@@ -1,8 +1,8 @@
 
 export const environment = {
    production: false,
-   API_URL: "http://localhost:5000",
-   DOMAIN:"localhost",
-   FALSE:"false",
-   IMGDIRECTORYUSER:"test_image/"
+   API_URL: "https://mysterious-reaches-96425.herokuapp.com",
+   DOMAIN:"kefiassociation.fr",
+   FALSE:"true",
+   IMGDIRECTORYUSER:"users_kefi/"
 };
